@@ -1,0 +1,133 @@
+/*登录体*/
+.login-body{
+  background: rgb(242, 242, 242);
+  height: 475px;
+  padding-top: 1px;
+}
+/*包裹中部两个图片的div*/
+.login-bgs{
+  position: relative;
+  width: 471px;
+
+}
+.login-bg-img{
+  float: left;
+  width: 471px;
+
+}
+.login-bg-centre{
+  display:block;
+  position: absolute;
+  top: 140px;
+  left: 180px;
+  animation: shake 3s;
+  animation-timing-function:ease;
+  animation-iteration-count:infinite;
+}
+@keyframes shake
+{
+  0%{
+    transform:scale(1.0,1.0)
+  }
+  50%{
+    transform:scale(1.4,1.4)
+  }
+  100% {transform:scale(1.0,1.0)}
+}
+
+#center{
+  width: 900px;
+  margin: auto;
+  margin-top: 40px;
+  position: relative;
+}
+/*登录卡片*/
+.login-card{
+  float: right;
+  width: 300px;
+  height: 370px;
+  background: white;
+  border-radius: 3px;
+  position: relative;
+}
+.login-title-line{
+  width: 300px;
+  height: 2px;
+  background: red;
+  display: inline-block;
+  position: absolute;
+
+}
+
+/*登录标题*/
+.login-title{
+  text-align: center;
+  border-bottom: 1px solid rgb(230,230,230);
+  box-shadow: 0 0 5px rgb(232,232,232);
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  color: rgba(128, 128, 128, 1);
+}
+/*头像*/
+.profile{
+  width: 64px;
+  border-radius: 64px;
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+}
+/*昵称*/
+.nickname{
+  text-align: center;
+  margin-top: 10px;
+}
+/*登录信息*/
+.login-info{
+  width: 220px;
+  margin: auto;
+}
+
+input{
+  color: rgb(50,50,50);
+}
+.remember-label{
+  font-size: 12px;
+  color: rgb(120,120,120);
+}
+.lost-password{
+  float: right;
+  color: rgb(120,120,120);
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.login-btn{
+  margin-top: 15px;
+  width: 100%;
+  background: rgb(253,86,106);
+}
+
+.just-register-img{
+  position: absolute;
+  float: right;
+  left: 920px;
+  top: -45px;
+  cursor: pointer;
+  animation: action 10s  infinite;
+  transform-origin:50px 0;
+}
+/*注册图片旋转动画*/
+@keyframes action {
+  0% {
+    transform: rotate(-20deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100%{
+    transform: rotate(-20deg);
+  }
+}
+
+/*中部结束*/

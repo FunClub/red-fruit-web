@@ -1,0 +1,102 @@
+/*注册体*/
+.body{
+  padding-top: 1px;
+  background: rgb(242, 242, 242);
+  height: 550px;
+}
+
+/*注册中心*/
+.centre{
+  height: 480px;
+  width: 660px;
+  margin: auto;
+  margin-top: 20px;
+  position: relative;
+}
+form{
+  padding: 0 30px 0 50px;
+}
+/*立即登录div*/
+.other-login-wrapper{
+  position: absolute;
+  left: 620px;
+  top:200px;
+  height: 139px;
+  width: 136px;
+  background-image: url("../../../../../assets/img/other-login.png");
+}
+.other-login{
+  display: inline-block;
+  color: gray;
+  font-size: 13px;
+  margin-left: 55px;
+  margin-top: 20px;
+  text-decoration: underline;
+}
+/*表单项*/
+.form-field{
+  margin-top: 15px;
+  font-size: 13px !important;
+}
+.form-field div{
+  display: inline-block;
+}
+/*表单标签*/
+.form-label{
+  color: rgba(102, 102, 102, 1);
+  width: 70px;
+  display: inline-block;
+  text-align: right;
+}
+/*表单内容*/
+.form-field-content{
+  width: 250px;
+  margin-left: 30px;
+}
+/*表单提示*/
+.form-field-tip{
+  color: rgba(153, 153, 153, 1);
+  font-size: 12px;
+  margin-left: 40px;
+}
+/*验证码项*/
+.verification-code-field{
+  width: 120px;
+  display: inline-block;
+}
+.verification-img{
+  display: inline-block;
+  width: 120px;
+  border: solid 1px rgb(223,223,223);
+}
+.get-verification-code-btn{
+  display: inline-block;
+  font-size: 12px;
+  width: 100px;
+  margin-left: 20px;
+}
+/*性别单选框*/
+.gender-radio{
+  font-size: 14px;
+  color: rgba(43, 43, 43, 1);
+}
+.form-field .gender-radio-wrapper:last-child{
+  margin-left: 120px;
+}
+.form-field .gender-radio-wrapper img{
+  position: relative;
+  top: 3px;
+}
+/*日期切换图标*/
+.mat-datepicker-toggle{
+  font-size: 20px;
+}
+
+/*城市下拉框*/
+.form-field-city{
+  width: 120px;
+}
+.form-field-content .form-field-city:last-child{
+  margin-left: 5px;
+}
+

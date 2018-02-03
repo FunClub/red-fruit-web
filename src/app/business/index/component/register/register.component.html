@@ -1,0 +1,188 @@
+<div class="body">
+  <div class="centre app-box">
+    <mat-horizontal-stepper>
+      <mat-step [stepControl]="baseInfoGroup" class="step">
+        <ng-template matStepLabel>验证信息</ng-template>
+        <form [formGroup]="baseInfoGroup">
+
+          <!--图片验证码-->
+          <div class="form-field">
+            <span class="form-label">图片验证码</span>
+            <div class="form-field-content">
+              <mat-form-field class="verification-code-field">
+                <input matInput>
+              </mat-form-field>
+              <img class="verification-img " src="/business/shared/verificationCode">
+            </div>
+            <span class="form-field-tip">
+              *验证码不分大小写
+            </span>
+          </div>
+
+          <!--手机号-->
+          <div class="form-field">
+            <span class="form-label">手机号</span>
+            <div class="form-field-content">
+              <mat-form-field>
+                <input matInput>
+              </mat-form-field>
+            </div>
+            <span class="form-field-tip">
+              *您的登录账号
+            </span>
+          </div>
+
+          <!--手机验证码-->
+          <div class="form-field">
+            <span class="form-label">手机验证码</span>
+            <div class="form-field-content">
+              <mat-form-field class="verification-code-field">
+                <input matInput class="verification-code-input">
+              </mat-form-field>
+              <button mat-raised-button class="get-verification-code-btn sm-btn">获取验证码</button>
+            </div>
+          </div>
+
+          <!--密码-->
+          <div class="form-field">
+            <span class="form-label">密码</span>
+            <div class="form-field-content">
+              <mat-form-field>
+                <input matInput>
+              </mat-form-field>
+            </div>
+            <span class="form-field-tip">
+              *8-16位，英文字母开头
+            </span>
+          </div>
+
+          <!--确认密码-->
+          <div class="form-field">
+            <span class="form-label">确认密码</span>
+            <div class="form-field-content">
+              <mat-form-field>
+                <input matInput>
+              </mat-form-field>
+            </div>
+            <span class="form-field-tip">
+              *8-16位，英文字母开头
+            </span>
+          </div>
+
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>基本资料</ng-template>
+        <form [formGroup]="baseInfoGroup">
+
+          <!--性别-->
+          <div class="form-field">
+            <span class="form-label">我是</span>
+            <div class="form-field-content">
+              <mat-radio-group>
+                <div class="gender-radio-wrapper">
+                  <img src="../../../../../assets/img/male.png" height="19" width="16"/>
+                  <mat-radio-button color="primary" value="1" class="gender-radio">男</mat-radio-button>
+                </div>
+
+                <div class="gender-radio-wrapper">
+                  <img src="../../../../../assets/img/female.png" height="19" width="16"/>
+                  <mat-radio-button value="2" class="gender-radio">女</mat-radio-button>
+                </div>
+              </mat-radio-group>
+            </div>
+            <span class="form-field-tip">
+              *注册后不能更改
+            </span>
+          </div>
+
+          <!--生日-->
+          <div class="form-field">
+            <span class="form-label">生日</span>
+            <div class="form-field-content">
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker" class="mat-datepicker-toggle"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <span class="form-field-tip">
+              *注册后不能更改
+            </span>
+          </div>
+
+          <!--城市-->
+          <div class="form-field">
+            <span class="form-label">现居地</span>
+            <div class="form-field-content">
+              <mat-form-field class="form-field-city">
+                <mat-select placeholder="父级区域">
+                  <mat-option>
+                    1112
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="form-field-city">
+                <mat-select placeholder="子级区域">
+                  <mat-option>
+                    1112
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!--身高-->
+          <div class="form-field">
+            <span class="form-label">身高</span>
+            <div class="form-field-content">
+              <mat-form-field>
+                <mat-select placeholder="身高">
+                  <mat-option>
+                    1112
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!--学历-->
+          <div class="form-field">
+            <span class="form-label">学历</span>
+            <div class="form-field-content">
+              <mat-form-field>
+                <mat-select placeholder="学历">
+                  <mat-option>
+                    1112
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!--月薪-->
+          <div class="form-field">
+            <span class="form-label">月薪</span>
+            <div class="form-field-content">
+              <mat-form-field>
+                <mat-select placeholder="月薪">
+                  <mat-option>
+                    1112
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>账户信息</ng-template>
+      </mat-step>
+    </mat-horizontal-stepper>
+    <div class="other-login-wrapper" >
+
+      <a class="other-login" routerLink="../login">立即登录</a>
+    </div >
+  </div>
+</div>

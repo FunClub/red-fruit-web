@@ -1,0 +1,11 @@
+.footer{
+  margin: auto;
+  margin-top: 20px;
+  width: 710px;
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+.footer-label{
+  margin-left: 10px;
+  color:rgb(77, 77, 77);
+}
