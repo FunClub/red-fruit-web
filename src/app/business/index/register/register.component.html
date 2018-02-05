@@ -1,21 +1,31 @@
 <div class="body">
   <div class="centre app-box">
-    <mat-horizontal-stepper>
-      <mat-step [stepControl]="baseInfoGroup" class="step">
-        <ng-template matStepLabel>验证信息</ng-template>
-        <form [formGroup]="baseInfoGroup">
+    <mat-horizontal-stepper  [linear]="true">
+      <mat-step [stepControl]="accountGroup">
+        <ng-template matStepLabel>账户信息</ng-template>
+        <form [formGroup]="accountGroup">
 
           <!--图片验证码-->
           <div class="form-field">
             <span class="form-label">图片验证码</span>
             <div class="form-field-content">
               <mat-form-field class="verification-code-field">
-                <input matInput>
+                <input matInput [formControl]="imgVerificationCtr">
+
               </mat-form-field>
-              <img class="verification-img " src="/business/shared/verificationCode">
+              <img class="verification-img " [src]="sharedApi.verificationCodePath">
             </div>
-            <span class="form-field-tip">
-              *验证码不分大小写
+            <span class="form-field-tip" *ngIf="getImgVerificationCodeStatus()==formState.DEFAULT">
+               * 验证码不分大小写
+            </span>
+            <span class="form-field-tip app-success" *ngIf="getImgVerificationCodeStatus()==formState.SUCCESS">
+               <i class="material-icons">done</i>验证码输入正确
+            </span>
+            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.ERROR">
+               <i class="material-icons">error</i>验证码输入错误
+            </span>
+            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.NULL">
+               <i class="material-icons">error</i>验证码不能为空
             </span>
           </div>
 
@@ -24,11 +34,23 @@
             <span class="form-label">手机号</span>
             <div class="form-field-content">
               <mat-form-field>
-                <input matInput>
+                <input matInput [formControl]="mobileCtr">
               </mat-form-field>
             </div>
-            <span class="form-field-tip">
-              *您的登录账号
+            <span class="form-field-tip" *ngIf="getImgVerificationCodeStatus()==formState.DEFAULT">
+               * 您的登录账号
+            </span>
+            <span class="form-field-tip app-success" *ngIf="getImgVerificationCodeStatus()==formState.SUCCESS">
+               <i class="material-icons">done</i>手机可用！
+            </span>
+            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.ERROR">
+               <i class="material-icons">error</i>手机已被注册！
+            </span>
+            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.PATTERN">
+               <i class="material-icons">error</i>请输入正确的手机号！
+            </span>
+            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.NULL">
+               <i class="material-icons">error</i>手机不能为空！
             </span>
           </div>
 
@@ -41,6 +63,22 @@
               </mat-form-field>
               <button mat-raised-button class="get-verification-code-btn sm-btn">获取验证码</button>
             </div>
+            <span class="form-field-tip">
+              *6位验证码
+            </span>
+          </div>
+
+          <!--昵称-->
+          <div class="form-field">
+            <span class="form-label">昵称</span>
+            <div class="form-field-content">
+              <mat-form-field>
+                <input matInput>
+              </mat-form-field>
+            </div>
+            <span class="form-field-tip">
+              *8-16位，英文字母开头
+            </span>
           </div>
 
           <!--密码-->
@@ -69,6 +107,17 @@
             </span>
           </div>
 
+          <!--下一步-->
+          <div class="form-field">
+            <span class="form-label"></span>
+            <div class="form-field-content">
+              <button mat-raised-button matStepperNext color="primary" class="app-full app-btn">下一步</button>
+            </div>
+            <span class="form-field-tip">
+
+            </span>
+          </div>
+
         </form>
       </mat-step>
       <mat-step>
@@ -81,12 +130,12 @@
             <div class="form-field-content">
               <mat-radio-group>
                 <div class="gender-radio-wrapper">
-                  <img src="../../../../../assets/img/male.png" height="19" width="16"/>
+                  <img src="../../../../assets/img/male.png" height="19" width="16"/>
                   <mat-radio-button color="primary" value="1" class="gender-radio">男</mat-radio-button>
                 </div>
 
                 <div class="gender-radio-wrapper">
-                  <img src="../../../../../assets/img/female.png" height="19" width="16"/>
+                  <img src="../../../../assets/img/female.png" height="19" width="16"/>
                   <mat-radio-button value="2" class="gender-radio">女</mat-radio-button>
                 </div>
               </mat-radio-group>

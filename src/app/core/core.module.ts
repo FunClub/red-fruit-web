@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {RegisterService} from './service/register.service';
+import {DataModule} from './data/data.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
-    CommonModule
+    DataModule,
+    HttpClientModule
   ],
   providers:[
-    RegisterService
+    RegisterService,
   ],
   declarations: []
 })

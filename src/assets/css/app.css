@@ -12,3 +12,22 @@ div阴影
   background: white;
 }
 
+/*宽度100%*/
+.app-full{
+  width: 100%;
+}
+
+/*按钮*/
+.app-btn{
+  background: rgba(23, 152, 192, 1) !important;
+  border-radius: 50px  !important;
+}
+
+/*错误*/
+.app-error{
+  color: red !important;
+}
+
+.app-success{
+  color: green !important;
+}

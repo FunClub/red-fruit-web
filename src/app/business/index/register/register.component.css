@@ -2,19 +2,18 @@
 .body{
   padding-top: 1px;
   background: rgb(242, 242, 242);
-  height: 550px;
+  height: 600px;
 }
 
 /*注册中心*/
 .centre{
-  height: 480px;
+  height: 500px;
   width: 660px;
-  margin: auto;
-  margin-top: 20px;
+  margin: 20px auto auto;
   position: relative;
 }
 form{
-  padding: 0 30px 0 50px;
+  padding: 0 30px 20px 50px;
 }
 /*立即登录div*/
 .other-login-wrapper{
@@ -23,7 +22,7 @@ form{
   top:200px;
   height: 139px;
   width: 136px;
-  background-image: url("../../../../../assets/img/other-login.png");
+  background-image: url("../../../../assets/img/other-login.png");
 }
 .other-login{
   display: inline-block;
@@ -64,10 +63,14 @@ form{
   width: 120px;
   display: inline-block;
 }
+/*验证码图片*/
 .verification-img{
   display: inline-block;
-  width: 120px;
+  width: 100px;
   border: solid 1px rgb(223,223,223);
+  position: relative;
+  top: 10px;
+  left: 20px;
 }
 .get-verification-code-btn{
   display: inline-block;

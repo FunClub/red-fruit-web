@@ -1,7 +1,7 @@
 /*自定义material样式*/
 
 /*form组件*/
-.mat-form-field-label{
+/*.mat-form-field-label{
   color: gray !important;
 
 }
@@ -10,7 +10,7 @@
 }
 .mat-input-underline{
   background: rgb(212,212,212) !important;
-}
+}*/
 mat-form-field{
   width: 100%;
   height: 50px;
@@ -53,8 +53,9 @@ mat-form-field{
   font-family: 'Material Icons', serif;
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
+  margin-right: 5px;
   letter-spacing: normal;
   text-transform: none;
   display: inline-block;

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {LoginComponent} from './component/login/login.component';
+import {LoginComponent} from './login/login.component';
 import {Route, RouterModule} from '@angular/router';
-import {IndexComponent} from './component/index/index.component';
-import {RegisterComponent} from './component/register/register.component';
+import {IndexComponent} from './index/index.component';
+import {RegisterComponent} from './register/register.component';
 /**
  * 应用根路模块
  */
