@@ -1,6 +1,8 @@
 <div class="body">
   <div class="centre app-box">
-    <mat-horizontal-stepper  [linear]="true">
+    <mat-horizontal-stepper  [linear]="false">
+
+      <!--账户信息开始-->
       <mat-step [stepControl]="accountGroup">
         <ng-template matStepLabel>账户信息</ng-template>
         <form [formGroup]="accountGroup">
@@ -15,18 +17,21 @@
               </mat-form-field>
               <img class="verification-img " [src]="sharedApi.verificationCodePath">
             </div>
-            <span class="form-field-tip" *ngIf="getImgVerificationCodeStatus()==formState.DEFAULT">
-               * 验证码不分大小写
+            <span [ngSwitch]="getImgVerificationCodeStatus()">
+              <span class="form-field-tip" *ngSwitchCase="formState.DEFAULT">
+                * 验证码不分大小写
+              </span>
+              <span class="form-field-tip app-success" *ngSwitchCase="formState.SUCCESS">
+               <i class="material-icons">done</i>验证码输入正确!
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.ERROR">
+                <i class="material-icons">error</i>验证码输入错误!
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.NULL">
+                <i class="material-icons">error</i>验证码不能为空!
+              </span>
             </span>
-            <span class="form-field-tip app-success" *ngIf="getImgVerificationCodeStatus()==formState.SUCCESS">
-               <i class="material-icons">done</i>验证码输入正确
-            </span>
-            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.ERROR">
-               <i class="material-icons">error</i>验证码输入错误
-            </span>
-            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.NULL">
-               <i class="material-icons">error</i>验证码不能为空
-            </span>
+
           </div>
 
           <!--手机号-->
@@ -37,20 +42,22 @@
                 <input matInput [formControl]="mobileCtr">
               </mat-form-field>
             </div>
-            <span class="form-field-tip" *ngIf="getImgVerificationCodeStatus()==formState.DEFAULT">
-               * 您的登录账号
-            </span>
-            <span class="form-field-tip app-success" *ngIf="getImgVerificationCodeStatus()==formState.SUCCESS">
+            <span [ngSwitch]="getMobileStatus()">
+              <span class="form-field-tip" *ngSwitchCase="formState.DEFAULT">
+                * 您的登录账号
+              </span>
+              <span class="form-field-tip app-success" *ngSwitchCase="formState.SUCCESS">
                <i class="material-icons">done</i>手机可用！
-            </span>
-            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.ERROR">
-               <i class="material-icons">error</i>手机已被注册！
-            </span>
-            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.PATTERN">
-               <i class="material-icons">error</i>请输入正确的手机号！
-            </span>
-            <span class="form-field-tip app-error" *ngIf="getImgVerificationCodeStatus()==formState.NULL">
-               <i class="material-icons">error</i>手机不能为空！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.ERROR">
+                <i class="material-icons">error</i>手机号已被注册！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.NULL">
+                <i class="material-icons">error</i>手机号不能为空！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.PATTERN">
+                <i class="material-icons">error</i>手机号错误！
+              </span>
             </span>
           </div>
 
@@ -59,12 +66,28 @@
             <span class="form-label">手机验证码</span>
             <div class="form-field-content">
               <mat-form-field class="verification-code-field">
-                <input matInput class="verification-code-input">
+                <input matInput class="verification-code-input" [formControl]="mobileCodeCtr">
               </mat-form-field>
-              <button mat-raised-button class="get-verification-code-btn sm-btn">获取验证码</button>
+              <button mat-raised-button type="button" [disabled]="!sendMobileVerificationCodeState()" (click)="sendMobileVerificationCode()"
+                      class="get-verification-code-btn sm-btn">{{sendSmsBtnHint}}</button>
             </div>
-            <span class="form-field-tip">
-              *6位验证码
+
+            <span [ngSwitch]="getMobileCodeStatus()">
+              <span class="form-field-tip" *ngSwitchCase="formState.DEFAULT">
+                * 请输入6位验证码
+              </span>
+              <span class="form-field-tip app-success" *ngSwitchCase="formState.SUCCESS">
+               <i class="material-icons">done</i>验证码输入正确！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.ERROR">
+                <i class="material-icons">error</i>验证码输入错误！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.NULL">
+                <i class="material-icons">error</i>验证码不能为空！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.PATTERN">
+                <i class="material-icons">error</i>请输入6位验证码！
+              </span>
             </span>
           </div>
 
@@ -73,12 +96,27 @@
             <span class="form-label">昵称</span>
             <div class="form-field-content">
               <mat-form-field>
-                <input matInput>
+                <input matInput [formControl]="nicknameCtr" >
               </mat-form-field>
             </div>
-            <span class="form-field-tip">
-              *8-16位，英文字母开头
+            <span [ngSwitch]="getNicknameStatus()">
+              <span class="form-field-tip" *ngSwitchCase="formState.DEFAULT">
+                * 请输入2-10位字符
+              </span>
+              <span class="form-field-tip app-success" *ngSwitchCase="formState.SUCCESS">
+               <i class="material-icons">done</i>昵称可用！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.ERROR">
+                <i class="material-icons">error</i>昵称已被注册！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.NULL">
+                <i class="material-icons">error</i>昵称不能为空！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.PATTERN">
+                <i class="material-icons">error</i>请输入2-10位字符！
+              </span>
             </span>
+
           </div>
 
           <!--密码-->
@@ -86,40 +124,37 @@
             <span class="form-label">密码</span>
             <div class="form-field-content">
               <mat-form-field>
-                <input matInput>
+                <input matInput type="password" formControlName="passwordCtr">
               </mat-form-field>
             </div>
-            <span class="form-field-tip">
-              *8-16位，英文字母开头
+            <span [ngSwitch]="getPasswordStatus()">
+              <span class="form-field-tip" *ngSwitchCase="formState.DEFAULT">
+                 * 6-14位字符
+              </span>
+              <span class="form-field-tip app-success" *ngSwitchCase="formState.SUCCESS">
+               <i class="material-icons">done</i>密码可用！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.NULL">
+                <i class="material-icons">error</i>密码不能为空！
+              </span>
+              <span class="form-field-tip app-error" *ngSwitchCase="formState.PATTERN">
+                <i class="material-icons">error</i>密码格式错误！
+              </span>
             </span>
-          </div>
 
-          <!--确认密码-->
-          <div class="form-field">
-            <span class="form-label">确认密码</span>
-            <div class="form-field-content">
-              <mat-form-field>
-                <input matInput>
-              </mat-form-field>
-            </div>
-            <span class="form-field-tip">
-              *8-16位，英文字母开头
-            </span>
           </div>
 
           <!--下一步-->
           <div class="form-field">
             <span class="form-label"></span>
             <div class="form-field-content">
-              <button mat-raised-button matStepperNext color="primary" class="app-full app-btn">下一步</button>
+              <button mat-raised-button  matStepperNext color="primary" class="app-full app-btn">下一步</button>
             </div>
-            <span class="form-field-tip">
-
-            </span>
           </div>
-
         </form>
       </mat-step>
+      <!--账户信息结束-->
+
       <mat-step>
         <ng-template matStepLabel>基本资料</ng-template>
         <form [formGroup]="baseInfoGroup">
@@ -128,7 +163,7 @@
           <div class="form-field">
             <span class="form-label">我是</span>
             <div class="form-field-content">
-              <mat-radio-group>
+              <mat-radio-group formControlName="genderCtr">
                 <div class="gender-radio-wrapper">
                   <img src="../../../../assets/img/male.png" height="19" width="16"/>
                   <mat-radio-button color="primary" value="1" class="gender-radio">男</mat-radio-button>
@@ -136,7 +171,7 @@
 
                 <div class="gender-radio-wrapper">
                   <img src="../../../../assets/img/female.png" height="19" width="16"/>
-                  <mat-radio-button value="2" class="gender-radio">女</mat-radio-button>
+                  <mat-radio-button value="0" class="gender-radio">女</mat-radio-button>
                 </div>
               </mat-radio-group>
             </div>
@@ -150,9 +185,9 @@
             <span class="form-label">生日</span>
             <div class="form-field-content">
               <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <input matInput formControlName="birthdayCtr"  [matDatepicker]="picker" placeholder="Choose a date">
                 <mat-datepicker-toggle matSuffix [for]="picker" class="mat-datepicker-toggle"></mat-datepicker-toggle>
-                <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                <mat-datepicker #picker startView="year" ></mat-datepicker>
               </mat-form-field>
             </div>
             <span class="form-field-tip">
@@ -165,16 +200,16 @@
             <span class="form-label">现居地</span>
             <div class="form-field-content">
               <mat-form-field class="form-field-city">
-                <mat-select placeholder="父级区域">
-                  <mat-option>
-                    1112
+                <mat-select placeholder="父级区域" (change)="getSubArea($event)" formControlName="parentAreaCtr">
+                  <mat-option *ngFor="let area of parentAreas" [value]="area.id+'-'+area.short_name">
+                    {{ area.name }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-form-field class="form-field-city">
-                <mat-select placeholder="子级区域">
-                  <mat-option>
-                    1112
+                <mat-select placeholder="子级区域" formControlName="subAreaCtr" [(ngModel)]="subArea">
+                  <mat-option *ngFor="let area of subAreas" [value]="area.short_name">
+                    {{ area.name }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -186,9 +221,9 @@
             <span class="form-label">身高</span>
             <div class="form-field-content">
               <mat-form-field>
-                <mat-select placeholder="身高">
-                  <mat-option>
-                    1112
+                <mat-select placeholder="身高" formControlName="heightCtr">
+                  <mat-option *ngFor="let height of heightRange" [value]="height">
+                    {{height}}厘米
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -200,9 +235,9 @@
             <span class="form-label">学历</span>
             <div class="form-field-content">
               <mat-form-field>
-                <mat-select placeholder="学历">
-                  <mat-option>
-                    1112
+                <mat-select placeholder="学历" formControlName="educationCtr">
+                  <mat-option *ngFor="let education of educationRange" [value]="education.value">
+                    {{education.label}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -214,20 +249,46 @@
             <span class="form-label">月薪</span>
             <div class="form-field-content">
               <mat-form-field>
-                <mat-select placeholder="月薪">
-                  <mat-option>
-                    1112
+                <mat-select placeholder="月薪" formControlName="incomeCtr">
+                  <mat-option *ngFor="let income of incomeRange" [value]="income.value">
+                    {{income.label}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
           </div>
+
+          <!--立即注册-->
+          <div class="form-field">
+            <span class="form-label"></span>
+            <div class="form-field-content">
+              <button (click)="register()" mat-raised-button [disabled]="baseInfoGroup.invalid"  matStepperNext color="primary" class="app-full app-btn">立即注册</button>
+            </div>
+          </div>
         </form>
 
       </mat-step>
+
+      <!--注册结果-->
       <mat-step>
-        <ng-template matStepLabel>账户信息</ng-template>
+        <ng-template matStepLabel>注册结果</ng-template>
+        <div class="register-result-wrapper">
+          <p class="register-hint" [ngSwitch]="registerState">
+            <span *ngSwitchCase="0">注册中,请稍候...</span>
+            <span *ngSwitchCase="1">注册成功</span>
+            <span *ngSwitchCase="2">注册失败</span>
+          </p>
+          <mat-progress-bar *ngIf="registerState==0" mode="indeterminate"></mat-progress-bar>
+          <div [ngSwitch]="registerState">
+            <button *ngSwitchCase="1" mat-raised-button color="primary" class="app-full app-btn just-login-btn">立即登录</button>
+            <button *ngSwitchCase="2" mat-raised-button color="primary" class="app-full app-btn just-login-btn">重新注册</button>
+          </div>
+
+        </div>
+
+
       </mat-step>
+
     </mat-horizontal-stepper>
     <div class="other-login-wrapper" >
 

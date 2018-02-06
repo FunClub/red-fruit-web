@@ -11,7 +11,7 @@ import {
   MatStepperModule
 } from '@angular/material';
 import { RegisterComponent } from './register/register.component';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 /**
  * 登录注册相关模块
  */
@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatProgressBarModule,
     MatCheckboxModule,
     MatButtonModule,
     MatRadioModule,

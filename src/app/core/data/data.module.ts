@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import {BusinessSharedApi, BusinessUserApi} from './api';
-import {FormState} from './form-state';
+import {BusinessSharedApi, BusinessUserApi} from './api.data';
+import {FormState} from './form-state.data';
 
 @NgModule({
   imports: [

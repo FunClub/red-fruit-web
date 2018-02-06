@@ -6,6 +6,5 @@ export class FormState {
   public SUCCESS:string = 'success';
   public ERROR:string = 'error';
   public NULL:string = 'null';
-  public PATTERN:string = 'pattern'
-
+  public PATTERN:string = 'pattern';
 }
