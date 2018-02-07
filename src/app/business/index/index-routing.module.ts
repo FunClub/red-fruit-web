@@ -14,11 +14,13 @@ const routes:Route[]=[
     children:[
       {
         path:'login',
-        component:LoginComponent
+        component:LoginComponent,
+        data:'欢迎登录'
       },
       {
         path:'register',
-        component:RegisterComponent
+        component:RegisterComponent,
+        data:'欢迎注册'
       }
     ]
   },

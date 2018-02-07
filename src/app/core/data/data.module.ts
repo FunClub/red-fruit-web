@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import {BusinessSharedApi, BusinessUserApi} from './api.data';
-import {FormState} from './form-state.data';
+import {SharedApi, RegisterApi, LoginApi} from './api.data';
+import {FormState, RegisterStatus} from './app.data';
+
+
 
 @NgModule({
   imports: [
@@ -8,9 +10,11 @@ import {FormState} from './form-state.data';
   ],
   declarations: [],
   providers:[
-    BusinessSharedApi,
-    BusinessUserApi,
-    FormState
+    FormState,
+    RegisterStatus,
+    SharedApi,
+    RegisterApi,
+    LoginApi,
   ]
 })
 export class DataModule { }

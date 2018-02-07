@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ToastsManager} from 'ng2-toastr';
+import {ActivatedRoute} from '@angular/router';
+import {SharedService} from '../../../core/service/shared.service';
 
 @Component({
   selector: 'app-index',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service:SharedService) {
+
+  }
 
   ngOnInit() {
   }

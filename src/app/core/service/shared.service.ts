@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BusinessSharedApi} from '../data/api.data';
+import {SharedApi} from '../data/api.data';
 import {Observable} from 'rxjs/Observable';
-import {ResponseData} from '../data/response.data';
+import {ResponseData} from '../data/vo/response.data';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {AreaData} from '../data/area.data';
+import {AreaData} from '../data/vo/area.data';
 
 /**
  * 区域服务
  */
 @Injectable()
-export class AreaService{
-  constructor(private http:HttpClient,private api:BusinessSharedApi
+export class SharedService{
+
+  /**
+   * 登录和注册标题
+   */
+  indexTitle:string;
+
+  constructor(private http:HttpClient,private api:SharedApi
   ) {
 
   }
@@ -32,7 +38,6 @@ export class AreaService{
    * @param parentAreaString 父级区域id+short_name
    */
   getSubArea(parentAreaString:string):Observable<ResponseData<Array<AreaData>>>{
-
     return this.http.get<ResponseData<Array<AreaData>>>(this.api.getSubAreaPath(this.splitSubArea(parentAreaString)));
   }
 

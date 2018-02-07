@@ -12,6 +12,7 @@ import {
 } from '@angular/material';
 import { RegisterComponent } from './register/register.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {ToastModule} from 'ng2-toastr';
 /**
  * 登录注册相关模块
  */
@@ -29,7 +30,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatStepperModule,
     MatSelectModule,
     SharedModule,
-    IndexRoutingModule
+    IndexRoutingModule,
+
   ],
   declarations: [
     IndexComponent,

@@ -1,7 +1,47 @@
 /**
- * 静态数据
+ * 自动一配置
  */
+import {ToastOptions} from 'ng2-toastr';
 
+export class CustomToastOption extends ToastOptions{
+  animate = 'flyRight'; // you can override any options available
+  newestOnTop = false;
+  showCloseButton = true;
+  enableHTML=true;
+  messageClass='toasts-message'
+}
+export class Reg{
+  /**
+   * 手机正则
+   * @type {RegExp}
+   */
+  static MOBILE = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
+
+  /**
+   * 密码正则
+   * @type {RegExp}
+   */
+  static PASSWORD = /^[a-zA-Z0-9_-]{6,14}$/;
+}
+
+/**
+ * 表单状态
+ */
+export class FormState {
+  DEFAULT:string = 'default';
+  SUCCESS:string = 'success';
+  ERROR:string = 'error';
+  NULL:string = 'null';
+  PATTERN:string = 'pattern';
+}
+/**
+ * 注册状态
+ */
+export class RegisterStatus{
+  ING:string="ing";
+  SUCCESS:string ="success";
+  FAILED:string = "failed";
+}
 /**
  * 身高范围
  * @type {{label: string; value: string}[]}

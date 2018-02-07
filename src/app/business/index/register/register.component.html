@@ -1,9 +1,9 @@
-<div class="body">
-  <div class="centre app-box">
-    <mat-horizontal-stepper  [linear]="false">
+<div class="body" >
+  <div class="centre app-box" [@slide]>
+    <mat-horizontal-stepper  [linear]="true">
 
       <!--账户信息开始-->
-      <mat-step [stepControl]="accountGroup">
+      <mat-step [stepControl]="accountGroup" [editable]="false">
         <ng-template matStepLabel>账户信息</ng-template>
         <form [formGroup]="accountGroup">
 
@@ -15,7 +15,7 @@
                 <input matInput [formControl]="imgVerificationCtr">
 
               </mat-form-field>
-              <img class="verification-img " [src]="sharedApi.verificationCodePath">
+              <img class="verification-img " [src]="registerApi.verificationCodePath">
             </div>
             <span [ngSwitch]="getImgVerificationCodeStatus()">
               <span class="form-field-tip" *ngSwitchCase="formState.DEFAULT">
@@ -155,7 +155,7 @@
       </mat-step>
       <!--账户信息结束-->
 
-      <mat-step>
+      <mat-step [editable]="false">
         <ng-template matStepLabel>基本资料</ng-template>
         <form [formGroup]="baseInfoGroup">
 
@@ -270,18 +270,18 @@
       </mat-step>
 
       <!--注册结果-->
-      <mat-step>
+      <mat-step [editable]="false">
         <ng-template matStepLabel>注册结果</ng-template>
         <div class="register-result-wrapper">
           <p class="register-hint" [ngSwitch]="registerState">
-            <span *ngSwitchCase="0">注册中,请稍候...</span>
-            <span *ngSwitchCase="1">注册成功</span>
-            <span *ngSwitchCase="2">注册失败</span>
+            <span *ngSwitchCase="registerStatusObj.ING">注册中,请稍候...</span>
+            <span *ngSwitchCase="registerStatusObj.SUCCESS">注册成功</span>
+            <span *ngSwitchCase="registerStatusObj.FAILED">注册失败</span>
           </p>
-          <mat-progress-bar *ngIf="registerState==0" mode="indeterminate"></mat-progress-bar>
+          <mat-progress-bar *ngIf="registerState==registerStatusObj.ING" mode="indeterminate"></mat-progress-bar>
           <div [ngSwitch]="registerState">
-            <button *ngSwitchCase="1" mat-raised-button color="primary" class="app-full app-btn just-login-btn">立即登录</button>
-            <button *ngSwitchCase="2" mat-raised-button color="primary" class="app-full app-btn just-login-btn">重新注册</button>
+            <button *ngSwitchCase="registerStatusObj.SUCCESS" mat-raised-button color="primary" class="app-full app-btn just-login-btn">立即登录</button>
+            <button *ngSwitchCase="registerStatusObj.FAILED" mat-raised-button color="primary" class="app-full app-btn just-login-btn">重新注册</button>
           </div>
 
         </div>

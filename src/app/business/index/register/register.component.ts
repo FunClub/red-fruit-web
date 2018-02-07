@@ -1,17 +1,36 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {BusinessSharedApi} from '../../../core/data/api.data';
 import {RegisterService} from '../../../core/service/register.service';
-import {FormState} from '../../../core/data/form-state.data';
-import {AreaService} from '../../../core/service/area.service';
-import {AreaData} from '../../../core/data/area.data';
+
+import {SharedService} from '../../../core/service/shared.service';
+import {AreaData} from '../../../core/data/vo/area.data';
 import {MatSelectChange} from '@angular/material';
-import {EducationRange,IncomeRange} from '../../../core/data/static.data';
-import {RegisterStatus} from '../data';
+import {EducationRange, FormState, IncomeRange, Reg, RegisterStatus} from '../../../core/data/app.data';
+
+import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {RegisterApi} from '../../../core/data/api.data';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  animations: [
+    trigger('slide', [
+      transition('void => *', [
+        animate("300ms",keyframes([
+          style({opacity: 0, transform: 'translateY(-5%)', offset: 0}),
+          style({opacity: 0.5, transform: 'translateY(5px)',  offset: 0.3}),
+          style({opacity: 1, transform: 'translateY(0)',     offset: 1.0})
+        ]))
+      ]),
+      transition('* => void', [
+        animate("300ms",keyframes([
+          style({opacity: 1, transform: 'translateY(0)'}),
+          style({opacity: 0.5, transform: 'translateY(5px)'}),
+          style({opacity: 0, transform: 'translateY(-5%)'})
+        ]))
+      ])
+    ])
+  ]
 })
 export class RegisterComponent implements OnInit {
 
@@ -47,16 +66,19 @@ export class RegisterComponent implements OnInit {
   subAreas:Array<AreaData>;
   educationRange:any;
   incomeRange:any;
-  registerState:number;
+  registerState:string;
   heightRange:Array<number>;
   constructor(private formBuilder: FormBuilder,
-              public sharedApi: BusinessSharedApi,
               private registerService: RegisterService,
-              private areaService:AreaService,
-              public formState: FormState) {
+              private sharedService:SharedService,
+              public formState: FormState,
+              public registerStatusObj:RegisterStatus,
+              public registerApi:RegisterApi
+  ) {
     this.educationRange =EducationRange;
     this.incomeRange = IncomeRange;
-    this.registerState = RegisterStatus.ING;
+    this.registerState = registerStatusObj.ING;
+    sharedService.indexTitle = '欢迎注册';
   }
 
   ngOnInit() {
@@ -84,7 +106,7 @@ export class RegisterComponent implements OnInit {
       ],
       'mobileCtr': [
         '',
-        [Validators.required, Validators.pattern(this.registerService.mobileReg)],
+        [Validators.required, Validators.pattern(Reg.MOBILE)],
         [(formControl: FormControl) => this.registerService.verifyMobile(formControl.value)]
       ],
       'mobileCodeCtr': [
@@ -100,7 +122,7 @@ export class RegisterComponent implements OnInit {
       'passwordCtr': [
         '',
         [
-          Validators.required, Validators.pattern(this.registerService.passwordReg),
+          Validators.required, Validators.pattern(Reg.PASSWORD),
         ],
         []
       ]
@@ -131,9 +153,10 @@ export class RegisterComponent implements OnInit {
    */
   register(){
     this.registerService.register(this.accountGroup,this.baseInfoGroup).subscribe(res=>{
-      this.registerState = res.data?RegisterStatus.SUCCESS:RegisterStatus.ERROR;
+      this.registerState = res.data?this.registerStatusObj.SUCCESS:this.registerStatusObj.FAILED;
     });
   }
+
   /**
    *  获得图片验证码状态
    * @returns {any}表单状态
@@ -276,7 +299,7 @@ export class RegisterComponent implements OnInit {
    * 获取父级区域
    */
   getParentArea(){
-    this.areaService.getParentArea("0","1","34").subscribe(res=>{
+    this.sharedService.getParentArea("0","1","34").subscribe(res=>{
       this.parentAreas = res.data;
     });
   }
@@ -285,7 +308,7 @@ export class RegisterComponent implements OnInit {
    * 获取子级区域
    */
   getSubArea(change:MatSelectChange){
-    this.areaService.getSubArea(change.value).subscribe(res=>{
+    this.sharedService.getSubArea(change.value).subscribe(res=>{
       this.subAreas = res.data;
       this.subArea = this.subAreas[0].short_name;
     });
@@ -295,7 +318,7 @@ export class RegisterComponent implements OnInit {
    * 获取子级区域
    */
   getSubAreaByString(parentAreaString:string){
-    this.areaService.getSubArea(parentAreaString).subscribe(res=>{
+    this.sharedService.getSubArea(parentAreaString).subscribe(res=>{
       this.subAreas = res.data;
       this.subArea = this.subAreas[0].short_name;
     });

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BusinessSharedApi, BusinessUserApi} from '../data/api.data';
+import {SharedApi, RegisterApi} from '../data/api.data';
 import {Observable} from 'rxjs/Observable';
-import {ResponseData} from '../data/response.data';
+import {ResponseData} from '../data/vo/response.data';
 import {ValidationErrors} from '@angular/forms/src/directives/validators';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {FormControl, FormGroup} from '@angular/forms';
-import {RegisterInfo} from '../../business/index/data';
+import {FormGroup} from '@angular/forms';
+import {User} from '../data/dto/user.data';
+import {HttpParams} from '@angular/common/http';
 
 /**
  * 注册服务
@@ -15,20 +16,8 @@ import {RegisterInfo} from '../../business/index/data';
 @Injectable()
 export class RegisterService{
 
-  /**
-   * 手机正则
-   * @type {RegExp}
-   */
-  public mobileReg = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
-
-  /**
-   * 密码正则
-   * @type {RegExp}
-   */
-  public passwordReg = /^[a-zA-Z0-9_-]{6,14}$/;
-
-  constructor(private http:HttpClient,private sharedApi:BusinessSharedApi,
-  private userApi:BusinessUserApi
+  constructor(private http:HttpClient,
+  private registerApi:RegisterApi
   ) {
 
   }
@@ -40,7 +29,7 @@ export class RegisterService{
    * @returns {Observable<ResponseData<boolean>>}
    */
   register(accountGroup:FormGroup,infoGroup:FormGroup):Observable<ResponseData<boolean>>{
-    let registerInfo = new RegisterInfo();
+    let registerInfo = new User();
 
     registerInfo.mobile = accountGroup.get('mobileCtr').value;
     registerInfo.password = accountGroup.get('passwordCtr').value;
@@ -54,10 +43,7 @@ export class RegisterService{
     registerInfo.education = infoGroup.get('educationCtr').value;
     registerInfo.income = infoGroup.get('incomeCtr').value;
 
-    registerInfo.profile='assets/img/profile';
-    registerInfo.banner='banner';
-
-    return this.http.post<ResponseData<boolean>>(this.userApi.registerPath,registerInfo);
+    return this.http.post<ResponseData<boolean>>(this.registerApi.registerPath,registerInfo);
   }
   /**
    * 验证图片验证码的正确性
@@ -65,7 +51,7 @@ export class RegisterService{
    * @returns Observable<ValidationErrors|null> 验证结果
    */
   public verifyImgVerificationCode(code:string):Observable<ValidationErrors|null>{
-    return this.http.get(this.sharedApi.getVerifyImgVerificationCodePath(code)).map(res=>{
+    return this.http.get(this.registerApi.getVerifyImgVerificationCodePath(code)).map(res=>{
       return res['data']?null:{'error':true }
     });
   }
@@ -76,7 +62,9 @@ export class RegisterService{
    * @returns {Observable<{error: boolean}>}验证结果
    */
   public verifyMobile(mobile:string){
-    return this.http.get(this.userApi.getVerifyMobilePath(mobile)).map(res=>{
+    let params = new HttpParams();
+    params.append("mobile",mobile);
+    return this.http.get(this.registerApi.getIsUserExitsPath(),{params:params}).map(res=>{
       return res['data']?null:{'error':true }
     });
   }
@@ -87,7 +75,7 @@ export class RegisterService{
    * @returns {Observable<Object>}
    */
   public sendMobileVerificationCode(mobile:string):Observable<ResponseData<boolean>>{
-    return this.http.get<ResponseData<boolean>>(this.userApi.getMobileVerificationCodePath(mobile));
+    return this.http.get<ResponseData<boolean>>(this.registerApi.getMobileVerificationCodePath(mobile));
   }
 
   /**
@@ -96,7 +84,7 @@ export class RegisterService{
    * @returns {Observable<ResponseData<boolean>>}
    */
   verifyMobileVerificationCode(code:string):Observable<ValidationErrors|null>{
-    return this.http.put(this.userApi.getMobileVerificationCodePath(code),null).map(res=>{
+    return this.http.put(this.registerApi.getMobileVerificationCodePath(code),null).map(res=>{
       return res['data']?null:{'error':true }
     });
   }
@@ -107,11 +95,10 @@ export class RegisterService{
    * @returns {Observable<ValidationErrors | null>}
    */
   verifyNickname(nickname:string):Observable<ValidationErrors|null>{
-    return this.http.get(this.userApi.getVerifyNicknamePath(nickname)).map(res=>{
+    let params = new HttpParams();
+    params.append("nickname",nickname);
+    return this.http.get(this.registerApi.getIsUserExitsPath(),{params:params}).map(res=>{
       return res['data']?null:{'error':true }
     });
   }
-
-
-
 }

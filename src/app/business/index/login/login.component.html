@@ -1,5 +1,5 @@
 <div class="login-body">
-  <div id="center">
+  <div id="center" [@animation]>
     <div class="login-bgs">
       <img class="login-bg-img" src="../../../../assets/img/login-bg.png">
       <img class="login-bg-centre" src="../../../../assets/img/login-bg-centre.png"/>
@@ -11,16 +11,20 @@
       <img class="profile" src="../../../../assets/img/profile.png"/>
       <p class="nickname">刘宇成</p>
       <div class="login-info">
-        <form >
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
           <mat-form-field>
-            <input matInput >
+            <input matInput formControlName="mobile">
           </mat-form-field>
           <mat-form-field>
-            <input matInput>
+            <input matInput formControlName="password">
           </mat-form-field>
-          <mat-checkbox>记住账号密码</mat-checkbox>
-          <a class="lost-password">忘记密码？</a>
-          <button type="submit" class="login-btn" color="accent"  mat-raised-button>登录</button>
+          <div class="operation-wrapper">
+            <mat-checkbox>记住账号密码</mat-checkbox>
+            <a class="lost-password">忘记密码？</a>
+            <button type="submit" class="login-btn" color="accent"  mat-raised-button>登录</button>
+          </div>
+
         </form>
       </div>
     </div>

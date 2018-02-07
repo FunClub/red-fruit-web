@@ -95,6 +95,10 @@ input{
   font-size: 12px;
   color: rgb(120,120,120);
 }
+/*登录操作div*/
+.operation-wrapper{
+  margin-top: 10px;
+}
 .lost-password{
   float: right;
   color: rgb(120,120,120);
@@ -106,6 +110,7 @@ input{
   margin-top: 15px;
   width: 100%;
   background: rgb(253,86,106);
+  border-radius: 50px;
 }
 
 .just-register-img{

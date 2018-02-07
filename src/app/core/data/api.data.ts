@@ -1,24 +1,30 @@
+/**
+ * 登录api
+ */
+const loginPrefix = "/user/login/";
+export class LoginApi{
+  loginPath:string = loginPrefix;
+}
 
 /**
  *
- * 用户业务api
+ * 用户注册api
  */
-const businessUserPrefix = "/business/user/";
-export class BusinessUserApi{
+const registerPrefix = "/user/register/";
+export class RegisterApi{
 
   /**
    * 注册api地址
    * @type {string}
    */
-  registerPath = businessUserPrefix+'register/';
+  registerPath = registerPrefix;
 
   /**
-   * 获得手机号验证api地址
-   * @param {string} mobile
+   * 获得验证用户是否存在api地址
    * @returns {string}
    */
-  public getVerifyMobilePath(mobile:string){
-    return businessUserPrefix+`register/verifyMobile/${mobile}`;
+  public getIsUserExitsPath(){
+    return registerPrefix+`isUserExits`;
   }
 
   /**
@@ -27,26 +33,12 @@ export class BusinessUserApi{
    * @returns {string}
    */
   public getMobileVerificationCodePath(mobile:string){
-    return businessUserPrefix+`register/mobileVerificationCode/${mobile}`
+    return registerPrefix+`mobileVerificationCode/${mobile}`;
   }
 
-  /**
-   * 获得昵称验证api地址
-   * @param {string} nickname
-   * @returns {string}
-   */
-  public getVerifyNicknamePath(nickname:string){
-    return businessUserPrefix+`register/verifyNickname/${nickname}`
-  }
-}
-/**
- * 共享业务api
- */
 
-const businessSharedPrefix = "/business/shared/";
-export class BusinessSharedApi {
 
-  public  verificationCodePath = businessSharedPrefix+"verificationCodeImg";
+  public  verificationCodePath = registerPrefix+"verificationCodeImg";
   /**
    * 获取验证验证码的正确性的api地址
    * @param {string} code 用户输入的验证码
@@ -54,8 +46,15 @@ export class BusinessSharedApi {
    * @constructor
    */
   public getVerifyImgVerificationCodePath(code:string){
-    return businessSharedPrefix+`verifyImgVerificationCode/${code}`;
+    return registerPrefix+`verifyImgVerificationCode/${code}`;
   }
+}
+
+/**
+ * 共享api
+ */
+const sharedPrefix = "/shared/";
+export class SharedApi {
 
   /**
    * 获取父级区域集合api地址
@@ -65,7 +64,7 @@ export class BusinessSharedApi {
    * @return {string}
    */
   public getParentAreaPath(leave:string,pageNumber:string,pageSize:string){
-    return businessSharedPrefix+`parent/${leave}/${pageNumber}/${pageSize}`
+    return sharedPrefix+`parent/${leave}/${pageNumber}/${pageSize}`
   }
 
   /**
@@ -75,6 +74,6 @@ export class BusinessSharedApi {
    * @throws Exception
    */
   public getSubAreaPath(parentId:string){
-    return businessSharedPrefix+`sub/${parentId}`
+    return sharedPrefix+`sub/${parentId}`
   }
 }

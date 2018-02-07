@@ -1,8 +1,8 @@
 
 /**
- * 注册信息
+ * 用户信息
  */
-export class RegisterInfo{
+export class User{
   mobile:string;
   password:string;
   nickname:string;
@@ -17,11 +17,3 @@ export class RegisterInfo{
   banner:string;
 }
 
-/**
- * 注册状态
- */
-export enum RegisterStatus{
-  ING=0,
-  SUCCESS=1,
-  ERROR=2
-}
