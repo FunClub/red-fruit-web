@@ -8,6 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {MAT_DATE_LOCALE, MAT_LABEL_GLOBAL_OPTIONS} from '@angular/material';
 import {ToastModule, ToastOptions} from 'ng2-toastr';
 import {CustomToastOption} from './core/data/app.data';
+import { HomeComponent } from './business/home/home/home.component';
 
 @NgModule({
   declarations: [

@@ -5,7 +5,7 @@ import {Route, RouterModule} from '@angular/router';
 import {IndexComponent} from './index/index.component';
 import {RegisterComponent} from './register/register.component';
 /**
- * 应用根路模块
+ * 应用路由模块
  */
 const routes:Route[]=[
   {
@@ -14,20 +14,13 @@ const routes:Route[]=[
     children:[
       {
         path:'login',
-        component:LoginComponent,
-        data:'欢迎登录'
+        component:LoginComponent
       },
       {
         path:'register',
-        component:RegisterComponent,
-        data:'欢迎注册'
+        component:RegisterComponent
       }
     ]
-  },
-  {
-    path:'',
-    redirectTo:'index/login',
-    pathMatch:'full'
   }
 ];
 @NgModule({

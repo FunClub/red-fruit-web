@@ -10,6 +10,7 @@ div阴影
 .app-box{
   box-shadow: 0 0 2px rgb(204,204,204);
   background: white;
+  border-radius: 2px;
 }
 
 /*宽度100%*/
@@ -22,7 +23,9 @@ div阴影
   background: rgba(23, 152, 192, 1) !important;
   border-radius: 50px  !important;
 }
-
+.app-radius{
+  border-radius: 50px  !important;
+}
 /*错误*/
 .app-error{
   color: red !important;

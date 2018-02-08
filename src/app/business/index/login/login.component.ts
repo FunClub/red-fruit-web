@@ -26,7 +26,8 @@ import {SharedService} from '../../../core/service/shared.service';
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
   constructor(private formBuilder:FormBuilder,private service:LoginService,
-              private toasts:ToastsManager,private sharedService:SharedService
+              private toasts:ToastsManager,private sharedService:SharedService,
+              private router:Router
               ) {
     sharedService.indexTitle = '欢迎登录';
   }
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
     })
   }
   login(){
-    console.log(this.loginForm.value);
+    this.router.navigateByUrl("home/center");
     if(this.loginForm.invalid){
       this.toasts.error("账号或密码错误!1");
     }else{

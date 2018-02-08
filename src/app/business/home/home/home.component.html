@@ -1,0 +1,53 @@
+<div class="header">
+  <div class="header-center">
+    <img src="../../../../assets/img/logo.png" class="logo"/>
+    <div class="search-wrapper">
+      <input type="text" matInput>
+      <i class="material-icons">search</i>
+    </div>
+    <div class="nav-wrapper">
+      <div class="nav" routerLinkActive="nav-activated" routerLink="home">
+        <i class="material-icons">home</i>
+        <span class="nav-label">主页</span>
+      </div>
+      <div class="nav"  routerLinkActive="nav-activated" routerLink="center">
+        <i class="material-icons">person_outline</i>
+        <span class="nav-label">个人中心</span>
+      </div>
+      <div class="nav">
+        <i class="material-icons">pages</i>
+        <span class="nav-label">缘分</span>
+      </div>
+      <div class="nav" style="width: 60px;">
+        <i class="material-icons">bubble_chart</i>
+        <span class="nav-label">圈子</span>
+      </div>
+    </div>
+
+    <div class="other-operation">
+      <img src="assets/img/profile.png" class="profile">
+      <span class="nickname">
+        刘宇成
+      </span>
+      <button mat-raised-button color="primary" class="send-trend-btn app-radius" >发动态</button>
+    </div>
+  </div>
+</div>
+<div  [@flyXInOutFromTop] *ngIf="showChat">
+  <app-chat></app-chat>
+</div>
+
+<div class="center">
+
+  <router-outlet></router-outlet>
+  <div class="chant-message-wrapper app-box" (click)="toggleChat()">
+      <i class="material-icons">forum</i>
+      <span class="unread-label">24条消息未读</span>
+      <div class="to-top-wrapper">
+        <i class="material-icons">arrow_upward</i>
+      </div>
+  </div>
+
+</div>
+<app-footer></app-footer>
+

@@ -1,0 +1,40 @@
+.center{
+  width: 850px;
+  margin: auto;
+}
+/*墙纸div*/
+.banner-wrapper{
+  height: 305px;
+
+}
+/*墙纸体*/
+.banner-body{
+  height: 260px;
+  width: 850px;
+}
+/*墙纸图片*/
+.banner{
+  height: 260px;
+  width: 850px;
+}
+/*导航div*/
+.nav-wrapper{
+  font-size: 13px;
+  color: #6E737C;
+  padding-left: 20px;
+  text-align: center;
+  line-height: 45px;
+}
+.nav-activated{
+  font-weight: bold;
+  color: black;
+}
+.nav-wrapper span{
+  display: inline-block;
+  height: 45px;
+  width: 80px;
+}
+/*主体内容*/
+.content{
+  margin-top: 10px;
+}

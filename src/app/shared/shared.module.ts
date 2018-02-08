@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
+import {MatButtonModule, MatInputModule} from '@angular/material';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
@@ -11,7 +13,10 @@ import { FooterComponent } from './footer/footer.component';
   ],
   exports:[
     CommonModule,
-    FooterComponent
+    FooterComponent,
+    MatInputModule,
+    MatButtonModule,
+    RouterModule
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,75 @@
+
+/*所有资料div*/
+.all-info{
+  width: 590px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+}
+.half-info{
+  width:250px;
+  height: 100px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 4px;
+}
+/*资料div*/
+.info-wrapper{
+
+  padding: 15px 20px 20px 15px;
+  margin-top: 10px;
+}
+
+/*资料标题DIV*/
+.info-title-wrapper{
+
+}
+.info-title-wrapper i{
+  color: rgb(150, 147, 150);
+}
+.title-label{
+  color: rgb(16, 16, 16);
+  font-size: 14px;
+}
+
+/*修改信息*/
+.info-update-wrapper{
+  display: inline-block;
+  float: right;
+}
+.info-update-wrapper i{
+  font-size: 16px;
+}
+.info-update-wrapper span{
+  color: rgb(150, 147, 150);
+  font-size: 12px;
+}
+
+/*资料正文*/
+.info-content-wrapper{
+
+  color: rgba(77, 77, 77, 1);
+  font-size: 12px;
+  padding-left: 25px;
+  padding-top: 16px;
+}
+.info-content-wrapper>div{
+  display: inline-block;
+  max-width: 200px;
+  min-width: 160px;
+  vertical-align: top;
+}
+.info-content-wrapper p{
+  margin-top: 6px;
+}
+/*资料名*/
+.info-item-label{
+  color: rgb(150, 147, 150);
+}
+/*每一项资料内容*/
+.info-item-content{
+  margin-left: 10px;
+}
+.info-content-second{
+  margin-left: 50px;
+}
