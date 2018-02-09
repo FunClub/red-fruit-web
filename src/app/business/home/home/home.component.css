@@ -6,7 +6,7 @@
   text-align: center;
   box-shadow: 0 0 5px 0 rgb(170, 170, 170);
   position: fixed;
-  z-index: 3;
+  z-index: 4;
   background: white;
   width: 100%;
 }
@@ -107,7 +107,7 @@
   padding: 10px;
   height: 20px;
   line-height: 20px;
-  position: absolute;
+  position: fixed;
   z-index: 0;
   right: 20px;
   bottom: 50%;

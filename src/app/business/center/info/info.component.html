@@ -1,5 +1,7 @@
 <div class="main">
   <div class="all-info">
+
+    <!--个人简介-->
     <div class="app-box info-wrapper" style="margin-top: 0">
       <div class="info-title-wrapper">
         <i class="material-icons">face</i>
@@ -16,7 +18,7 @@
     </div>
 
     <!--基本信息-->
-    <div class="app-box info-wrapper" sty>
+    <div class="app-box info-wrapper">
       <div class="info-title-wrapper">
         <i class="material-icons">assignment_ind</i>
         <span class="title-label">基本信息</span>
@@ -80,11 +82,117 @@
           </p>
         </div>
 
+        <app-charisma [value]="1243"></app-charisma>
+      </div>
+    </div>
+
+    <!--生活习惯-->
+    <div class="app-box info-wrapper" >
+      <div class="info-title-wrapper">
+        <i class="material-icons">shopping_basket</i>
+        <span class="title-label">生活习惯</span>
+        <div class="info-update-wrapper">
+          <i class="material-icons">edit</i>
+          <span>修改</span>
+        </div>
+      </div>
+      <div class="info-content-wrapper">
+        <div class="info-content-first">
+          <p>
+            <span class="info-item-label">是否吃辣:</span>
+            <app-living-habit [habitArgs]="arg"></app-living-habit>
+          </p>
+          <p>
+            <span class="info-item-label">是否抽烟:</span>
+            <app-living-habit [habitArgs]="arg"></app-living-habit>
+          </p>
+          <p>
+            <span class="info-item-label">是否喝酒:</span>
+            <app-living-habit [habitArgs]="arg"></app-living-habit>
+          </p>
+          <p>
+            <span class="info-item-label">会做家务:</span>
+            <app-living-habit [habitArgs]="arg"></app-living-habit>
+          </p>
+        </div>
+        <div class="info-content-second">
+          <p>
+            <span class="info-item-label">喜欢逛街:</span>
+            <app-living-habit [habitArgs]="arg"></app-living-habit>
+          </p>
+          <p>
+            <span class="info-item-label">喜欢游戏:</span>
+            <app-living-habit [habitArgs]="arg"></app-living-habit>
+          </p>
+          <p>
+            <span class="info-item-label">喜欢养殖:</span>
+            <app-living-habit [habitArgs]="arg"></app-living-habit>
+          </p>
+          <p>
+            <span class="info-item-label">喜欢游戏:</span>
+            <app-living-habit [habitArgs]="arg"></app-living-habit>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!--择偶标准-->
+    <div class="app-box info-wrapper">
+      <div class="info-title-wrapper">
+        <i class="material-icons">wc</i>
+        <span class="title-label">择偶标准</span>
+        <div class="info-update-wrapper">
+          <i class="material-icons">edit</i>
+          <span>修改</span>
+        </div>
+      </div>
+
+      <div class="info-content-wrapper">
+        <div class="info-content-first">
+
+          <p>
+            <span class="info-item-label">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:</span>
+            <span class="info-item-content">20-25岁之间</span>
+          </p>
+          <p>
+            <span class="info-item-label">身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:</span>
+            <span class="info-item-content">170-180厘米</span>
+          </p>
+          <p>
+            <span class="info-item-label">体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重:</span>
+            <span class="info-item-content">120-140斤</span>
+          </p>
+          <p>
+            <span class="info-item-label">居&nbsp;住&nbsp;地:</span>
+            <span class="info-item-content">重庆巴南</span>
+          </p>
+        </div>
+        <div class="info-content-second" style="margin-left: 110px">
+          <p>
+            <span class="info-item-label">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历:</span>
+            <span class="info-item-content">本科</span>
+          </p>
+          <p>
+            <span class="info-item-label">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:</span>
+            <span class="info-item-content">老师</span>
+          </p>
+          <p>
+            <span class="info-item-label">月&nbsp;收&nbsp;入:</span>
+            <span class="info-item-content">10000-20000元</span>
+          </p>
+          <p>
+            <span class="info-item-label">是否有房:</span>
+            <span class="info-item-content">租房</span>
+          </p>
+        </div>
+
+
       </div>
     </div>
 
   </div>
   <div class="half-info app-box">
-
+    123
   </div>
 </div>

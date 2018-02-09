@@ -1,9 +1,44 @@
 <div class="center">
   <div class="banner-wrapper app-box">
+
+    <!--墙纸-->
     <div class="banner-body">
       <img class="banner" src="../../../../assets/img/banner.png"/>
     </div>
 
+    <!--操作-->
+    <div class="operation-wrapper">
+      <div class="item-operation"><i class="material-icons">menu</i>更多操作</div>
+      <div class="item-operation">编辑封面</div>
+      <div class="item-operation"><i class="material-icons">thumb_up</i>赞</div>
+    </div>
+
+    <!--个人信息-->
+    <div class="info-wrapper">
+
+      <div class="all-profile-wrapper my-profile">
+        <div class="profile-wrapper app-box" (mouseenter)="toggleMyProfileOperation()" (mouseleave)="toggleMyProfileOperation()">
+          <img src="../../../../assets/img/profile-male.jpeg" class="profile"/>
+          <div class="profile-operation-wrapper" *ngIf="showMyProfileOperation">
+            <i class="material-icons">edit</i>编辑头像
+          </div>
+        </div>
+        <span class="nickname">刘宇成</span>
+      </div>
+      <div class="all-profile-wrapper  half-profile">
+        <div class="profile-wrapper app-box">
+          <img src="../../../../assets/img/profile-female.jpeg" class="profile"/>
+        </div>
+        <span class="nickname">刘宇成</span>
+      </div>
+      <div class="love-text">
+        我们已经在一起 <span>666</span>天了
+      </div>
+      <!--黑色背景-->
+      <div class="info-black"></div>
+    </div>
+
+    <!--导航-->
     <div class="nav-wrapper">
       <span>
         我的动态
@@ -27,6 +62,7 @@
         我的关注
       </span>
     </div>
+
   </div>
   <div class="content">
     <router-outlet></router-outlet>

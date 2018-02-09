@@ -1,8 +1,17 @@
-/**
- * 自动一配置
- */
+
 import {ToastOptions} from 'ng2-toastr';
 
+/**
+ *显示生活习惯的参数
+ */
+export class HabitArgs{
+  labels:string[];
+  value:number
+}
+
+/**
+ * 提示框配置
+ */
 export class CustomToastOption extends ToastOptions{
   animate = 'flyRight'; // you can override any options available
   newestOnTop = false;

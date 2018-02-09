@@ -1,0 +1,23 @@
+.living-habits{
+  display: inline-block;
+  box-shadow: 0 0 2px rgb(233,233,233);
+  overflow: hidden;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.habit{
+  display: inline-block;
+  vertical-align: middle;
+  height: 25px;
+  width: 50px;
+  line-height: 25px;
+  text-align: center;
+  float: left;
+}
+.habit-activated{
+  background: rgba(23, 152, 192, 1);
+  color: white;
+}
+.habit{
+  border-right: solid 1px rgb(240,240,240);
+}

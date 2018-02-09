@@ -1,0 +1,18 @@
+.charisma{
+  display: inline-block;
+  background-image: url("../../../assets/img/charisma.png");
+  color: rgba(245, 176, 195, 1);
+  width: 73px;
+  height: 68px;
+  text-align: center;
+}
+.label{
+  font-size: 10px;
+  font-weight: bold;
+  position: relative;
+  bottom: 3px;
+}
+.value{
+  font-size: 16px;
+  margin-top: 22px;
+}
