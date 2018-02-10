@@ -3,6 +3,7 @@ import {PreloadAllModules, Route, RouterModule} from '@angular/router';
 import {IndexComponent} from './business/index/index/index.component';
 import {LoginComponent} from './business/index/login/login.component';
 import {RegisterComponent} from './business/index/register/register.component';
+import {LoginGuard} from './core/guard/login.guard';
 
 /**
  * 应用根路模块
@@ -15,6 +16,7 @@ const routes:Route[]=[
   {
     path:'home',
     loadChildren:'app/business/home/home.module#HomeModule',
+    canActivate:[LoginGuard]
   },
   {
     path:'',

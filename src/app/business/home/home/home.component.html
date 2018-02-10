@@ -25,9 +25,9 @@
     </div>
 
     <div class="other-operation">
-      <img src="assets/img/profile.png" class="profile">
+      <img [src]="homeService.user?.profile" class="profile">
       <span class="nickname">
-        刘宇成
+        {{homeService.user?.nickname}}
       </span>
       <button mat-raised-button color="primary" class="send-trend-btn app-radius" >发动态</button>
     </div>

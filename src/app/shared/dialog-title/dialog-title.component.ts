@@ -1,0 +1,32 @@
+import {Component, Input, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
+import {UploadImgComponent} from '../upload-img/upload-img.component';
+
+@Component({
+  selector: 'app-dialog-title',
+  templateUrl: './dialog-title.component.html',
+  styleUrls: ['./dialog-title.component.css']
+})
+export class DialogTitleComponent implements OnInit {
+
+  /**
+   * 图标
+   */
+  @Input()
+  icon:string;
+
+  /**
+   * 标题
+   */
+  @Input()
+  title:string;
+
+  constructor(private dialog:MatDialogRef<UploadImgComponent>) { }
+
+  ngOnInit() {
+  }
+
+  close(){
+    this.dialog.close()
+  }
+}

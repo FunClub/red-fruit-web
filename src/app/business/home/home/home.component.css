@@ -60,6 +60,8 @@
 }
 .nav i{
   font-size: 24px;
+  margin-right: 0;
+  margin-bottom: 3px;
 }
 /*路由激活样式*/
 .nav-activated{
@@ -117,12 +119,11 @@
 .chant-message-wrapper > i{
   font-size: 24px;
   color: rgba(23, 152, 192, 1);
+  margin-right: 0px;
 }
 .unread-label{
   font-size: 12px;
   color: #666666;
-  margin-left: 5px;
-
 }
 /*返回顶部*/
 .to-top-wrapper{
@@ -137,4 +138,5 @@
 .to-top-wrapper i{
   font-size: 24px;
   color: #969396;
+  margin-right: 0px;
 }

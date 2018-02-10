@@ -4,6 +4,9 @@ import {DataModule} from './data/data.module';
 import {HttpClientModule} from '@angular/common/http';
 import {SharedService} from './service/shared.service';
 import {LoginService} from './service/login.service';
+import {LoginGuard} from './guard/login.guard';
+import {HomeService} from './service/home.service';
+import {CenterService} from './service/center.service';
 
 @NgModule({
   imports: [
@@ -13,7 +16,10 @@ import {LoginService} from './service/login.service';
   providers:[
     RegisterService,
     LoginService,
-    SharedService
+    SharedService,
+    HomeService,
+    CenterService,
+    LoginGuard
   ],
   declarations: []
 })

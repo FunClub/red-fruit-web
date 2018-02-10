@@ -1,9 +1,25 @@
+
+/*个人中心api*/
+const centerPrefix="/user/center/";
+export class CenterApi{
+
+  /**
+   * 获取个人中心api
+   * @param {string} centerUserId
+   * @returns {string}
+   */
+  getCenterPath(centerUserId:string) {
+    return centerPrefix + centerUserId;
+  }
+
+}
 /**
  * 登录api
  */
 const loginPrefix = "/user/login/";
 export class LoginApi{
   loginPath:string = loginPrefix;
+  isLoginPath:string = loginPrefix+"status"
 }
 
 /**

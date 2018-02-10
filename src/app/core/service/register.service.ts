@@ -37,6 +37,8 @@ export class RegisterService{
 
     registerInfo.gender = infoGroup.get('genderCtr').value;
     registerInfo.birthday = infoGroup.get('birthdayCtr').value;
+
+    registerInfo.birthday = registerInfo.birthday.toLocaleDateString().replace('/','-').replace('/','-');
     registerInfo.parentArea = infoGroup.get('parentAreaCtr').value;
     registerInfo.subArea = infoGroup.get('subAreaCtr').value;
     registerInfo.height = infoGroup.get('heightCtr').value;

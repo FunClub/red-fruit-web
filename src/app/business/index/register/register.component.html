@@ -1,6 +1,6 @@
 <div class="body" >
   <div class="centre app-box" [@slide]>
-    <mat-horizontal-stepper  [linear]="true">
+    <mat-horizontal-stepper  [linear]="false">
 
       <!--账户信息开始-->
       <mat-step [stepControl]="accountGroup" [editable]="false">
@@ -148,7 +148,7 @@
           <div class="form-field">
             <span class="form-label"></span>
             <div class="form-field-content">
-              <button mat-raised-button  matStepperNext color="primary" class="app-full app-btn">下一步</button>
+              <button mat-raised-button  matStepperNext color="primary" class="app-full app-btn-color app-radius">下一步</button>
             </div>
           </div>
         </form>
@@ -262,7 +262,7 @@
           <div class="form-field">
             <span class="form-label"></span>
             <div class="form-field-content">
-              <button (click)="register()" mat-raised-button [disabled]="baseInfoGroup.invalid"  matStepperNext color="primary" class="app-full app-btn">立即注册</button>
+              <button (click)="register()" mat-raised-button [disabled]="baseInfoGroup.invalid"  matStepperNext color="primary" class="app-full app-btn-color app-radius">立即注册</button>
             </div>
           </div>
         </form>

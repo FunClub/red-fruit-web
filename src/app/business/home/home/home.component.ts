@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, keyframes, style, transition, trigger} from '@angular/animations';
+import {HomeService} from '../../../core/service/home.service';
 
 @Component({
   selector: 'app-home',
@@ -37,7 +38,9 @@ import {animate, keyframes, style, transition, trigger} from '@angular/animation
 export class HomeComponent implements OnInit {
 
   showChat :boolean =false;
-  constructor() { }
+  constructor(public homeService:HomeService) {
+
+  }
 
   ngOnInit() {
   }

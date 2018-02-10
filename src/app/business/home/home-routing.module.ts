@@ -17,7 +17,7 @@ const routes:Route[]=[
     component:HomeComponent,
     children:[
       {
-        path:'center', component:CenterComponent,
+        path:'center/:id', component:CenterComponent,
         children:[
           {
             path:'day', component:MemorialDayComponent,

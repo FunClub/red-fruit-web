@@ -6,6 +6,7 @@ import {ResponseData} from '../data/vo/response.data';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {AreaData} from '../data/vo/area.data';
+import {User} from '../data/dto/user.data';
 
 /**
  * 区域服务
@@ -22,6 +23,7 @@ export class SharedService{
   ) {
 
   }
+
 
   /**
    * 获取父级区域集合
@@ -49,5 +51,6 @@ export class SharedService{
   splitSubArea(parentAreaString:string):string{
     return parentAreaString.split('-',1)[0];
   }
+
 
 }

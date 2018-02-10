@@ -8,7 +8,7 @@
 
     <!--操作-->
     <div class="operation-wrapper">
-      <div class="item-operation"><i class="material-icons">menu</i>更多操作</div>
+      <div class="item-operation"><i class="material-icons">menu</i>更多</div>
       <div class="item-operation">编辑封面</div>
       <div class="item-operation"><i class="material-icons">thumb_up</i>赞</div>
     </div>
@@ -18,12 +18,12 @@
 
       <div class="all-profile-wrapper my-profile">
         <div class="profile-wrapper app-box" (mouseenter)="toggleMyProfileOperation()" (mouseleave)="toggleMyProfileOperation()">
-          <img src="../../../../assets/img/profile-male.jpeg" class="profile"/>
-          <div class="profile-operation-wrapper" *ngIf="showMyProfileOperation">
+          <img [src]="centerInfo?centerInfo.profile:'assets/img/profile.png'" class="profile"/>
+          <div class="profile-operation-wrapper" (click)="openUploadImgDialog()" *ngIf="showMyProfileOperation&&centerInfo.mine">
             <i class="material-icons">edit</i>编辑头像
           </div>
         </div>
-        <span class="nickname">刘宇成</span>
+        <span class="nickname">{{centerInfo?.nickname}}</span>
       </div>
       <div class="all-profile-wrapper  half-profile">
         <div class="profile-wrapper app-box">

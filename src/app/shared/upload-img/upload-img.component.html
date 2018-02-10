@@ -1,0 +1,31 @@
+<main>
+  <app-dialog-title icon="face" title="更改图片"></app-dialog-title>
+
+  <div class="app-dialog-content">
+    <div id="upload-top">
+      <div id="upload-div">
+        <img-cropper matTooltip="拖动剪切框，选取图片" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+      </div>
+      <div id="show-div">
+        <p>小图片预览</p>
+        <img id="circle-img" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+        <img id="square-img" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+        <img id="big-img" [src]="data.image" width="90" height="90">
+      </div>
+    </div>
+    <button></button>
+    <button mat-raised-button (click)="fileInput.click()" class="app-sm-btn" color="primary" >
+      <i class="material-icons">file_upload</i>重新上传
+    </button>
+
+    <input class="app-hidden" #fileInput   type="file" (change)="fileChangeListener($event)">
+  </div>
+  <div class="app-dialog-bottom">
+    <button mat-raised-button class="app-sm-btn app-btn-color" color="primary" (click)="doUpdate()"><i class="material-icons"></i>保存</button>
+    <button mat-raised-button class="app-sm-btn"  (click)="closeDialog()"><i class="material-icons"></i>取消</button>
+  </div>
+
+</main>
+
+
+

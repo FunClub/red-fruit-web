@@ -70,9 +70,13 @@
 .info-item-content{
   margin-left: 10px;
 }
+
+/*第二列信息内容*/
 .info-content-second{
   margin-left: 50px;
 }
+
+/*魅力值*/
 app-charisma{
   margin-left: 40px;
   margin-top: 130px!important;

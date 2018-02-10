@@ -30,7 +30,6 @@
 }
 .item-operation i{
   font-size: 18px;
-  margin-right: 5px;
 }
 /*墙纸体*/
 .banner-body{
@@ -97,6 +96,10 @@
   color: white;
   font-size: 13px;
 }
+.profile-operation-wrapper i{
+  font-size: 15px;
+
+}
 /*黑色背景*/
 .info-black{
   height: 100px;
@@ -119,7 +122,7 @@
 /*爱情文本*/
 .love-text{
   position: absolute;
-  bottom: 5px;
+  bottom: 10px;
   text-align: center;
   color: white;
   width: 850px;

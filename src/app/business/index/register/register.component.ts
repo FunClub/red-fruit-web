@@ -100,9 +100,9 @@ export class RegisterComponent implements OnInit {
   initFormGroup(){
     this.accountGroup = this.formBuilder.group({
       'imgVerificationCtr': [
-        '',
+        ''/*,
         [Validators.required],
-        [(formControl: FormControl) => this.registerService.verifyImgVerificationCode(formControl.value)]
+        [(formControl: FormControl) => this.registerService.verifyImgVerificationCode(formControl.value)]*/
       ],
       'mobileCtr': [
         '',
@@ -110,9 +110,9 @@ export class RegisterComponent implements OnInit {
         [(formControl: FormControl) => this.registerService.verifyMobile(formControl.value)]
       ],
       'mobileCodeCtr': [
-        '',
+        ''/*,
         [Validators.required, Validators.minLength(6), Validators.maxLength(6)],
-        [(formControl: FormControl) => this.registerService.verifyMobileVerificationCode(formControl.value)]
+        [(formControl: FormControl) => this.registerService.verifyMobileVerificationCode(formControl.value)]*/
       ],
       'nicknameCtr': [
         '',
@@ -145,9 +145,7 @@ export class RegisterComponent implements OnInit {
     });
     this.getSubAreaByString('1-北京');
   }
-  gets(change){
-    console.log(change);
-  }
+
   /**
    * 注册
    */
