@@ -1,0 +1,19 @@
+<div class="update-introduction">
+  <app-dialog-title title="更新个人简介" icon="face" [matDialogRef]="dialogRef"></app-dialog-title>
+  <div class="app-dialog-content">
+    <form [formGroup]="formGroup">
+      <mat-form-field>
+        <textarea formControlName="introduction" #input matInput rows="13" placeholder="请输入个人简介">{{data}}</textarea>
+
+        <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
+      </mat-form-field>
+    </form>
+
+  </div>
+
+  <div class="app-dialog-bottom">
+
+    <button mat-raised-button (click)="update()" [disabled]="formGroup.invalid" color="primary" class="app-sm-btn app-btn-color">保存</button>
+    <button mat-raised-button class="app-sm-btn" (click)="close()">取消</button>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import {LoginService} from './service/login.service';
 import {LoginGuard} from './guard/login.guard';
 import {HomeService} from './service/home.service';
 import {CenterService} from './service/center.service';
+import {InfoService} from './service/info.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {CenterService} from './service/center.service';
     SharedService,
     HomeService,
     CenterService,
+    InfoService,
     LoginGuard
   ],
   declarations: []

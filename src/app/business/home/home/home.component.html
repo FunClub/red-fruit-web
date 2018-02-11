@@ -25,9 +25,9 @@
     </div>
 
     <div class="other-operation">
-      <img [src]="homeService.user?.profile" class="profile">
+      <img [src]="homeService.titleUser?.profile|imgPath" class="profile">
       <span class="nickname">
-        {{homeService.user?.nickname}}
+        {{homeService.titleUser?.nickname}}
       </span>
       <button mat-raised-button color="primary" class="send-trend-btn app-radius" >发动态</button>
     </div>

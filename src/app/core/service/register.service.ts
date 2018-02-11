@@ -7,7 +7,7 @@ import {ValidationErrors} from '@angular/forms/src/directives/validators';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {FormGroup} from '@angular/forms';
-import {User} from '../data/dto/user.data';
+import {User} from '../data/vo/user.data';
 import {HttpParams} from '@angular/common/http';
 
 /**

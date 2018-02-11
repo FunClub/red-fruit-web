@@ -1,3 +1,21 @@
+/*个人资料api*/
+const infoPrefix = "/user/info/";
+export class InfoApi{
+  /**
+   * 获取用户全部信息的api地址
+   * @param {string} userId
+   * @returns {string}
+   */
+  getAllUserInfoPath(userId:string){
+    return infoPrefix+userId;
+  }
+
+  /**
+   * 获取更新用户信息api
+   * @type {string}
+   */
+  updateUserInfoPath = infoPrefix;
+}
 
 /*个人中心api*/
 const centerPrefix="/user/center/";
@@ -12,6 +30,11 @@ export class CenterApi{
     return centerPrefix + centerUserId;
   }
 
+  /**
+   * 上传头像或者壁纸的api
+   * @type {string}
+   */
+  profile:string = centerPrefix+"profile";
 }
 /**
  * 登录api
@@ -72,6 +95,7 @@ export class RegisterApi{
 const sharedPrefix = "/shared/";
 export class SharedApi {
 
+  titleUserInfoPath:string = sharedPrefix+"titleUser";
   /**
    * 获取父级区域集合api地址
    * @param leave 行政区域等级（0: 省级 1:市级 2:县级 3:镇级 4:乡村级）

@@ -1,6 +1,8 @@
 
 import {ToastOptions} from 'ng2-toastr';
-
+export class Img{
+  static PREFIX:string = "http://taomei1314.com/";
+}
 /**
  *显示生活习惯的参数
  */

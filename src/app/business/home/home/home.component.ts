@@ -36,13 +36,17 @@ import {HomeService} from '../../../core/service/home.service';
   ]
 })
 export class HomeComponent implements OnInit {
-
+  /**
+   * 是否显示聊天面板
+   * @type {boolean}
+   */
   showChat :boolean =false;
   constructor(public homeService:HomeService) {
 
   }
 
   ngOnInit() {
+    this.homeService.getTitleUserInfo().subscribe()
   }
 
   toggleChat(){

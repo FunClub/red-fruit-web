@@ -5,7 +5,7 @@ import {ResponseData} from '../data/vo/response.data';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {LoginApi} from '../data/api.data';
-import {User} from '../data/dto/user.data';
+import {User} from '../data/vo/user.data';
 import {HomeService} from './home.service';
 
 /**
@@ -32,9 +32,8 @@ export class LoginService{
    * @returns {Observable<Object>}
    */
   isLogin(){
-    return this.http.get<ResponseData<User>>(this.api.isLoginPath).map(res=>{
-      this.homeService.user = res.data;
-      return !!res.data
+    return this.http.get<ResponseData<boolean>>(this.api.isLoginPath).map(res=>{
+      return res.data
     });
   }
 }

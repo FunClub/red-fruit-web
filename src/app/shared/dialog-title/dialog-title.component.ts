@@ -21,12 +21,14 @@ export class DialogTitleComponent implements OnInit {
   @Input()
   title:string;
 
-  constructor(private dialog:MatDialogRef<UploadImgComponent>) { }
+  @Input()
+  matDialogRef:any;
+  constructor() { }
 
   ngOnInit() {
   }
 
   close(){
-    this.dialog.close()
+    this.matDialogRef.close()
   }
 }

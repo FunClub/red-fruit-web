@@ -1,0 +1,8 @@
+.app-dialog-content{
+ width: 500px;
+  height: 270px;
+  overflow-y: auto;
+}
+textarea{
+width: 100%;
+}

@@ -3,13 +3,13 @@
 
     <!--墙纸-->
     <div class="banner-body">
-      <img class="banner" src="../../../../assets/img/banner.png"/>
+      <img class="banner" [src]="centerInfo?.banner|imgPath"/>
     </div>
 
     <!--操作-->
     <div class="operation-wrapper">
       <div class="item-operation"><i class="material-icons">menu</i>更多</div>
-      <div class="item-operation">编辑封面</div>
+      <div class="item-operation" (click)="openUploadProfileDialog('banner')">编辑封面</div>
       <div class="item-operation"><i class="material-icons">thumb_up</i>赞</div>
     </div>
 
@@ -18,8 +18,8 @@
 
       <div class="all-profile-wrapper my-profile">
         <div class="profile-wrapper app-box" (mouseenter)="toggleMyProfileOperation()" (mouseleave)="toggleMyProfileOperation()">
-          <img [src]="centerInfo?centerInfo.profile:'assets/img/profile.png'" class="profile"/>
-          <div class="profile-operation-wrapper" (click)="openUploadImgDialog()" *ngIf="showMyProfileOperation&&centerInfo.mine">
+          <img [src]="centerInfo?.profile|imgPath" class="profile"/>
+          <div class="profile-operation-wrapper" (click)="openUploadProfileDialog('profile')" *ngIf="showMyProfileOperation&&centerInfo.mine">
             <i class="material-icons">edit</i>编辑头像
           </div>
         </div>
