@@ -1,6 +1,6 @@
 <div class="living-habits">
-  <div (click)="top()" class="habit" *ngFor="let label of habitArgs.labels;let i=index;"
-       [ngClass]="{'habit-activated':habitArgs.value == i}">
+  <div (click)="top()" class="habit" *ngFor="let label of habitArg.labels;let i=index;"
+       [ngClass]="{'habit-activated':habitArg.value == i}">
     {{label}}
   </div>
 </div>

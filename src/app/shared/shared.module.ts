@@ -15,6 +15,12 @@ import { ParentAreaPipe } from './pipe/parent-area.pipe';
 import { EducationPipe } from './pipe/education.pipe';
 import {IncomePipe} from './pipe/income.pipe';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ProfessionPipe } from './pipe/profession.pipe';
+import { HouseAvailablePipe } from './pipe/house-available.pipe';
+import { AgePipe } from './pipe/age.pipe';
+import { HeightPipe } from './pipe/height.pipe';
+import { WeightPipe } from './pipe/weight.pipe';
+import { AreaPipe } from './pipe/area.pipe';
 
 @NgModule({
   imports: [
@@ -34,7 +40,13 @@ import {ReactiveFormsModule} from '@angular/forms';
     NullPlaceholderPipe,
     ParentAreaPipe,
     EducationPipe,
-    IncomePipe
+    IncomePipe,
+    ProfessionPipe,
+    HouseAvailablePipe,
+    AgePipe,
+    HeightPipe,
+    WeightPipe,
+    AreaPipe
   ],
   entryComponents:[
     UploadImgComponent
@@ -67,7 +79,12 @@ import {ReactiveFormsModule} from '@angular/forms';
     NullPlaceholderPipe,
     EducationPipe,
     ParentAreaPipe,
-    IncomePipe
+    IncomePipe,
+    ProfessionPipe,
+    HouseAvailablePipe,
+    AgePipe,
+    HeightPipe,
+    WeightPipe
   ]
 })
 export class SharedModule { }

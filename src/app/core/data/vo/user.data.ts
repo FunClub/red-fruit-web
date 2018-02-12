@@ -37,10 +37,17 @@ export class User {
   banner: string;
   houseAvailable:string;
   charisma:number;
+
+
   eatHot:string;
   smoking:string;
   drinking:string;
   housework:string;
+  shopping:string;
+  movie:string;
+  animal:string;
+  game:string;
+
 
   criterionAge:string;
   criterionHeight:string;

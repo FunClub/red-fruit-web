@@ -21,7 +21,7 @@
       <div class="info-title-wrapper">
         <i class="material-icons">assignment_ind</i>
         <span class="title-label">基本信息</span>
-        <div class="info-update-wrapper">
+        <div class="info-update-wrapper" (click)="openUpdateBaseInfoDialog()">
           <i class="material-icons">edit</i>
           <span>修改</span>
         </div>
@@ -40,7 +40,7 @@
           </p>
           <p>
             <span class="info-item-label">年龄:</span>
-            <span class="info-item-content">{{user?.age}}</span>
+            <span class="info-item-content">{{user?.age}}岁</span>
           </p>
           <p>
             <span class="info-item-label">身高:</span>
@@ -48,7 +48,7 @@
           </p>
           <p>
             <span class="info-item-label">体重:</span>
-            <span class="info-item-content">{{user?.weight|nullPlaceholder}}</span>
+            <span class="info-item-content">{{user?.weight|nullPlaceholder}}斤</span>
           </p>
           <p>
             <span class="info-item-label">属相:</span>
@@ -70,7 +70,7 @@
           </p>
           <p>
             <span class="info-item-label">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:</span>
-            <span class="info-item-content">{{user?.profession|nullPlaceholder}}</span>
+            <span class="info-item-content">{{user?.profession|profession}}</span>
           </p>
           <p>
             <span class="info-item-label">月&nbsp;收&nbsp;入:</span>
@@ -78,7 +78,7 @@
           </p>
           <p>
             <span class="info-item-label">是否有房:</span>
-            <span class="info-item-content">{{user?.houseAvailable?"有房":"租房"}}</span>
+            <span class="info-item-content">{{user?.houseAvailable|houseAvailable}}</span>
           </p>
         </div>
 
@@ -87,11 +87,11 @@
     </div>
 
     <!--生活习惯-->
-    <div class="app-box info-wrapper" >
+    <div class="app-box info-wrapper">
       <div class="info-title-wrapper">
         <i class="material-icons">shopping_basket</i>
         <span class="title-label">生活习惯</span>
-        <div class="info-update-wrapper">
+        <div class="info-update-wrapper" (click)="openUpdateHabitDialog()">
           <i class="material-icons">edit</i>
           <span>修改</span>
         </div>
@@ -100,37 +100,37 @@
         <div class="info-content-first">
           <p>
             <span class="info-item-label">是否吃辣:</span>
-            <app-living-habit [habitArgs]="arg"></app-living-habit>
+            <app-living-habit [habitArg]="habitArgs[0]"></app-living-habit>
           </p>
           <p>
             <span class="info-item-label">是否抽烟:</span>
-            <app-living-habit [habitArgs]="arg"></app-living-habit>
+            <app-living-habit [habitArg]="habitArgs[1]"></app-living-habit>
           </p>
           <p>
             <span class="info-item-label">是否喝酒:</span>
-            <app-living-habit [habitArgs]="arg"></app-living-habit>
+            <app-living-habit [habitArg]="habitArgs[2]"></app-living-habit>
           </p>
           <p>
             <span class="info-item-label">会做家务:</span>
-            <app-living-habit [habitArgs]="arg"></app-living-habit>
+            <app-living-habit [habitArg]="habitArgs[3]"></app-living-habit>
           </p>
         </div>
         <div class="info-content-second">
           <p>
             <span class="info-item-label">喜欢逛街:</span>
-            <app-living-habit [habitArgs]="arg"></app-living-habit>
+            <app-living-habit [habitArg]="habitArgs[4]"></app-living-habit>
           </p>
           <p>
             <span class="info-item-label">喜欢游戏:</span>
-            <app-living-habit [habitArgs]="arg"></app-living-habit>
+            <app-living-habit [habitArg]="habitArgs[5]"></app-living-habit>
           </p>
           <p>
-            <span class="info-item-label">喜欢养殖:</span>
-            <app-living-habit [habitArgs]="arg"></app-living-habit>
+            <span class="info-item-label">喜欢动物:</span>
+            <app-living-habit [habitArg]="habitArgs[6]"></app-living-habit>
           </p>
           <p>
             <span class="info-item-label">喜欢游戏:</span>
-            <app-living-habit [habitArgs]="arg"></app-living-habit>
+            <app-living-habit [habitArg]="habitArgs[7]"></app-living-habit>
           </p>
         </div>
 
@@ -142,7 +142,7 @@
       <div class="info-title-wrapper">
         <i class="material-icons">wc</i>
         <span class="title-label">择偶标准</span>
-        <div class="info-update-wrapper">
+        <div class="info-update-wrapper" (click)="openUpdateCriterionDialog()">
           <i class="material-icons">edit</i>
           <span>修改</span>
         </div>
@@ -153,37 +153,37 @@
 
           <p>
             <span class="info-item-label">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:</span>
-            <span class="info-item-content">20-25岁之间</span>
+            <span class="info-item-content">{{user?.criterionAge|age}}</span>
           </p>
           <p>
             <span class="info-item-label">身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:</span>
-            <span class="info-item-content">170-180厘米</span>
+            <span class="info-item-content">{{user?.criterionHeight|height}}</span>
           </p>
           <p>
             <span class="info-item-label">体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重:</span>
-            <span class="info-item-content">120-140斤</span>
+            <span class="info-item-content">{{user?.criterionWeight|weight}}</span>
           </p>
           <p>
             <span class="info-item-label">居&nbsp;住&nbsp;地:</span>
-            <span class="info-item-content">重庆巴南</span>
+            <span class="info-item-content">{{user?.criterionParentArea|parentArea}}</span>
           </p>
         </div>
         <div class="info-content-second" style="margin-left: 110px">
           <p>
-            <span class="info-item-label">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历:</span>
-            <span class="info-item-content">本科</span>
+            <span class="info-item-label">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历:</span>
+            <span class="info-item-content">{{user?.criterionEducation|education}}</span>
           </p>
           <p>
-            <span class="info-item-label">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:</span>
-            <span class="info-item-content">老师</span>
+            <span class="info-item-label">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:</span>
+            <span class="info-item-content">{{user?.criterionProfession|profession}}</span>
           </p>
           <p>
-            <span class="info-item-label">月&nbsp;收&nbsp;入:</span>
-            <span class="info-item-content">10000-20000元</span>
+            <span class="info-item-label">月&nbsp;&nbsp;收&nbsp;入:</span>
+            <span class="info-item-content">{{user?.criterionIncome|income}}</span>
           </p>
           <p>
             <span class="info-item-label">是否有房:</span>
-            <span class="info-item-content">租房</span>
+            <span class="info-item-content">{{user?.criterionHouseAvailable|houseAvailable}}</span>
           </p>
         </div>
 

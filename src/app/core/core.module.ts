@@ -9,10 +9,11 @@ import {HomeService} from './service/home.service';
 import {CenterService} from './service/center.service';
 import {InfoService} from './service/info.service';
 
+
 @NgModule({
   imports: [
     DataModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers:[
     RegisterService,

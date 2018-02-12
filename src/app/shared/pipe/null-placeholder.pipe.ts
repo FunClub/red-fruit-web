@@ -6,7 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class NullPlaceholderPipe implements PipeTransform {
 
   transform(value: any, suffixes?: any): any {
-    return value?value:"未填写";
+
+    return value=='-1'?"未填写":value;
   }
 
 }

@@ -46,7 +46,10 @@ mat-form-field{
 .mat-dialog-container{
   padding: 0!important;
 }
+.cdk-overlay-container{
+  z-index: 999999999!important;
 
+}
 
 
 /*icon*/

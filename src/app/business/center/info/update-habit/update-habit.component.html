@@ -1,0 +1,80 @@
+<div class="update-habit">
+  <app-dialog-title title="更新生活习惯" icon="shopping_basket" [matDialogRef]="dialogRef"></app-dialog-title>
+  <div class="app-dialog-content">
+    <div>
+      <p class="habit-item">
+        <span matPrefix>吃辣：</span>
+        <mat-button-toggle-group [(value)]="user.eatHot">
+          <mat-button-toggle value="0">不吃</mat-button-toggle>
+          <mat-button-toggle value="1">微辣</mat-button-toggle>
+          <mat-button-toggle value="2">较辣</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+      <p class="habit-item">
+        <span matPrefix>抽烟：</span>
+        <mat-button-toggle-group [(value)]="user.smoking">
+          <mat-button-toggle value="0">不抽</mat-button-toggle>
+          <mat-button-toggle value="1">偶尔</mat-button-toggle>
+          <mat-button-toggle value="2">经常</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+      <p class="habit-item">
+        <span matPrefix>喝酒：</span>
+        <mat-button-toggle-group [(value)]="user.drinking">
+          <mat-button-toggle value="0">不喝</mat-button-toggle>
+          <mat-button-toggle value="1">偶尔</mat-button-toggle>
+          <mat-button-toggle value="2">经常</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+      <p class="habit-item">
+        <span matPrefix>家务：</span>
+        <mat-button-toggle-group [(value)]="user.housework">
+          <mat-button-toggle value="0">不会</mat-button-toggle>
+          <mat-button-toggle value="1">略懂</mat-button-toggle>
+          <mat-button-toggle value="2">熟练</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+
+    </div>
+    <div>
+      <p class="habit-item">
+        <span matPrefix>购物：</span>
+        <mat-button-toggle-group [(value)]="user.shopping">
+          <mat-button-toggle value="0">厌恶</mat-button-toggle>
+          <mat-button-toggle value="1">一般</mat-button-toggle>
+          <mat-button-toggle value="2">喜欢</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+      <p class="habit-item">
+        <span matPrefix>电影：</span>
+        <mat-button-toggle-group [(value)]="user.movie">
+          <mat-button-toggle value="0">厌恶</mat-button-toggle>
+          <mat-button-toggle value="1">一般</mat-button-toggle>
+          <mat-button-toggle value="2">喜欢</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+      <p class="habit-item">
+        <span matPrefix>动物：</span>
+        <mat-button-toggle-group [(value)]="user.animal">
+          <mat-button-toggle value="0">厌恶</mat-button-toggle>
+          <mat-button-toggle value="1">一般</mat-button-toggle>
+          <mat-button-toggle value="2">喜欢</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+      <p class="habit-item">
+        <span matPrefix>游戏：</span>
+        <mat-button-toggle-group [(value)]="user.game">
+          <mat-button-toggle value="0">厌恶</mat-button-toggle>
+          <mat-button-toggle value="1">一般</mat-button-toggle>
+          <mat-button-toggle value="2">喜欢</mat-button-toggle>
+        </mat-button-toggle-group>
+      </p>
+
+    </div>
+  </div>
+  <div class="app-dialog-bottom">
+
+    <button mat-raised-button (click)="update()"  color="primary" class="app-sm-btn app-btn-color">保存</button>
+    <button mat-raised-button  class="app-sm-btn" (click)="close()">取消</button>
+  </div>
+</div>

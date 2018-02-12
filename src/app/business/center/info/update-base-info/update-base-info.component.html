@@ -1,0 +1,102 @@
+<div class="update-base-info">
+  <app-dialog-title [matDialogRef]="dialogRef" icon="assignment_ind" title="更新基本信息"></app-dialog-title>
+  <div class="app-dialog-content">
+    <form [formGroup]="infoGroup">
+      <div>
+        <mat-form-field  disabled="disabled">
+          <span matPrefix>昵称：</span>
+          <input matInput #nickname formControlName="nickname">
+          <mat-error *ngIf="nicknameCtr.hasError('required')">
+            昵称不能为空
+          </mat-error>
+          <mat-error *ngIf="nicknameCtr.hasError('minlength')||nicknameCtr.hasError('maxlength')">
+            请输入2-10位昵称
+          </mat-error>
+          <mat-error *ngIf="nicknameCtr.hasError('error')">
+            昵称已存在！
+          </mat-error>
+          <mat-hint align="end">{{nickname.value?.length || 0}}/10</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select formControlName="height">
+            <mat-option *ngFor="let height of heightRange" [value]="height">
+              {{height}}厘米
+            </mat-option>
+          </mat-select>
+          <span matPrefix>身高：</span>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select formControlName="weight">
+            <mat-option *ngFor="let weight of weightRange" [value]="weight">
+              {{weight}}斤
+            </mat-option>
+          </mat-select>
+          <span matPrefix>体重：</span>
+        </mat-form-field>
+
+          <mat-form-field class="form-field-city">
+            <span matPrefix>居住地：</span>
+            <mat-select  (change)="getSubArea($event)" formControlName="parentArea">
+              <mat-option *ngFor="let area of parentAreas" [value]="area.id+'-'+area.short_name">
+                {{ area.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="form-field-city">
+            <mat-select formControlName="subArea"  [(ngModel)]="subArea">
+              <mat-option *ngFor="let area of subAreas" [value]="area.short_name">
+                {{ area.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-select  formControlName="profession">
+            <mat-option *ngFor="let profession of professions" [value]="profession.value">
+              {{profession.label}}
+            </mat-option>
+          </mat-select>
+          <span matPrefix>职业：</span>
+        </mat-form-field>
+
+        <mat-form-field>
+          <span matPrefix>月薪：</span>
+          <mat-select formControlName="income">
+            <mat-option *ngFor="let income of incomeRange" [value]="income.value">
+              {{income.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <span matPrefix>学历：</span>
+          <mat-select formControlName="education">
+            <mat-option *ngFor="let education of educationRange" [value]="education.value">
+              {{education.label}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <span matPrefix>是否有房：</span>
+          <mat-select formControlName="houseAvailable">
+            <mat-option value="-1">不填写</mat-option>
+            <mat-option value="0">租房</mat-option>
+            <mat-option value="1">有房</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </form>
+  </div>
+  <div class="app-dialog-bottom">
+
+    <button mat-raised-button [disabled]="infoGroup.invalid" (click)="update()" color="primary" class="app-sm-btn app-btn-color">保存</button>
+    <button mat-raised-button class="app-sm-btn" (click)="close()">取消</button>
+  </div>
+</div>

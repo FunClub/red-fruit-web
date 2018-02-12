@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {HabitArgs} from '../../core/data/app.data';
+import {HabitArg} from '../../core/data/app.data';
 
 @Component({
   selector: 'app-living-habit',
@@ -9,7 +9,7 @@ import {HabitArgs} from '../../core/data/app.data';
 export class LivingHabitComponent{
 
   @Input()
-  habitArgs:HabitArgs;
+  habitArg:HabitArg;
   constructor() {
 
   }

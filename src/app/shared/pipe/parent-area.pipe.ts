@@ -9,8 +9,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ParentAreaPipe implements PipeTransform {
 
   transform(value: string, args?: any): any {
-    if(value){
+    if(value!=-1&&value){
       return value.split("-")[1];
+    }else{
+      return "未填写";
     }
   }
 

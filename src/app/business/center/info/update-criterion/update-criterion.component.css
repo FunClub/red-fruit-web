@@ -1,0 +1,19 @@
+form{
+  font-size: 14px;
+}
+.app-dialog-content{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+form span{
+  color: gray!important;
+}
+form > div{
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+}
+form > div:last-child{
+  margin-left: 20px;
+}
+

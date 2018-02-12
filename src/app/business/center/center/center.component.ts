@@ -38,7 +38,7 @@ export class CenterComponent implements OnInit {
    * 更换头像和壁纸
    */
   openUploadProfileDialog(type:string){
-    this.dialog.open(UploadImgComponent,{data:type,autoFocus:false}).afterClosed().subscribe(result => {
+    this.dialog.open(UploadImgComponent,{data:type}).afterClosed().subscribe(result => {
       //更新标题和个人中心
       if(result){
         this.homeService.getTitleUserInfo().subscribe();

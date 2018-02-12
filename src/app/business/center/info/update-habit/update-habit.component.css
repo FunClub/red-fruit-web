@@ -1,0 +1,12 @@
+.app-dialog-content >div{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  width: 260px;
+}
+.app-dialog-content {
+  font-size: 14px;
+}
+.habit-item{
+  margin-top: 10px;
+}

@@ -1,6 +1,15 @@
 /*个人资料api*/
 const infoPrefix = "/user/info/";
 export class InfoApi{
+
+  /**
+   * 获得验证昵称是否可被更新api地址
+   * @param {string} nickname
+   * @returns {string}
+   */
+  nicknameCanUpdatePath = infoPrefix+'nickname';
+
+
   /**
    * 获取用户全部信息的api地址
    * @param {string} userId

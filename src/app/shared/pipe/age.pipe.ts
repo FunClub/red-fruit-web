@@ -1,34 +1,33 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
 /**
- * 教育管道，转换教育水平
+ * 年龄管道，转换年龄
  */
 @Pipe({
-  name: 'education'
+  name: 'age'
 })
-export class EducationPipe implements PipeTransform {
+export class AgePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if(value==="-1"){
       return "未填写"
     }
     if(value==="0"){
-      return "大专及以下"
+      return "20岁以下"
     }
     if(value==="1"){
-      return "专科"
+      return "20-24岁"
     }
     if(value==="2"){
-      return "本科"
+      return "25-29岁"
     }
     if(value==="3"){
-      return "硕士"
+      return "30-34岁"
     }
     if(value==="4"){
-      return "博士"
+      return "25-40岁"
     }
     if(value==="5"){
-      return "博士后"
+      return "40岁以上"
     }
   }
 

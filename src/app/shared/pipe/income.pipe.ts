@@ -9,6 +9,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class IncomePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
+    if(value==="-1"){
+      return "未填写"
+    }
     if(value==="0"){
       return "3000元以下"
     }

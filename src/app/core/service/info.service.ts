@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {InfoApi} from '../data/api.data';
 import {ResponseData} from '../data/vo/response.data';
 import {AllUserInfo, User} from '../data/vo/user.data';
@@ -12,6 +12,20 @@ import {Observable} from 'rxjs/Observable';
 export class InfoService {
 
   constructor(private http:HttpClient,private api:InfoApi) { }
+
+  /**
+   * 验证昵称是否可被更新
+   *
+   * @param nickname
+   * @return
+   */
+  public nicknameCanUpdate(nickname:string){
+    let params = new HttpParams();
+    params.append("nickname",nickname);
+    return this.http.get(this.api.nicknameCanUpdatePath,{params:params}).map(res=>{
+      return res.data?null:{error:true}
+    });
+  }
 
   /**
    * 更新用户信息
