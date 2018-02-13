@@ -31,7 +31,7 @@ export class UpdateBaseInfoComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public user: UserInfo,
               public dialogRef: MatDialogRef<UpdateBaseInfoComponent>,private formBuilder:FormBuilder,
               private registerService:RegisterService,private sharedService:SharedService,
-              private infoService:InfoService,private toasts:ToastsManager
+              private infoService:InfoService,private toasts:ToastsManager,private centerService:CenterService
               ) {
     this.educationRange =EducationRange;
     this.incomeRange = IncomeRange;
@@ -79,6 +79,7 @@ export class UpdateBaseInfoComponent implements OnInit {
    */
   applyBaseInfo(){
     this.user.nickname = this.infoGroup.get('nickname').value;
+    this.centerService.centerInfo.nickname = this.user.nickname;
     this.user.height = this.infoGroup.get('height').value;
     this.user.weight = this.infoGroup.get('weight').value;
     this.user.parentArea = this.infoGroup.get('parentArea').value;

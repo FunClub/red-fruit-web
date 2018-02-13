@@ -18,12 +18,12 @@
 
       <div class="all-profile-wrapper my-profile">
         <div class="profile-wrapper app-box" (mouseenter)="toggleMyProfileOperation()" (mouseleave)="toggleMyProfileOperation()">
-          <img [src]="centerInfo?.profile|imgPath" class="profile"/>
-          <div class="profile-operation-wrapper" (click)="openUploadProfileDialog('profile')" *ngIf="showMyProfileOperation&&centerInfo.mine">
+          <img [src]="centerService.centerInfo?.profile|imgPath" class="profile"/>
+          <div class="profile-operation-wrapper" (click)="openUploadProfileDialog('profile')" *ngIf="showMyProfileOperation&&centerService.centerInfo?.mine">
             <i class="material-icons">edit</i>编辑头像
           </div>
         </div>
-        <span class="nickname">{{centerInfo?.nickname}}</span>
+        <span class="nickname">{{centerService.centerInfo?.nickname}}</span>
       </div>
       <div class="all-profile-wrapper  half-profile">
         <div class="profile-wrapper app-box">

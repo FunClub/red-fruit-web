@@ -37,8 +37,10 @@ export class RegisterService{
 
     registerInfo.gender = infoGroup.get('genderCtr').value;
     registerInfo.birthday = infoGroup.get('birthdayCtr').value;
+    if(typeof(registerInfo.birthday) !=="string"){
+      registerInfo.birthday = registerInfo.birthday.toLocaleDateString().replace('/','-').replace('/','-');
+    }
 
-    registerInfo.birthday = registerInfo.birthday.toLocaleDateString().replace('/','-').replace('/','-');
     registerInfo.parentArea = infoGroup.get('parentAreaCtr').value;
     registerInfo.subArea = infoGroup.get('subAreaCtr').value;
     registerInfo.height = infoGroup.get('heightCtr').value;
@@ -64,9 +66,10 @@ export class RegisterService{
    * @returns {Observable<{error: boolean}>}验证结果
    */
   public verifyMobile(mobile:string){
-    let params = new HttpParams();
-    params.append("mobile",mobile);
-    return this.http.get(this.registerApi.getIsUserExitsPath(),{params:params}).map(res=>{
+    let user = new User();
+    user.mobile = mobile;
+
+    return this.http.post(this.registerApi.getIsUserExitsPath(),user).map(res=>{
       return res['data']?null:{'error':true }
     });
   }
@@ -97,9 +100,9 @@ export class RegisterService{
    * @returns {Observable<ValidationErrors | null>}
    */
   verifyNickname(nickname:string):Observable<ValidationErrors|null>{
-    let params = new HttpParams();
-    params.append("nickname",nickname);
-    return this.http.get(this.registerApi.getIsUserExitsPath(),{params:params}).map(res=>{
+    let user = new User();
+    user.nickname = nickname;
+    return this.http.post(this.registerApi.getIsUserExitsPath(),user).map(res=>{
       return res['data']?null:{'error':true }
     });
   }

@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         if(!res.data){
           this.toasts.error("账号或密码错误!");
         }else{
-          this.router.navigate(["home/center","962192004292009986"],);
+          this.router.navigate(["home"]);
         }
       })
     }

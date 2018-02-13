@@ -22,7 +22,7 @@ export class InfoService {
   public nicknameCanUpdate(nickname:string){
     let params = new HttpParams();
     params.append("nickname",nickname);
-    return this.http.get(this.api.nicknameCanUpdatePath,{params:params}).map(res=>{
+    return this.http.get<ResponseData<boolean>>(this.api.nicknameCanUpdatePath,{params:params}).map(res=>{
       return res.data?null:{error:true}
     });
   }

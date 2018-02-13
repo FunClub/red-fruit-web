@@ -41,12 +41,16 @@ export class HomeComponent implements OnInit {
    * @type {boolean}
    */
   showChat :boolean =false;
+
+  centerLink:string;
   constructor(public homeService:HomeService) {
 
   }
 
   ngOnInit() {
-    this.homeService.getTitleUserInfo().subscribe()
+    this.homeService.getTitleUserInfo().subscribe(res=>{
+      this.centerLink = 'center/'+this.homeService.titleUser.id;
+    })
   }
 
   toggleChat(){

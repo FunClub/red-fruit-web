@@ -23,7 +23,7 @@
   vertical-align: middle;
   line-height: 50px;
   height: 50px;
-  /*width: 1060px;*/
+  width: 1060px;
   margin: auto;
 }
 .header-center div{
@@ -58,11 +58,15 @@
   text-align: center;
   vertical-align: center;
   height: 48px;
+  cursor: pointer;
 }
 .nav i{
   font-size: 24px;
   margin-right: 0;
   margin-bottom: 3px;
+}
+.nav:focus{
+  outline: none;
 }
 /*路由激活样式*/
 .nav-activated{

@@ -14,7 +14,7 @@ import {HomeService} from '../../../core/service/home.service';
 export class CenterComponent implements OnInit {
   showMyProfileOperation:boolean;
   centerInfo:CenterInfo;
-  constructor(private route:ActivatedRoute,private centerService:CenterService,
+  constructor(private route:ActivatedRoute,public centerService:CenterService,
               private dialog:MatDialog,private homeService:HomeService
               ) {
     this.centerInfo = new CenterInfo();

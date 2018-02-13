@@ -5,15 +5,18 @@ import {HomeRoutingModule} from './home-routing.module';
 import {SharedModule} from '../../shared/shared.module';
 import {CenterModule} from '../center/center.module';
 import {ChatModule} from '../chat/chat.module';
+import {LuckModule} from '../luck/luck.module';
+import { SummaryComponent } from './summary/summary.component';
 
 @NgModule({
   imports: [
     SharedModule,
     HomeRoutingModule,
     CenterModule,
-    ChatModule
+    ChatModule,
+    LuckModule
   ],
 
-  declarations: [HomeComponent]
+  declarations: [HomeComponent, SummaryComponent]
 })
 export class HomeModule { }

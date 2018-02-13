@@ -6,15 +6,15 @@
       <i class="material-icons">search</i>
     </div>
     <div class="nav-wrapper">
-      <div class="nav" routerLinkActive="nav-activated" routerLink="home">
+      <div class="nav" routerLinkActive="nav-activated" routerLink="summary">
         <i class="material-icons">home</i>
         <span class="nav-label">主页</span>
       </div>
-      <div class="nav"  routerLinkActive="nav-activated" routerLink="center">
+      <div class="nav"  routerLinkActive="nav-activated" routerLink="{{'center/'+homeService.titleUser?.id}}">
         <i class="material-icons">person_outline</i>
         <span class="nav-label">个人中心</span>
       </div>
-      <div class="nav">
+      <div class="nav" routerLinkActive="nav-activated" routerLink="luck">
         <i class="material-icons">pages</i>
         <span class="nav-label">缘分</span>
       </div>

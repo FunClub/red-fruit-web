@@ -12,7 +12,9 @@ export class CenterService {
    * 个人中心信息
    */
   centerInfo:CenterInfo;
-  constructor(private centerApi:CenterApi,private http:HttpClient) { }
+  constructor(private centerApi:CenterApi,private http:HttpClient) {
+    this.centerInfo = new CenterInfo();
+  }
 
   /**
    * 上传头像或者墙纸
@@ -45,6 +47,9 @@ export class CenterService {
    * @returns {Observable<ResponseData<CenterInfo>>}
    */
   getCenterInfo(centerUserId:string):Observable<ResponseData<CenterInfo>>{
-    return this.http.get<ResponseData<CenterInfo>>(this.centerApi.getCenterPath(centerUserId));
+    return this.http.get<ResponseData<CenterInfo>>(this.centerApi.getCenterPath(centerUserId)).map(res=>{
+      this.centerInfo = res.data;
+      return res;
+    });
   }
 }
