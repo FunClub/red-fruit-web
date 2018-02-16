@@ -1,3 +1,149 @@
-<div class="search app-box">
+<div class="search">
+  <div class="search-condition app-box">
+    <div class="now-search">
+      <i class="material-icons">location_searching</i>正在寻找：{{userCriterion?.criterionParentArea|parentArea}}
+      {{userCriterion?.criterionAge|nullPlaceholder:'岁'}} {{userCriterion?.criterionHeight| nullPlaceholder:'厘米'}}
+      的 {{userCriterion?.halfGender|gender}}生
+      <i class="material-icons condition-update">border_color</i>
+    </div>
+    <div class="search-condition-wrapper">
+      <div class="search-label">
+        条件搜索：
+      </div>
+      <form [formGroup]="searchForm">
+        <div class="condition-item-wrapper">
+          <mat-form-field>
+            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionParentArea"  formControlName="criterionParentArea" placeholder="父级区域">
+              <mat-option *ngFor="let area of parentAreas" [value]="area.id+'-'+area.short_name">
+                {{ area.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
+        <div class="condition-item-wrapper">
+          <mat-form-field>
+            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionAge"  formControlName="criterionAge" placeholder="年龄范围">
+              <mat-option *ngFor="let age of ageRange" [value]="age.value">
+                {{age.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="condition-item-wrapper">
+          <mat-form-field>
+            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionHeight" formControlName="criterionHeight" placeholder="身高范围">
+              <mat-option *ngFor="let height of heightRange" [value]="height.value">
+                {{height.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="condition-item-wrapper">
+          <mat-form-field>
+            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionIncome" formControlName="criterionIncome" placeholder="收入范围">
+              <mat-option *ngFor="let income of incomeRange" [value]="income.value">
+                {{income.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="condition-item-wrapper">
+          <mat-form-field>
+            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionEducation" formControlName="criterionEducation" placeholder="学历要求">
+              <mat-option *ngFor="let education of educationRange" [value]="education.value">
+                {{education.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button (click)="toggleShowMoreCondition()" mat-raised-button
+                class="app-sm-btn more-condition-btn">更多条件
+          <i class="material-icons" [ngClass]="{'open':showMoreCondition,
+        'close':!showMoreCondition}">expand_more</i>
+        </button>
+        <div *ngIf="showMoreCondition" class="more-condition-wrapper">
+          <div class="condition-item-wrapper">
+            <mat-form-field>
+              <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionHouseAvailable" formControlName="criterionHouseAvailable" placeholder="是否有房">
+                <mat-option value="-1">不填写</mat-option>
+                <mat-option value="0">租房</mat-option>
+                <mat-option value="1">有房</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="condition-item-wrapper">
+            <mat-form-field>
+              <mat-select (change)="search()"  [(ngModel)]="userCriterion.criterionProfession" formControlName="criterionProfession" placeholder="职业">
+                <mat-option *ngFor="let profession of professions" [value]="profession.value">
+                  {{profession.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="condition-item-wrapper">
+            <mat-form-field>
+              <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionWeight" formControlName="criterionWeight" placeholder="体重">
+                <mat-option *ngFor="let weight of weightRange" [value]="weight.value">
+                  {{weight.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class=" app-radius  search-result">
+    搜索结果：<span>{{pagedInfo?.totals}}</span>位用户
+  </div>
+  <div class="user-list">
+    <div [ngBusy]="{busy:busy,message:'数据处理中，请稍后...'}"></div>
+    <div class="user-wrapper app-box" *ngFor="let user of users;">
+      <div class="profile-wrapper">
+        <img [src]="user.profile|imgPath" class="profile"/>
+      </div>
+      <div class="all-info-wrapper">
+        <div class="info-wrapper">
+          <p><span class="nickname">{{user.nickname}}</span>
+            <span class="percent">
+            <label class="percent-label">推荐度:</label>
+            <span class="percent-value-first">{{user.recommendedPercent|recommendedPercent:0}}</span>
+            <span class="percent-value-last">{{user.recommendedPercent|recommendedPercent:1}}%</span>
+          </span>
+          </p>
+          <div class="base-info">
+            <span>{{user.age}}岁</span><span>{{user.height}}厘米</span><span>{{user.weight}}斤</span>
+            <span>{{user.education|education}}</span><span>{{user.income|nullPlaceholder:'元'}}</span>
+          </div>
+
+          <div class="criterion-info">
+            <span>正在寻找:</span>
+            <span>住在{{user.parentArea|parentArea}}，年龄{{user.criterionAge|nullPlaceholder:'岁'}}，
+              身高{{user.criterionHeight|nullPlaceholder:'厘米'}}，月薪{{user.criterionIncome|nullPlaceholder:'元'}}的{{userCriterion.halfGender=="0"?'男':'女'}}生。</span>
+          </div>
+        </div>
+        <div class="recommended-reason">
+          推荐理由: {{user.recommendedReason}}
+        </div>
+      </div>
+      <div class="operation-wrapper">
+        <div class="favorite" matTooltip="喜欢TA">
+          <i class="material-icons">favorite_border</i>
+        </div>
+        <div class="email" style="height: 47px" matTooltip="给TA写信">
+          <i class="material-icons">mail_outline</i>
+        </div>
+        <div class="chat" style="height: 47px" matTooltip="和TA聊天">
+          <i class="material-icons">message</i>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="app-box" #ele (click)="show(ele)">
+    加载中...
+  </div>
 </div>

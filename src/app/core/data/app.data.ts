@@ -82,16 +82,16 @@ export  const Professions=[
  */
 export const HeightRange=[
   {label:'不填写',value:'-1'},
-  {label:'150厘米以下',value:'0'},
-  {label:'150-154厘米',value:'1'},
-  {label:'155-159厘米',value:'2'},
-  {label:'160-164厘米',value:'3'},
-  {label:'165-169厘米',value:'4'},
-  {label:'170-174厘米',value:'5'},
-  {label:'175-179厘米',value:'6'},
-  {label:'180-184厘米',value:'7'},
-  {label:'185-190厘米',value:'8'},
-  {label:'190厘米以上',value:'9'}
+  {label:'150厘米以下',value:'150-LOWER'},
+  {label:'150-154厘米',value:'150-154'},
+  {label:'155-159厘米',value:'155-159'},
+  {label:'160-164厘米',value:'160-164'},
+  {label:'165-169厘米',value:'165-169'},
+  {label:'170-174厘米',value:'170-174'},
+  {label:'175-179厘米',value:'175-179'},
+  {label:'180-184厘米',value:'180-184'},
+  {label:'185-190厘米',value:'185-190'},
+  {label:'190厘米以上',value:'190-OVER'}
 ];
 /**
  * 教育范围
@@ -113,12 +113,12 @@ export const EducationRange=[
  */
 export const AgeRange=[
   {label:'不填写',value:'-1'},
-  {label:'20岁以下',value:'0'},
-  {label:'20-24岁',value:'1'},
-  {label:'25-29岁',value:'2'},
-  {label:'30-34岁',value:'3'},
-  {label:'25-40岁',value:'4'},
-  {label:'40岁以上',value:'5'},
+  {label:'20岁以下',value:'20-LOWER'},
+  {label:'20-24岁',value:'20-24'},
+  {label:'25-29岁',value:'25-29'},
+  {label:'30-34岁',value:'30-34'},
+  {label:'25-40岁',value:'25-40'},
+  {label:'40岁以上',value:'40-OVER'},
 ];
 
 /**
@@ -127,14 +127,14 @@ export const AgeRange=[
  */
 export const WeightRange=[
   {label:'不填写',value:'-1'},
-  {label:'80斤以下',value:'0'},
-  {label:'80-90斤',value:'1'},
-  {label:'90-100斤',value:'2'},
-  {label:'100-110斤',value:'3'},
-  {label:'110-120斤',value:'4'},
-  {label:'130-140斤',value:'5'},
-  {label:'140-150斤',value:'6'},
-  {label:'150斤以上',value:'7'},
+  {label:'80斤以下',value:'80-LOWER'},
+  {label:'80-90斤',value:'80-90'},
+  {label:'90-100斤',value:'90-100'},
+  {label:'100-110斤',value:'100-110'},
+  {label:'110-120斤',value:'110-120'},
+  {label:'130-140斤',value:'130-140'},
+  {label:'140-150斤',value:'140-150'},
+  {label:'150斤以上',value:'150-OVER'},
 ];
 
 /**
@@ -143,10 +143,10 @@ export const WeightRange=[
  */
 export const IncomeRange=[
   {label:'不填写',value:'-1'},
-  {label:'3000元以下',value:'0'},
-  {label:'3000-5000元',value:'1'},
-  {label:'5000-10000元',value:'2'},
-  {label:'10000-12000元',value:'3'},
-  {label:'20000-50000元',value:'4'},
-  {label:'50000元以上',value:'5'},
+  {label:'3000元以下',value:'3000-LOWER'},
+  {label:'3000-5000元',value:'3000-5000'},
+  {label:'5000-10000元',value:'5000-10000'},
+  {label:'10000-12000元',value:'10000-12000'},
+  {label:'20000-50000元',value:'20000-50000'},
+  {label:'50000元以上',value:'50000-OVER'},
 ];

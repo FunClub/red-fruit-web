@@ -1,5 +1,243 @@
 .search{
-  width: 900px;
-  height: 500px;
+  width: 800px;
   margin: auto;
+}
+/*搜索条件div*/
+.search-condition{
+  padding: 20px;
+  font-size: 13px;
+
+
+}
+form{
+  display: inline-block;
+  vertical-align: middle;
+}
+/*正在搜索的用户*/
+.now-search{
+  background: #FCF8E4;
+  padding: 7px;
+  border-radius: 5px;
+}
+.now-search i:not(.condition-update){
+  color: red;
+  vertical-align: middle;
+  margin-right: 10px;
+  float: left;
+}
+.condition-update{
+  float: right;
+  color: rgb(100,100,100);
+  font-size: 15px;
+}
+
+/*所有搜索条件*/
+.search-condition-wrapper{
+  margin-top: 10px;
+}
+.search-label{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 15px;
+}
+
+/*每个条件div*/
+.condition-item-wrapper{
+  width: 100px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/*更多条件按钮*/
+.more-condition-btn{
+  margin-left: 20px;
+}
+.open{
+  animation: open 0.3s ;
+  animation-fill-mode:forwards;
+}
+.close{
+  animation: close 0.3s ;
+  animation-fill-mode:forwards;
+}
+/*显示更多条件箭头动画*/
+@keyframes close {
+  0% {
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+/*导航面板待打开的箭头动画*/
+@keyframes open {
+  0% {
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(-180deg);
+  }
+}
+/*更多条件div*/
+.more-condition-wrapper{
+
+}
+/*搜索结果*/
+.search-result{
+  width: 150px;
+  margin: 10px auto auto;
+  padding: 5px;
+  font-size: 12px;
+  color: gray;
+  text-align: center;
+  background: white;
+}
+.search-result span{
+  color: black;
+  font-size: 16px;
+}
+/*用户列表*/
+.user-list{
+  margin-top: 10px;
+  position: relative;
+}
+/*用户div*/
+.user-wrapper{
+  height: 140px;
+  margin-top: 20px;
+}
+.user-wrapper:hover{
+  box-shadow: 0 0 15px rgb(150,150,150);
+}
+.user-wrapper > div{
+  display: inline-block;
+  vertical-align: top;
+}
+/*头像div*/
+.profile-wrapper{
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.profile{
+  width: 140px;
+  height: 140px;
+}
+.profile-wrapper:hover .profile{
+  animation: profile-animation 0.5s forwards;
+}
+
+/*头像动画*/
+@keyframes profile-animation{
+  0%{transform: scale(1,1)}
+  100%{transform: scale(1.3,1.3)}
+}
+/*用户所有信息div*/
+.all-info-wrapper{
+  padding: 10px 0 10px 0;
+  font-size: 12px;
+  width: 590px;
+}
+.nickname{
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
+.nickname:hover{
+  text-decoration: underline;
+}
+.percent{
+  float: right;
+  color: gray;
+}
+.percent-label{
+ font-size: 13px;
+  color: rgb(180, 180, 180);
+}
+.percent-value-first{
+  font-size: 20px !important;
+}
+.percent-value-last{
+  font-size: 16px;
+  position: relative;
+  right: 3px;
+  top: 1px;
+}
+/*资料div*/
+.info-wrapper{
+  color: #9A999A;
+}
+
+/*基本信息*/
+.base-info{
+  margin-top: 10px;
+}
+.base-info span{
+  border-right: solid 1px rgb(223,223,223);
+  padding-right: 5px;
+  margin-left: 5px;
+}
+.base-info span:first-child{
+  margin-left: 0;
+}
+.base-info span:last-child{
+  border:none;
+}
+/*择偶信息*/
+.criterion-info{
+  margin-top: 10px;
+}
+
+/*推荐原因*/
+.recommended-reason{
+  color: rgb(100,100,100);
+  font-size: 14px;
+  margin-top: 20px;
+}
+/*操作div*/
+.operation-wrapper{
+  float: right;
+  width: 50px;
+  text-align: center;
+}
+.operation-wrapper div{
+  height: 46px;
+  line-height: 46px;
+  cursor: pointer;
+}
+.operation-wrapper i{
+  font-size: 25px;
+}
+.operation-wrapper>div:hover i{
+  animation: operation-animation 0.3s forwards;
+}
+.favorite{
+  color: #FDAFB0;
+  border-right: solid #FDAFB0;
+}
+.favorite :hover{
+  color: #fd7b9c;
+}
+
+.email{
+  color: #6DBAE1;
+  border-right: solid #6DBAE1;
+}
+.email :hover{
+  color: #3B8AE1;
+}
+.chat{
+  color: #D3D3D3;
+  border-right: solid #D3D3D3;
+}
+.chat:hover{
+  color: rgb(150,150,150);
+}
+/*操作动画*/
+@keyframes operation-animation{
+  0%{transform: scale(1,1)}
+  100%{transform: scale(1.3,1.3)}
 }

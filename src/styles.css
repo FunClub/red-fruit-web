@@ -3,3 +3,4 @@
 @import "assets/css/custom-material.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css";
+@import "../node_modules/angular2-busy/build/style/busy.css";

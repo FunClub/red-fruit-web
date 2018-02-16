@@ -48,7 +48,7 @@
           </p>
           <p>
             <span class="info-item-label">体重:</span>
-            <span class="info-item-content">{{user?.weight|nullPlaceholder}}斤</span>
+            <span class="info-item-content">{{user?.weight|nullPlaceholder:'斤'}}</span>
           </p>
           <p>
             <span class="info-item-label">属相:</span>
@@ -74,7 +74,7 @@
           </p>
           <p>
             <span class="info-item-label">月&nbsp;收&nbsp;入:</span>
-            <span class="info-item-content">{{user?.income|income}}</span>
+            <span class="info-item-content">{{user?.income|nullPlaceholder:'元'}}</span>
           </p>
           <p>
             <span class="info-item-label">是否有房:</span>
@@ -153,15 +153,15 @@
 
           <p>
             <span class="info-item-label">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄:</span>
-            <span class="info-item-content">{{user?.criterionAge|age}}</span>
+            <span class="info-item-content">{{user?.criterionAge|nullPlaceholder:'岁'}}</span>
           </p>
           <p>
             <span class="info-item-label">身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高:</span>
-            <span class="info-item-content">{{user?.criterionHeight|height}}</span>
+            <span class="info-item-content">{{user?.criterionHeight|nullPlaceholder:'厘米'}}</span>
           </p>
           <p>
             <span class="info-item-label">体&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重:</span>
-            <span class="info-item-content">{{user?.criterionWeight|weight}}</span>
+            <span class="info-item-content">{{user?.criterionWeight|nullPlaceholder:'斤'}}</span>
           </p>
           <p>
             <span class="info-item-label">居&nbsp;住&nbsp;地:</span>
@@ -179,7 +179,7 @@
           </p>
           <p>
             <span class="info-item-label">月&nbsp;&nbsp;收&nbsp;入:</span>
-            <span class="info-item-content">{{user?.criterionIncome|income}}</span>
+            <span class="info-item-content">{{user?.criterionIncome|nullPlaceholder:'元'}}</span>
           </p>
           <p>
             <span class="info-item-label">是否有房:</span>

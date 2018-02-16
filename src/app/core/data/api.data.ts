@@ -1,3 +1,20 @@
+/*用户搜索api*/
+const searchPrefix = "/user/search/";
+export class SearchApi{
+
+  /**
+   * 用户择偶条件信息api地址
+   * @type {string}
+   */
+  userCriterionInfoPath = searchPrefix+"criterion";
+
+  /**
+   * 搜索用户信息api地址
+   * @type {string}
+   */
+  searchedUserInfoPath = searchPrefix;
+}
+
 /*个人资料api*/
 const infoPrefix = "/user/info/";
 export class InfoApi{

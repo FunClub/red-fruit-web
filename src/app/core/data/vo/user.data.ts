@@ -1,4 +1,76 @@
 /**
+ * 搜索出来的用户信息
+ */
+export  class SearchedUserInfo{
+  id:string;
+  /**
+   * 昵称
+   */
+  nickname:string;
+  /**
+   * 头像
+   */
+  profile:string;
+
+  /**
+   * 身高
+   */
+  height:number;
+
+  /**
+   * 体重
+   */
+  weight:number;
+
+  /**
+   * 年龄
+   */
+  age:number;
+  /**
+   * 居住地父级区域
+   */
+  parentArea:string;
+  /**
+   * 教育程度
+   */
+  education:string;
+
+  /**
+   * 月收入
+   */
+  income:string;
+
+  /**
+   * 年龄范围
+   */
+  criterionAge:string;
+
+  /**
+   * 身高范围
+   */
+  criterionHeight:string;
+
+  /**
+   * 意向对方城市，值为-1则为任意城市
+   */
+  criterionParentArea:string;
+
+  /**
+   * 收入范围
+   */
+  criterionIncome:string;
+
+  /**
+   * 推荐理由
+   */
+  recommendedReason:string;
+
+  /**
+   * 推荐度
+   */
+  recommendedPercent:string;
+}
+/**
  * 用户的全部信息
  */
 export class AllUserInfo{
@@ -13,11 +85,27 @@ export class AllUserInfo{
    */
   userInfo:UserInfo;
 }
-
+/**
+ * 用户的择偶信息
+ */
+export class UserCriterionInfo{
+  /**
+   * 对方性别
+   */
+  halfGender:string;
+  criterionAge:string;
+  criterionHeight:string;
+  criterionWeight:string;
+  criterionParentArea:string;
+  criterionEducation:string;
+  criterionProfession:string;
+  criterionIncome:string;
+  criterionHouseAvailable:string;
+}
 /**
  * 用户信息
  */
-export class User {
+export class User extends UserCriterionInfo{
   id: string;
   mobile: string;
   password: string;
@@ -47,16 +135,6 @@ export class User {
   movie:string;
   animal:string;
   game:string;
-
-
-  criterionAge:string;
-  criterionHeight:string;
-  criterionWeight:string;
-  criterionParentArea:string;
-  criterionEducation:string;
-  criterionProfession:string;
-  criterionIncome:string;
-  criterionHouseAvailable:string;
 }
 
 export class UserInfo extends User{

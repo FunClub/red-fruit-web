@@ -20,9 +20,10 @@ export class InfoService {
    * @return
    */
   public nicknameCanUpdate(nickname:string){
-    let params = new HttpParams();
-    params.append("nickname",nickname);
-    return this.http.get<ResponseData<boolean>>(this.api.nicknameCanUpdatePath,{params:params}).map(res=>{
+
+    let user = new User();
+    user.nickname = nickname;
+    return this.http.put<ResponseData<boolean>>(this.api.nicknameCanUpdatePath,user).map(res=>{
       return res.data?null:{error:true}
     });
   }

@@ -7,7 +7,7 @@ export class NullPlaceholderPipe implements PipeTransform {
 
   transform(value: any, suffixes?: any): any {
 
-    return value=='-1'?"未填写":value;
+    return value=='-1'?"未填写":value+suffixes;
   }
 
 }

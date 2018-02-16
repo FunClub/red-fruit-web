@@ -14,19 +14,21 @@ import { NullPlaceholderPipe } from './pipe/null-placeholder.pipe';
 import { ParentAreaPipe } from './pipe/parent-area.pipe';
 import { EducationPipe } from './pipe/education.pipe';
 import {IncomePipe} from './pipe/income.pipe';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProfessionPipe } from './pipe/profession.pipe';
 import { HouseAvailablePipe } from './pipe/house-available.pipe';
 import { AgePipe } from './pipe/age.pipe';
 import { HeightPipe } from './pipe/height.pipe';
 import { WeightPipe } from './pipe/weight.pipe';
-import { AreaPipe } from './pipe/area.pipe';
+import {RecommendedPercentPipe} from './pipe/recommended-percent.pipe';
+import {BusyModule} from 'angular2-busy';
 
 @NgModule({
   imports: [
     CommonModule,
     MatTooltipModule,
-    MatButtonModule
+    MatButtonModule,
+    BusyModule
   ],
   declarations: [
     FooterComponent,
@@ -46,7 +48,7 @@ import { AreaPipe } from './pipe/area.pipe';
     AgePipe,
     HeightPipe,
     WeightPipe,
-    AreaPipe
+    RecommendedPercentPipe
   ],
   entryComponents:[
     UploadImgComponent
@@ -57,11 +59,13 @@ import { AreaPipe } from './pipe/area.pipe';
      */
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     MatInputModule,
     MatButtonModule,
     RouterModule,
     MatDialogModule,
-
+    MatTooltipModule,
+    BusyModule,
     /**
      * 导出组件
      */
@@ -70,6 +74,7 @@ import { AreaPipe } from './pipe/area.pipe';
     LivingHabitComponent,
     UploadImgComponent,
     DialogTitleComponent,
+
 
     /**
      * 导出管道
@@ -84,7 +89,8 @@ import { AreaPipe } from './pipe/area.pipe';
     HouseAvailablePipe,
     AgePipe,
     HeightPipe,
-    WeightPipe
+    WeightPipe,
+    RecommendedPercentPipe
   ]
 })
 export class SharedModule { }
