@@ -1,31 +1,31 @@
+<i class="top-border-triangle"></i>
 <main>
-  <app-dialog-title icon="face" title="更改图片" [matDialogRef]="dialogRef"></app-dialog-title>
+  <div id="upload-title">
+    本地上传
+    <button mat-icon-button id="close" (click)="closeSelf()">
+      <i class="material-icons" matTooltip="删除所有图片">close</i>
+    </button>
+  </div>
+  <p id="upload-tip">最多选择8张图片上传
+    <button color="primary" mat-raised-button id="upload-mood-img" (click)="save()">
+      确认上传
+    </button>
+  </p>
+<!--  <div [ngBusy]="{busy:[uploadSubscribe,deleteSubscribe],message:'处理中,请稍候...'}"></div>
+  <div id="upload-img-div" dnd-sortable-container [sortableData]="preUploadImgs">
 
-  <div class="app-dialog-content">
-    <div id="upload-top">
-      <div id="upload-div">
-        <img-cropper matTooltip="拖动剪切框，选取图片" #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
-      </div>
-      <div id="show-div">
-        <p>小图片预览</p>
-        <img id="circle-img" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
-        <img id="square-img" [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
-        <img id="big-img" [src]="data.image" width="90" height="90">
+    <div class="mood-img-wrapper" dnd-sortable [sortableIndex]="i"  *ngFor="let imgSrc of preUploadImgs;let i = index">
+      <img class="pre-send-img" >
+      <div class="img-operation-wrapper">
+          <i class="material-icons delete-img-i" matTooltip="删除" (click)="deleteMoodImg(i)">delete</i>
       </div>
     </div>
 
-    <button mat-raised-button (click)="fileInput.click()" class="app-sm-btn" color="primary" >
-      <i class="material-icons">file_upload</i>重新上传
-    </button>
+    <a class="upload" *ngIf="preUploadImgs.length<8">
+      <i class="material-icons">add</i>
+      <input title=" " matTooltip="上传图片" accept="image/gif,image/jpeg,image/jpg,image/png" multiple   type="file"  >
+    </a>
 
-    <input class="app-hidden" #fileInput   type="file" (change)="fileChangeListener($event)">
-  </div>
-  <div class="app-dialog-bottom">
-    <button mat-raised-button class="app-sm-btn app-btn-color" color="primary" (click)="doUpdate()"><i class="material-icons"></i>保存</button>
-    <button mat-raised-button class="app-sm-btn"  (click)="closeDialog()"><i class="material-icons"></i>取消</button>
-  </div>
-
+  </div>-->
 </main>
-
-
 

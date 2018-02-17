@@ -22,8 +22,8 @@ div阴影
  */
 .app-box{
   box-shadow: 0 0 2px rgb(204,204,204);
-  background: white;
-  border-radius: 2px;
+  background: white ;
+  border-radius: 2px ;
 }
 
 /*宽度100%*/
@@ -74,4 +74,37 @@ div阴影
 }
 .toasts-message{
   font-size: 13px;
+}
+/*上三角形边框*/
+.top-border-triangle:before{
+  box-sizing: content-box;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -16px;;
+  left: 5px;
+  padding:0;
+  border-bottom:8px solid #FFFFFF;
+  border-top:8px solid transparent;
+  border-left:8px solid transparent;
+  border-right:8px solid transparent;
+  display: block;
+  content:'';
+  z-index: 12;
+}
+.top-border-triangle:after{
+  box-sizing: content-box;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -18px;;
+  left: 4px;
+  padding:0;
+  border-bottom:9px solid #cccccc;
+  border-top:9px solid transparent;
+  border-left:9px solid transparent;
+  border-right:9px solid transparent;
+  display: block;
+  content:'';
+  z-index:10;
 }

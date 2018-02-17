@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
-import {MatButtonModule, MatDialogModule, MatInputModule, MatTooltipModule} from '@angular/material';
+import {MatButtonModule, MatDialogModule, MatInputModule, MatMenuModule, MatTooltipModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import { CharismaComponent } from './charisma/charisma.component';
 import { LivingHabitComponent } from './living-habit/living-habit.component';
-import {UploadImgComponent} from './upload-img/upload-img.component';
-import {ImageCropperComponent} from 'ng2-img-cropper';
+import {CropperImgComponent} from './cropper-img/cropper-img.component';
+import {ImageCropperModule} from 'ng2-img-cropper';
 import { DialogTitleComponent } from './dialog-title/dialog-title.component';
 import { ImgPathPipe } from './pipe/img-path.pipe';
 import { GenderPipe } from './pipe/gender.pipe';
@@ -24,20 +24,29 @@ import {RecommendedPercentPipe} from './pipe/recommended-percent.pipe';
 import {BusyModule} from 'angular2-busy';
 import { ScrollPageDirective } from './scroll-page.directive';
 import { PageLoadingComponent } from './page-loading/page-loading.component';
+import { MoodEditorComponent } from './mood-editor/mood-editor.component';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
+import {FaceComponent} from './face/face.component';
+import {UploadImgComponent} from './upload-img/upload-img.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
     MatTooltipModule,
     MatButtonModule,
-    BusyModule
+    BusyModule,
+    ImageCropperModule,
+    MatMenuModule,
+
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   declarations: [
     FooterComponent,
     CharismaComponent,
     LivingHabitComponent,
-    UploadImgComponent,
-    ImageCropperComponent,
+    CropperImgComponent,
     DialogTitleComponent,
     ImgPathPipe,
     GenderPipe,
@@ -52,10 +61,13 @@ import { PageLoadingComponent } from './page-loading/page-loading.component';
     WeightPipe,
     RecommendedPercentPipe,
     ScrollPageDirective,
-    PageLoadingComponent
+    PageLoadingComponent,
+    MoodEditorComponent,
+    FaceComponent,
+    UploadImgComponent
   ],
   entryComponents:[
-    UploadImgComponent
+    CropperImgComponent
   ],
   exports:[
     /**
@@ -76,10 +88,11 @@ import { PageLoadingComponent } from './page-loading/page-loading.component';
     FooterComponent,
     CharismaComponent,
     LivingHabitComponent,
-    UploadImgComponent,
+    CropperImgComponent,
     DialogTitleComponent,
     PageLoadingComponent,
-
+    MoodEditorComponent,
+    FaceComponent,
     /**
      * 导出管道
      */

@@ -151,6 +151,8 @@
   display: inline-block;
   height: 45px;
   width: 80px;
+  outline: none;
+  cursor: pointer;
 }
 /*主体内容*/
 .content{

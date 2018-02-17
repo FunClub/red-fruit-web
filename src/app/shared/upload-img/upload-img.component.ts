@@ -1,11 +1,5 @@
-import {Component, Inject, Input, OnInit, ViewChild} from '@angular/core';
-import {ToastOptions, ToastsManager} from 'ng2-toastr';
-import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
-import {HomeService} from '../../core/service/home.service';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Img} from '../../core/data/app.data';
-import {CenterService} from '../../core/service/center.service';
-import {ResponseData} from '../../core/data/vo/response.data';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+
 
 
 @Component({
@@ -14,118 +8,96 @@ import {ResponseData} from '../../core/data/vo/response.data';
   styleUrls: ['./upload-img.component.css']
 })
 export class UploadImgComponent implements OnInit {
-
-
-  @ViewChild('cropper', undefined)
-  cropper: ImageCropperComponent;
-  data: any;
-  cropperSettings: CropperSettings;
-
-  /**
-   * 原始图像
-   */
-  originalProfile: string;
-
-  /**
-   * 文件是否被改变
-   */
-  isImgChanged: boolean;
-
-  constructor(@Inject(MAT_DIALOG_DATA) public type: string, private toastsManager: ToastsManager,
-               private homeService: HomeService,private centerService:CenterService,
-              public dialogRef: MatDialogRef<UploadImgComponent>,
-              ) {
-
-
-  };
-
   ngOnInit() {
-    this.data = {image: Img.PREFIX + this.centerService.centerInfo.originalProfile};
-    this.originalProfile = Img.PREFIX + this.centerService.centerInfo.originalProfile;
-
-    this.setUpCropper();
-  }
-
-  /**
-   * 设置Cropper
-   */
-  setUpCropper() {
-    this.cropperSettings = new CropperSettings();
-    this.cropperSettings.width = 1;
-    this.cropperSettings.height = 1;
-    this.cropperSettings.croppedWidth = 150;
-    this.cropperSettings.croppedHeight = 150;
-    this.cropperSettings.canvasWidth = 400;
-    this.cropperSettings.canvasHeight = 350;
-    this.cropperSettings.noFileInput = true;
 
   }
+ /* /!**
+   * 通知父元素关闭本组件
+   * @type {EventEmitter<boolean>}
+   *!/
+  @Output()
+  closeUploadImg=new EventEmitter<boolean>();
+  constructor(private uploadService:ImageUploadService,public api:RedFruitApi,private moodService:MoodService,private bucketFolder:BucketFolder) { }
 
-  /**
-   * 图片选择事件
-   * @param $event
-   */
-  fileChangeListener($event) {
-    this.isImgChanged = true;
-    let image: any = new Image();
-    let file: File = $event.target.files[0];
-    let myReader: FileReader = new FileReader();
-    myReader.onloadend = (loadEvent: any) => {
-      image.src = loadEvent.target.result;
-      this.originalProfile = image.src;
-      this.cropper.setImage(image);
-      this.isImgChanged = true;
-    };
-    myReader.readAsDataURL(file);
+  /!**
+   * 从父组件传来图片地址数据，用于关闭本组件后,再次打开依旧显示图片
+   * @type {Array}
+   *!/
+  @Input()
+  preUploadImgs:string[]=[];
 
-  }
+  /!**
+   * 上传图片的订阅,用于显示操作提示
+   *!/
+  uploadSubscribe;
+
+  /!**
+   * 删除图片的订阅,用于显示操作提示
+   *!/
+  deleteSubscribe;
 
 
-  /**
-   * 讲原始图形显示在画布上
-   */
-  ngAfterViewInit() {
-    let image = new Image();
-    if (this.centerService.centerInfo.originalProfile === 'static/profile.png') {
-      image.src = 'assets/img/profile.png';
-    } else {
-      image.src = this.centerService.centerInfo.originalProfile;
-    }
-    image.onload = () => {
-      this.cropper.setImage(image);
-    };
-    this.cropper.setImage(image);
-  }
-
-  /**
-   * 关闭提示框
-   * @param close
-   */
-  closeDialog() {
-    this.dialogRef.close();
-  }
-
-  /**
-   * 更新头像
-   */
-  doUpdate(close: HTMLButtonElement) {
-    if (this.isImgChanged) {
-      this.centerService.uploadProfile(this.data.image, this.type, this.originalProfile).subscribe(res => {
-        this.uploaded(res);
+  /!**
+   * 关闭本组件
+   * 删除所有待上传图片,并更新心情服务的待上传图片数据
+   *!/
+  closeSelf(){
+    if(this.preUploadImgs.length>0){
+      this.deleteSubscribe=this.uploadService.deleteImg(this.preUploadImgs).subscribe(res=>{
+        if(res){this.preUploadImgs=[]}
+        this.updateMoodServiceImg();
+        this.closeUploadImg.emit(false);
       });
-    } else {
-      this.centerService.uploadProfile(this.data.image, this.type).subscribe(res => {
-        this.uploaded(res);
-      });
-    }
-  }
-
-  uploaded(res: ResponseData<boolean>) {
-    if(res.data){
-      this.toastsManager.success("更新成功");
-      this.dialogRef.close(true);
     }else{
-      this.toastsManager.error("更新失败，请重试");
+      this.closeUploadImg.emit(false);
     }
+
+
   }
+
+  /!**
+   * 上传图片
+   * 最多上传8张,并更新心情服务的待上传图片数据
+   * @param event 文件上传事件
+   *!/
+  upload(event){
+    let formData = new FormData();
+    let files = event.target.files;
+    let count=this.preUploadImgs.length;
+    for(let file of files){
+      if(count==8){break;}
+      formData.append("imgs",file);
+      count++;
+    }
+    this.uploadSubscribe=this.uploadService.uploadImg(formData,this.bucketFolder.MOOD).subscribe(res=>{
+      this.preUploadImgs= this.preUploadImgs.concat(res);
+      this.updateMoodServiceImg();
+    });
+  }
+
+  /!**
+   * 删除指定图片,并更新心情服务的待上传图片数据
+   * @param index
+   *!/
+  deleteMoodImg(index:number){
+    let paths=[this.preUploadImgs[index]];
+    this.deleteSubscribe=this.uploadService.deleteImg(paths).subscribe(res=>{
+      if(res){this.preUploadImgs.splice(index,1);}
+      this.updateMoodServiceImg();
+    });
+  }
+
+  /!**
+   * 更新心情服务的待上传图片数据
+   *!/
+  updateMoodServiceImg(){
+    this.moodService.sharePreUploadImgs= this.preUploadImgs;
+  }
+
+  /!**
+   * 保存按钮，直接关闭本组件
+   *!/
+  save(){
+    this.closeUploadImg.emit(false);
+  }*/
 }

@@ -5,7 +5,7 @@ import {Directive, ElementRef, EventEmitter, Output} from '@angular/core';
 })
 export class ScrollPageDirective {
   @Output()
-  pageAble:EventEmitter<> = new EventEmitter<>();
+  pageAble:EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(private ele:ElementRef) {
     window.onscroll=(ev)=>{
       if(window.innerHeight -ele.nativeElement.getBoundingClientRect().top>-10){

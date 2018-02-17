@@ -8,7 +8,7 @@ import {PageComm} from '../../core/data/dto/page-comm.data';
 })
 export class PageLoadingComponent implements OnInit {
   @Output()
-  pageAble:EventEmitter<> = new EventEmitter<>();
+  pageAble:EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input()
   hasNext:boolean;

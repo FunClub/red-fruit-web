@@ -44,7 +44,7 @@ export class UpdateHabitComponent implements OnInit {
       }
     })
   }
-  close(res){
+  close(res?){
     this.dialogRef.close(res);
   }
   /**

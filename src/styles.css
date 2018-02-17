@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/css/app.css";
+@import "assets/css/custom-editor.css";
 @import "assets/css/custom-material.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css";
 @import "../node_modules/angular2-busy/build/style/busy.css";
+@import "../node_modules/froala-editor/css/froala_editor.pkgd.min.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../node_modules/froala-editor/css/froala_style.min.css";

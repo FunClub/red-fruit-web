@@ -10,6 +10,7 @@ import { UpdateIntroductionComponent } from './info/update-introduction/update-i
 import { UpdateBaseInfoComponent } from './info/update-base-info/update-base-info.component';
 import { UpdateHabitComponent } from './info/update-habit/update-habit.component';
 import { UpdateCriterionComponent } from './info/update-criterion/update-criterion.component';
+import { MoodsComponent } from './moods/moods.component';
 @NgModule({
   imports: [
     SharedModule,
@@ -21,7 +22,8 @@ import { UpdateCriterionComponent } from './info/update-criterion/update-criteri
     CenterComponent, InfoComponent, MemorialDayComponent,
     UpdateIntroductionComponent, UpdateBaseInfoComponent,
     UpdateHabitComponent,
-    UpdateCriterionComponent
+    UpdateCriterionComponent,
+    MoodsComponent
   ],
   entryComponents:[
     UpdateIntroductionComponent,

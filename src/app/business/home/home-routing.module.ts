@@ -10,6 +10,7 @@ import {MemorialDayComponent} from '../center/memorial-day/memorial-day.componen
 import {InfoComponent} from '../center/info/info.component';
 import {SearchComponent} from '../luck/search/search.component';
 import {SummaryComponent} from './summary/summary.component';
+import {MoodsComponent} from '../center/moods/moods.component';
 /**
  * 主页路由模块
  */
@@ -29,6 +30,9 @@ const routes:Route[]=[
           },
           {
             path:'info', component:InfoComponent,
+          },
+          {
+            path:'moods', component:MoodsComponent,
           },
           {
             path:'',

@@ -1,0 +1,19 @@
+ <i class="top-border-triangle"></i>
+  <main>
+    <div id="face-title">
+      <span> 添加表情</span>
+      <button mat-icon-button id="close"  (click)="faceClosedEvent()">
+        <i class="material-icons">close</i>
+      </button>
+    </div>
+    <table  id="face-table" cellspacing="0"  >
+      <tr *ngFor="let face of faces;">
+        <td *ngFor="let face1 of face" align="center" (click)="popFacePath(face1.path)">
+          <img   [src]="face1.path" [matTooltip]="face1.tip">
+        </td>
+      </tr>
+    </table>
+  </main>
+
+
+

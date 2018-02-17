@@ -1,0 +1,61 @@
+<div class="mood-editor app-box">
+  <div class="froala-editor no-editor-shadow no-toolbar"[(froalaModel)]="content" [froalaEditor]="rfOptions"></div>
+  <div class="editor-operation">
+
+    <!--添加表情-->
+    <div class="each-operation">
+      <button mat-icon-button (click)="toggleFace()">
+        <i class="material-icons operation-face-ico" >sentiment_very_satisfied</i>
+      </button>
+      <span class="operation-text">表情</span>
+      <div class="face-wrapper" *ngIf="faceOpened">
+        <app-face  (faceOpened)="toggleFace()" (faceSelected)="appendFace($event)"></app-face>
+      </div>
+    </div>
+
+    <!--插入图片-->
+    <div class="each-operation">
+      <button mat-icon-button (click)="toggleUploadImg()">
+        <i class="material-icons operation-img-ico" >wallpaper</i>
+      </button>
+      <span class="operation-text" >图片</span>
+       <div id="all-insert-img-wrapper" *ngIf="uploadImgOpened">
+         <app-upload-img></app-upload-img>
+       </div>
+    </div>
+
+    <!--插入视频-->
+    <div class="each-operation">
+      <button mat-icon-button>
+        <i  class="material-icons operation-video-ico" >videocam</i>
+      </button>
+      <span class="operation-text" id="insert-img-text">视频</span>
+      <!-- <div id="all-insert-img-wrapper" *ngIf="uploadImgOpened" [@flyXInOutFromTop]>
+         <app-upload-mood-img [preUploadImgs]="moodService.sharePreUploadImgs" (closeUploadImg)="closeUploadImg()"></app-upload-mood-img>
+       </div>-->
+    </div>
+
+    <!--设置权限-->
+    <div class="each-operation"  >
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <i class="material-icons" id="operation-jurisdiction-ico">remove_red_eye</i>
+        <span class="operation-text" id="jurisdiction-text">123</span>
+      </button>
+      <mat-menu #menu="matMenu" class="custom-md-menu">
+        <button mat-menu-item>
+          <i class="material-icons" id="public-view-ico">public</i>
+          <span >公开到分享圈</span>
+        </button>
+        <button mat-menu-item  >
+          <i class="material-icons" id="lock-view-ico">lock_outline</i>
+          <span>仅情侣可见</span>
+        </button>
+      </mat-menu>
+    </div>
+    <div class="each-operation" id="send-mood-div">
+      <button mat-raised-button class="app-sm-btn" color="primary">发表</button>
+    </div>
+  </div>
+</div>
+
+

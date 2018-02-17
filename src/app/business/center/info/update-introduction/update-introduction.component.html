@@ -3,7 +3,7 @@
   <div class="app-dialog-content">
     <form [formGroup]="formGroup">
       <mat-form-field>
-        <textarea formControlName="introduction" #input matInput rows="13" placeholder="请输入个人简介">{{data}}</textarea>
+        <textarea formControlName="introduction" #input matInput rows="13" placeholder="请输入个人简介"></textarea>
 
         <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
       </mat-form-field>

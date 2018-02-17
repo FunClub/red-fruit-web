@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-import {UploadImgComponent} from '../upload-img/upload-img.component';
+import {UploadImgComponent} from '../cropper-img/cropper-img.component';
 
 @Component({
   selector: 'app-dialog-title',

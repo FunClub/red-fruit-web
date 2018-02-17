@@ -101,7 +101,7 @@
   </div>
   <div class="user-list">
     <div [ngBusy]="{busy:busy,message:'数据处理中，请稍后...'}"></div>
-    <div class="user-wrapper app-box" *ngFor="let user of users; trackBy: user?.id">
+    <div class="user-wrapper app-box" *ngFor="let user of users;">
       <div class="profile-wrapper" routerLink="{{'/home/center/'+user.id}}">
         <img [src]="user.profile|imgPath" class="profile"/>
       </div>

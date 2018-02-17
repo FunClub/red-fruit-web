@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {CenterService} from '../../../core/service/center.service';
 import {CenterInfo} from '../../../core/data/vo/user.data';
 import {MatDialog} from '@angular/material';
-import {UploadImgComponent} from '../../../shared/upload-img/upload-img.component';
+import {CropperImgComponent} from '../../../shared/cropper-img/cropper-img.component';
 import {HomeService} from '../../../core/service/home.service';
 import {SharedService} from '../../../core/service/shared.service';
 
@@ -39,7 +39,7 @@ export class CenterComponent implements OnInit {
    * 更换头像和壁纸
    */
   openUploadProfileDialog(type:string){
-    this.dialog.open(UploadImgComponent,{data:type}).afterClosed().subscribe(result => {
+    this.dialog.open(CropperImgComponent,{data:type}).afterClosed().subscribe(result => {
       //更新标题和个人中心
       if(result){
         this.homeService.getTitleUserInfo().subscribe();
