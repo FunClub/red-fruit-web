@@ -13,7 +13,7 @@ export class CenterService {
    */
   centerInfo:CenterInfo;
   constructor(private centerApi:CenterApi,private http:HttpClient) {
-    this.centerInfo = new CenterInfo();
+
   }
 
   /**
@@ -47,8 +47,10 @@ export class CenterService {
    * @returns {Observable<ResponseData<CenterInfo>>}
    */
   getCenterInfo(centerUserId:string):Observable<ResponseData<CenterInfo>>{
+
     return this.http.get<ResponseData<CenterInfo>>(this.centerApi.getCenterPath(centerUserId)).map(res=>{
       this.centerInfo = res.data;
+
       return res;
     });
   }

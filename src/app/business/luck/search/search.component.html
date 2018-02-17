@@ -13,7 +13,7 @@
       <form [formGroup]="searchForm">
         <div class="condition-item-wrapper">
           <mat-form-field>
-            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionParentArea"  formControlName="criterionParentArea" placeholder="父级区域">
+            <mat-select (change)="restSearch()" [(ngModel)]="userCriterion.criterionParentArea"  formControlName="criterionParentArea" placeholder="父级区域">
               <mat-option *ngFor="let area of parentAreas" [value]="area.id+'-'+area.short_name">
                 {{ area.name }}
               </mat-option>
@@ -23,7 +23,7 @@
 
         <div class="condition-item-wrapper">
           <mat-form-field>
-            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionAge"  formControlName="criterionAge" placeholder="年龄范围">
+            <mat-select (change)="restSearch()" [(ngModel)]="userCriterion.criterionAge"  formControlName="criterionAge" placeholder="年龄范围">
               <mat-option *ngFor="let age of ageRange" [value]="age.value">
                 {{age.label}}
               </mat-option>
@@ -32,7 +32,7 @@
         </div>
         <div class="condition-item-wrapper">
           <mat-form-field>
-            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionHeight" formControlName="criterionHeight" placeholder="身高范围">
+            <mat-select (change)="restSearch()" [(ngModel)]="userCriterion.criterionHeight" formControlName="criterionHeight" placeholder="身高范围">
               <mat-option *ngFor="let height of heightRange" [value]="height.value">
                 {{height.label}}
               </mat-option>
@@ -42,7 +42,7 @@
 
         <div class="condition-item-wrapper">
           <mat-form-field>
-            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionIncome" formControlName="criterionIncome" placeholder="收入范围">
+            <mat-select (change)="restSearch()" [(ngModel)]="userCriterion.criterionIncome" formControlName="criterionIncome" placeholder="收入范围">
               <mat-option *ngFor="let income of incomeRange" [value]="income.value">
                 {{income.label}}
               </mat-option>
@@ -51,7 +51,7 @@
         </div>
         <div class="condition-item-wrapper">
           <mat-form-field>
-            <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionEducation" formControlName="criterionEducation" placeholder="学历要求">
+            <mat-select (change)="restSearch()" [(ngModel)]="userCriterion.criterionEducation" formControlName="criterionEducation" placeholder="学历要求">
               <mat-option *ngFor="let education of educationRange" [value]="education.value">
                 {{education.label}}
               </mat-option>
@@ -67,7 +67,7 @@
         <div *ngIf="showMoreCondition" class="more-condition-wrapper">
           <div class="condition-item-wrapper">
             <mat-form-field>
-              <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionHouseAvailable" formControlName="criterionHouseAvailable" placeholder="是否有房">
+              <mat-select (change)="restSearch()" [(ngModel)]="userCriterion.criterionHouseAvailable" formControlName="criterionHouseAvailable" placeholder="是否有房">
                 <mat-option value="-1">不填写</mat-option>
                 <mat-option value="0">租房</mat-option>
                 <mat-option value="1">有房</mat-option>
@@ -76,7 +76,7 @@
           </div>
           <div class="condition-item-wrapper">
             <mat-form-field>
-              <mat-select (change)="search()"  [(ngModel)]="userCriterion.criterionProfession" formControlName="criterionProfession" placeholder="职业">
+              <mat-select (change)="restSearch()"  [(ngModel)]="userCriterion.criterionProfession" formControlName="criterionProfession" placeholder="职业">
                 <mat-option *ngFor="let profession of professions" [value]="profession.value">
                   {{profession.label}}
                 </mat-option>
@@ -85,7 +85,7 @@
           </div>
           <div class="condition-item-wrapper">
             <mat-form-field>
-              <mat-select (change)="search()" [(ngModel)]="userCriterion.criterionWeight" formControlName="criterionWeight" placeholder="体重">
+              <mat-select (change)="restSearch()" [(ngModel)]="userCriterion.criterionWeight" formControlName="criterionWeight" placeholder="体重">
                 <mat-option *ngFor="let weight of weightRange" [value]="weight.value">
                   {{weight.label}}
                 </mat-option>
@@ -101,13 +101,13 @@
   </div>
   <div class="user-list">
     <div [ngBusy]="{busy:busy,message:'数据处理中，请稍后...'}"></div>
-    <div class="user-wrapper app-box" *ngFor="let user of users;">
-      <div class="profile-wrapper">
+    <div class="user-wrapper app-box" *ngFor="let user of users; trackBy: user?.id">
+      <div class="profile-wrapper" routerLink="{{'/home/center/'+user.id}}">
         <img [src]="user.profile|imgPath" class="profile"/>
       </div>
       <div class="all-info-wrapper">
         <div class="info-wrapper">
-          <p><span class="nickname">{{user.nickname}}</span>
+          <p><span class="nickname" routerLink="{{'/home/center/'+user.id}}">{{user.nickname}}</span>
             <span class="percent">
             <label class="percent-label">推荐度:</label>
             <span class="percent-value-first">{{user.recommendedPercent|recommendedPercent:0}}</span>
@@ -143,7 +143,5 @@
     </div>
 
   </div>
-  <div class="app-box" #ele (click)="show(ele)">
-    加载中...
-  </div>
+  <app-page-loading [hasNext]="pagedInfo?.hasNext" (pageAble)="appendUser()"></app-page-loading>
 </div>

@@ -117,8 +117,9 @@
   position: fixed;
   z-index: 0;
   right: 20px;
-  bottom: 50%;
+  bottom: 200px;
   vertical-align: center;
+  cursor: pointer;
 }
 
 .chant-message-wrapper > i{

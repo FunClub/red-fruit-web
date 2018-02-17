@@ -6,13 +6,13 @@
       <div class="info-title-wrapper">
         <i class="material-icons">face</i>
         <span class="title-label">个人简介</span>
-        <div class="info-update-wrapper" (click)="openUpdateIntroductionDialog()">
+        <div class="info-update-wrapper" *ngIf="centerService.centerInfo?.mine" (click)="openUpdateIntroductionDialog()">
           <i class="material-icons">edit</i>
           <span>修改</span>
         </div>
       </div>
       <div class="info-content-wrapper">
-        {{user?.introduction|nullPlaceholder}}
+        {{user?.introduction}}
       </div>
     </div>
 
@@ -21,7 +21,7 @@
       <div class="info-title-wrapper">
         <i class="material-icons">assignment_ind</i>
         <span class="title-label">基本信息</span>
-        <div class="info-update-wrapper" (click)="openUpdateBaseInfoDialog()">
+        <div class="info-update-wrapper" *ngIf="centerService.centerInfo?.mine" (click)="openUpdateBaseInfoDialog()">
           <i class="material-icons">edit</i>
           <span>修改</span>
         </div>
@@ -91,7 +91,7 @@
       <div class="info-title-wrapper">
         <i class="material-icons">shopping_basket</i>
         <span class="title-label">生活习惯</span>
-        <div class="info-update-wrapper" (click)="openUpdateHabitDialog()">
+        <div class="info-update-wrapper" *ngIf="centerService.centerInfo?.mine" (click)="openUpdateHabitDialog()">
           <i class="material-icons">edit</i>
           <span>修改</span>
         </div>
@@ -142,7 +142,7 @@
       <div class="info-title-wrapper">
         <i class="material-icons">wc</i>
         <span class="title-label">择偶标准</span>
-        <div class="info-update-wrapper" (click)="openUpdateCriterionDialog()">
+        <div class="info-update-wrapper" *ngIf="centerService.centerInfo?.mine" (click)="openUpdateCriterionDialog()">
           <i class="material-icons">edit</i>
           <span>修改</span>
         </div>

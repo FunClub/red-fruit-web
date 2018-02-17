@@ -52,5 +52,11 @@ export class SharedService{
     return parentAreaString.split('-',1)[0];
   }
 
+  /**
+   * 返回顶端
+   */
+  toTop(){
+    window.scrollTo(0,0);
+  }
 
 }

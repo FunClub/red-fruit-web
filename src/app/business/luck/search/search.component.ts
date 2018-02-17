@@ -7,6 +7,7 @@ import {AgeRange, EducationRange, HeightRange, IncomeRange, Professions, WeightR
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {PageComm} from '../../../core/data/dto/page-comm.data';
 import {PagedInfo} from '../../../core/data/vo/paged-info.data';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-search',
@@ -59,9 +60,27 @@ export class SearchComponent implements OnInit {
   /**
    * 用户数组
    */
-  users:SearchedUserInfo[];
+  users:SearchedUserInfo[]=[];
 
-  busy:any;
+  /**
+   *  初始订阅
+   */
+  initBusy:Subscription;
+
+  /**
+   * 分页订阅
+   */
+  pageBusy:Subscription;
+
+  /**
+   * 分页命令
+   */
+  pageComm:PageComm;
+
+  /**
+   * 搜索是否被锁定
+   */
+  searchLocked:boolean;
   constructor(private searchService:SearchService,private sharedService:SharedService,
               private formBuilder:FormBuilder
               ) {
@@ -78,19 +97,44 @@ export class SearchComponent implements OnInit {
     this.initForm();
     this.searchService.getUserCriterionInfo().subscribe(res=>{
       this.userCriterion = res.data;
+      this.pageComm = new PageComm();
+      this.pageComm.condition = this.userCriterion;
       if(this.userCriterion.criterionParentArea==="-1"){
         this.userCriterion.criterionParentArea="-1-"
       }
       this.getParentArea();
-      this.search();
+      this.search(true);
     });
   }
-  show(div:HTMLDivElement){
 
+  /**
+   * 追加显示用户
+   */
+  appendUser(){
+    if(this.pagedInfo.hasNext&&!this.searchLocked){
+      this.pageComm.page.current++;
+      this.search();
+    }
 
-    console.log(window.innerHeight -div.getBoundingClientRect().top)
   }
-  search(){
+
+  /**
+   * 重置搜索
+   */
+  restSearch(){
+    this.pageComm.page.current=1;
+    this.users=[];
+    this.search(true);
+  }
+
+  /**
+   * 用户搜索
+   * @param isInitSearch 是否是初始化搜索
+   */
+  search(isInitSearch?:boolean){
+    this.searchLocked = true;
+
+    //初始化搜索条件
     let user = new UserCriterionInfo();
     Object.assign(user,this.userCriterion);
     if(!this.showMoreCondition){
@@ -98,13 +142,23 @@ export class SearchComponent implements OnInit {
       user.criterionProfession = "-1";
       user.criterionWeight = "-1";
     }
-    let pageComm = new PageComm();
-    pageComm.condition = user;
-    this.busy=this.searchService.getSearchedUserInfo(pageComm).subscribe(res=>{
-       this.pagedInfo = res.data;
-       this.users = this.pagedInfo.data;
-    });
+    this.pageComm.condition = user;
+
+    if(isInitSearch){
+      this. initBusy=this.searchService.getSearchedUserInfo(this.pageComm).subscribe(res=>{
+        this.pagedInfo = res.data;
+        this.users = this.users.concat(this.pagedInfo.data);
+        this.searchLocked = false;
+      });
+    }else {
+      this.pageBusy=this.searchService.getSearchedUserInfo(this.pageComm).subscribe(res=>{
+        this.pagedInfo = res.data;
+        this.users = this.users.concat(this.pagedInfo.data);
+        this.searchLocked = false;
+      });
+    }
   }
+
   initForm(){
       this.searchForm = this.formBuilder.group({
         "criterionParentArea":[this.userCriterion.criterionParentArea,[],[]],
@@ -125,7 +179,7 @@ export class SearchComponent implements OnInit {
    */
   toggleShowMoreCondition(){
     this.showMoreCondition = !this.showMoreCondition;
-    this.search();
+    this.restSearch();
   }
   /**
    * 获取父级区域

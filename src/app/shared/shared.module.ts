@@ -22,6 +22,8 @@ import { HeightPipe } from './pipe/height.pipe';
 import { WeightPipe } from './pipe/weight.pipe';
 import {RecommendedPercentPipe} from './pipe/recommended-percent.pipe';
 import {BusyModule} from 'angular2-busy';
+import { ScrollPageDirective } from './scroll-page.directive';
+import { PageLoadingComponent } from './page-loading/page-loading.component';
 
 @NgModule({
   imports: [
@@ -48,7 +50,9 @@ import {BusyModule} from 'angular2-busy';
     AgePipe,
     HeightPipe,
     WeightPipe,
-    RecommendedPercentPipe
+    RecommendedPercentPipe,
+    ScrollPageDirective,
+    PageLoadingComponent
   ],
   entryComponents:[
     UploadImgComponent
@@ -74,7 +78,7 @@ import {BusyModule} from 'angular2-busy';
     LivingHabitComponent,
     UploadImgComponent,
     DialogTitleComponent,
-
+    PageLoadingComponent,
 
     /**
      * 导出管道

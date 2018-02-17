@@ -40,10 +40,10 @@
 <div class="center">
 
   <router-outlet></router-outlet>
-  <div class="chant-message-wrapper app-box" (click)="toggleChat()">
-      <i class="material-icons">forum</i>
+  <div class="chant-message-wrapper app-box">
+      <i class="material-icons"  (click)="toggleChat()">forum</i>
       <span class="unread-label">24条消息未读</span>
-      <div class="to-top-wrapper">
+      <div class="to-top-wrapper" (click)="sharedService.toTop()">
         <i class="material-icons">arrow_upward</i>
       </div>
   </div>

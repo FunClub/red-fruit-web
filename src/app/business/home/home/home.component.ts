@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, keyframes, style, transition, trigger} from '@angular/animations';
 import {HomeService} from '../../../core/service/home.service';
+import {SharedService} from '../../../core/service/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
   showChat :boolean =false;
 
   centerLink:string;
-  constructor(public homeService:HomeService) {
+  constructor(public homeService:HomeService,public sharedService:SharedService) {
 
   }
 

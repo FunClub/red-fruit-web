@@ -5,6 +5,7 @@ import {CenterInfo} from '../../../core/data/vo/user.data';
 import {MatDialog} from '@angular/material';
 import {UploadImgComponent} from '../../../shared/upload-img/upload-img.component';
 import {HomeService} from '../../../core/service/home.service';
+import {SharedService} from '../../../core/service/shared.service';
 
 @Component({
   selector: 'app-center',
@@ -15,9 +16,10 @@ export class CenterComponent implements OnInit {
   showMyProfileOperation:boolean;
   centerInfo:CenterInfo;
   constructor(private route:ActivatedRoute,public centerService:CenterService,
-              private dialog:MatDialog,private homeService:HomeService
+              private dialog:MatDialog,private homeService:HomeService,private shareService:SharedService
               ) {
     this.centerInfo = new CenterInfo();
+    shareService.toTop();
   }
   ngOnInit() {
     this.initCenter();
@@ -29,7 +31,6 @@ export class CenterComponent implements OnInit {
   initCenter(){
     this.centerService.getCenterInfo(this.route.snapshot.params['id']).subscribe(res=>{
       this.centerInfo = res.data;
-      this.centerService.centerInfo = this.centerInfo;
     })
   }
 

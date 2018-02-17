@@ -9,6 +9,7 @@ import {BlockScrollStrategy} from '@angular/cdk/overlay/typings/scroll/block-scr
 import {UpdateBaseInfoComponent} from './update-base-info/update-base-info.component';
 import {UpdateHabitComponent} from './update-habit/update-habit.component';
 import {UpdateCriterionComponent} from './update-criterion/update-criterion.component';
+import {CenterService} from '../../../core/service/center.service';
 
 @Component({
   selector: 'app-info',
@@ -44,9 +45,10 @@ export class InfoComponent implements OnInit {
 
 
   constructor(private route:ActivatedRoute,private infoService:InfoService,
-              private dialog:MatDialog
+              private dialog:MatDialog,public centerService:CenterService
               ) {
     this.centerUserId = route.snapshot.parent.params['id'];
+
   }
 
   ngOnInit() {

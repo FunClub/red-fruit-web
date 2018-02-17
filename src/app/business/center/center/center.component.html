@@ -8,8 +8,8 @@
 
     <!--操作-->
     <div class="operation-wrapper">
-      <div class="item-operation"><i class="material-icons">menu</i>更多</div>
-      <div class="item-operation" (click)="openUploadProfileDialog('banner')">编辑封面</div>
+      <div class="item-operation" *ngIf="!centerInfo.mine"><i class="material-icons">menu</i>更多</div>
+      <div class="item-operation" *ngIf="centerInfo.mine" (click)="openUploadProfileDialog('banner')">编辑封面</div>
       <div class="item-operation"><i class="material-icons">thumb_up</i>赞</div>
     </div>
 
