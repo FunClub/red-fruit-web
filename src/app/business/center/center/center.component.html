@@ -17,9 +17,11 @@
     <div class="info-wrapper">
 
       <div class="all-profile-wrapper my-profile">
-        <div class="profile-wrapper app-box" (mouseenter)="toggleMyProfileOperation()" (mouseleave)="toggleMyProfileOperation()">
+        <div class="profile-wrapper app-box" (mouseenter)="toggleMyProfileOperation()"
+             (mouseleave)="toggleMyProfileOperation()">
           <img [src]="centerService.centerInfo?.profile|imgPath" class="profile"/>
-          <div class="profile-operation-wrapper" (click)="openUploadProfileDialog('profile')" *ngIf="showMyProfileOperation&&centerService.centerInfo?.mine">
+          <div class="profile-operation-wrapper" (click)="openUploadProfileDialog('profile')"
+               *ngIf="showMyProfileOperation&&centerService.centerInfo?.mine">
             <i class="material-icons">edit</i>编辑头像
           </div>
         </div>
@@ -43,22 +45,22 @@
       <span>
         我的动态
       </span>
-        <span routerLinkActive="nav-activated" routerLink="info">
+      <span routerLinkActive="nav-activated" routerLink="info">
         个人资料
       </span>
-        <span>
+      <span>
         纪念日
       </span>
-        <span routerLinkActive="nav-activated" routerLink="moods">
+      <span routerLinkActive="nav-activated" routerLink="moods">
         心情
       </span>
-        <span>
+      <span>
         相册
       </span>
-        <span>
+      <span>
         留言板
       </span>
-        <span>
+      <span>
         我的关注
       </span>
     </div>

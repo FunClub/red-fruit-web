@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {SharedService} from '../../core/service/shared.service';
 
 
 
@@ -8,96 +9,84 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./upload-img.component.css']
 })
 export class UploadImgComponent implements OnInit {
+
+  /**
+   * 通知父元素关闭本组件
+   * @type {EventEmitter<boolean>}
+   */
+  @Output()
+  closeUploadImg=new EventEmitter<boolean>();
+
+  /**
+   * 文件变化通知
+   * @type {EventEmitter<string[]>}
+   */
+  @Output()
+  imgChanged=new EventEmitter<string[]>();
+
+  /**
+   * 从父组件传来图片地址数据，用于关闭本组件后,再次打开依旧显示图片
+   * @type {Array}
+   */
+  @Input()
+  uploadImgs:string[]=[];
+
+  /**
+   * 上传图片的订阅,用于显示操作提示
+   */
+  uploadSubscribe;
+
+  /**
+   * 删除图片的订阅,用于显示操作提示
+   */
+  deleteSubscribe;
+
+  constructor(private sharedService:SharedService) { }
+
   ngOnInit() {
 
   }
- /* /!**
-   * 通知父元素关闭本组件
-   * @type {EventEmitter<boolean>}
-   *!/
-  @Output()
-  closeUploadImg=new EventEmitter<boolean>();
-  constructor(private uploadService:ImageUploadService,public api:RedFruitApi,private moodService:MoodService,private bucketFolder:BucketFolder) { }
-
-  /!**
-   * 从父组件传来图片地址数据，用于关闭本组件后,再次打开依旧显示图片
-   * @type {Array}
-   *!/
-  @Input()
-  preUploadImgs:string[]=[];
-
-  /!**
-   * 上传图片的订阅,用于显示操作提示
-   *!/
-  uploadSubscribe;
-
-  /!**
-   * 删除图片的订阅,用于显示操作提示
-   *!/
-  deleteSubscribe;
 
 
-  /!**
-   * 关闭本组件
-   * 删除所有待上传图片,并更新心情服务的待上传图片数据
-   *!/
-  closeSelf(){
-    if(this.preUploadImgs.length>0){
-      this.deleteSubscribe=this.uploadService.deleteImg(this.preUploadImgs).subscribe(res=>{
-        if(res){this.preUploadImgs=[]}
-        this.updateMoodServiceImg();
-        this.closeUploadImg.emit(false);
-      });
-    }else{
-      this.closeUploadImg.emit(false);
-    }
-
-
-  }
-
-  /!**
+  /**
    * 上传图片
    * 最多上传8张,并更新心情服务的待上传图片数据
    * @param event 文件上传事件
-   *!/
+   */
   upload(event){
     let formData = new FormData();
     let files = event.target.files;
-    let count=this.preUploadImgs.length;
+    let count=this.uploadImgs.length;
     for(let file of files){
       if(count==8){break;}
-      formData.append("imgs",file);
+      formData.append("file",file);
       count++;
     }
-    this.uploadSubscribe=this.uploadService.uploadImg(formData,this.bucketFolder.MOOD).subscribe(res=>{
-      this.preUploadImgs= this.preUploadImgs.concat(res);
-      this.updateMoodServiceImg();
+    this.uploadSubscribe=this.sharedService.upload("mood",formData).subscribe(res=>{
+      this.uploadImgs= this.uploadImgs.concat(res.data);
+      this.imgChanged.emit(this.uploadImgs);
     });
   }
 
-  /!**
+  /**
    * 删除指定图片,并更新心情服务的待上传图片数据
    * @param index
-   *!/
+   */
   deleteMoodImg(index:number){
-    let paths=[this.preUploadImgs[index]];
-    this.deleteSubscribe=this.uploadService.deleteImg(paths).subscribe(res=>{
-      if(res){this.preUploadImgs.splice(index,1);}
-      this.updateMoodServiceImg();
+    let paths=[this.uploadImgs[index]];
+    this.deleteSubscribe=this.sharedService.delete(paths).subscribe(res=>{
+      if(res){
+        this.uploadImgs.splice(index,1);
+        this.imgChanged.emit(this.uploadImgs);
+      }
     });
   }
 
-  /!**
-   * 更新心情服务的待上传图片数据
-   *!/
-  updateMoodServiceImg(){
-    this.moodService.sharePreUploadImgs= this.preUploadImgs;
-  }
 
-  /!**
-   * 保存按钮，直接关闭本组件
-   *!/
-  save(){
-    this.closeUploadImg.emit(false);
-  }*/
+  /**
+   * 关闭本组件
+   */
+  close(){
+    this.closeUploadImg.emit();
+  }
 }

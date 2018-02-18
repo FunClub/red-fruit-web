@@ -1,3 +1,16 @@
+/**
+ * 心情 api
+ */
+const moodPrefix = "/trend/mood/";
+export class MoodApi{
+
+  /**
+   * 创建心情 api地址
+   * @type {string}
+   */
+  createMoodPath:string = moodPrefix;
+}
+
 /*用户搜索api*/
 const searchPrefix = "/user/search/";
 export class SearchApi{
@@ -119,8 +132,31 @@ export class RegisterApi{
  * 共享api
  */
 const sharedPrefix = "/shared/";
+const weChatPrefix= "/api/wechat/";
 export class SharedApi {
 
+  /**
+   * 获取文章列表Api 地址
+   * @param channelId 频道ID
+   * @param startIndex 文章开始索引
+   * @param amountOfArticle  文章数量
+   */
+  getArticlesPath(channelId:string,startIndex:string,amountOfArticle:string){
+    return weChatPrefix+`article/${channelId}/${startIndex}/${amountOfArticle}`;
+  }
+  /**
+   * 删除文件 Api 地址
+   * @type {string}
+   */
+  deletePath:string = sharedPrefix+"file"
+  /**
+   * 获得上传文件api地址
+   * @param {string} folder
+   * @returns {string}
+   */
+  getUploadPath(folder:string){
+    return sharedPrefix+ `file/${folder}`;
+  }
   titleUserInfoPath:string = sharedPrefix+"titleUser";
   /**
    * 获取父级区域集合api地址

@@ -29,10 +29,11 @@
       <span class="nickname">
         {{homeService.titleUser?.nickname}}
       </span>
-      <button mat-raised-button color="primary" class="send-trend-btn app-radius" >发动态</button>
+      <button mat-raised-button color="primary" class="send-trend-btn app-radius" (click)="openMood()">发动态</button>
     </div>
   </div>
 </div>
+
 <div  [@flyXInOutFromTop] *ngIf="showChat">
   <app-chat></app-chat>
 </div>

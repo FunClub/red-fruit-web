@@ -11,6 +11,7 @@ import {CustomToastOption} from './core/data/app.data';
 import {NgProgressModule} from '@ngx-progressbar/core';
 import {NgProgressHttpModule} from '@ngx-progressbar/http';
 import {CommonModule} from '@angular/common';
+import {DndModule} from 'ng2-dnd';
 
 @NgModule({
   declarations: [

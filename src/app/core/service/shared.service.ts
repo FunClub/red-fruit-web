@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {SharedApi} from '../data/api.data';
 import {Observable} from 'rxjs/Observable';
 import {ResponseData} from '../data/vo/response.data';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {AreaData} from '../data/vo/area.data';
-import {User} from '../data/vo/user.data';
+import {Article} from '../data/vo/articles.data';
 
 /**
- * 区域服务
+ * 共享服务
  */
 @Injectable()
 export class SharedService{
@@ -24,6 +24,34 @@ export class SharedService{
 
   }
 
+  /**
+   * 获取文章列表
+   * @param channelId 频道ID
+   * @param startIndex 文章开始索引
+   * @param amountOfArticle  文章数量
+   * @return 文章集合
+   */
+  getArticles(channelId:string,startIndex:string,amountOfArticle:string):Observable<ResponseData<Article[]>>{
+    return this.http.get<ResponseData<Article[]>>(this.api.getArticlesPath(channelId,startIndex,amountOfArticle));
+  }
+  /**
+   * 删除文件
+   * @param {string[]} filePaths
+   * @returns {Observable<ResponseData<boolean>>}
+   */
+  delete(filePaths:string[]):Observable<ResponseData<boolean>>{
+
+    return this.http.patch<ResponseData<boolean>>(this.api.deletePath,filePaths);
+  }
+  /**
+   * 上传文件并生成路径
+   * @param data 文件数据
+   * @param folder 上传的文件夹
+   * @return 路径
+   */
+  upload(folder:string,data:FormData):Observable<ResponseData<string[]>>{
+    return this.http.post<ResponseData<string[]>>(this.api.getUploadPath(folder),data);
+  }
 
   /**
    * 获取父级区域集合

@@ -9,6 +9,7 @@ import {HomeService} from './service/home.service';
 import {CenterService} from './service/center.service';
 import {InfoService} from './service/info.service';
 import {SearchService} from './service/search.service';
+import {MoodService} from './service/mood.service';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {SearchService} from './service/search.service';
     CenterService,
     InfoService,
     LoginGuard,
-    SearchService
+    SearchService,
+    MoodService
   ],
   declarations: []
 })

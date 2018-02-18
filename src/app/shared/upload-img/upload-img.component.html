@@ -1,31 +1,29 @@
 <i class="top-border-triangle"></i>
 <main>
   <div id="upload-title">
-    本地上传
-    <button mat-icon-button id="close" (click)="closeSelf()">
-      <i class="material-icons" matTooltip="删除所有图片">close</i>
+    <span>本地上传</span>
+    <button mat-icon-button id="close" (click)="close()">
+      <i class="material-icons" matTooltip="关闭">close</i>
     </button>
   </div>
   <p id="upload-tip">最多选择8张图片上传
-    <button color="primary" mat-raised-button id="upload-mood-img" (click)="save()">
-      确认上传
+    <button *ngIf="uploadImgs.length>0" color="primary" class="app-sm-btn" mat-raised-button id="upload-mood-img" (click)="close()">
+      上传
     </button>
   </p>
-<!--  <div [ngBusy]="{busy:[uploadSubscribe,deleteSubscribe],message:'处理中,请稍候...'}"></div>
-  <div id="upload-img-div" dnd-sortable-container [sortableData]="preUploadImgs">
-
-    <div class="mood-img-wrapper" dnd-sortable [sortableIndex]="i"  *ngFor="let imgSrc of preUploadImgs;let i = index">
-      <img class="pre-send-img" >
+  <div [ngBusy]="{busy:[uploadSubscribe,deleteSubscribe],message:'处理中,请稍候...'}"></div>
+  <div id="upload-img-div" dnd-sortable-container [sortableData]="uploadImgs">
+    <div class="mood-img-wrapper" dnd-sortable [sortableIndex]="i"  *ngFor="let imgSrc of uploadImgs;let i = index">
+      <img class="pre-send-img" [src]="imgSrc|imgPath:'upload-mood-narrow'">
       <div class="img-operation-wrapper">
           <i class="material-icons delete-img-i" matTooltip="删除" (click)="deleteMoodImg(i)">delete</i>
       </div>
     </div>
-
-    <a class="upload" *ngIf="preUploadImgs.length<8">
+    <a class="upload" *ngIf="uploadImgs.length<8">
       <i class="material-icons">add</i>
-      <input title=" " matTooltip="上传图片" accept="image/gif,image/jpeg,image/jpg,image/png" multiple   type="file"  >
+      <input (change)="upload($event)" accept="image/gif,image/jpeg,image/jpg,image/png" multiple   type="file"  >
     </a>
 
-  </div>-->
+  </div>
 </main>
 

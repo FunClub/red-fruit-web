@@ -28,6 +28,9 @@ import { MoodEditorComponent } from './mood-editor/mood-editor.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 import {FaceComponent} from './face/face.component';
 import {UploadImgComponent} from './upload-img/upload-img.component';
+import {DndModule} from 'ng2-dnd';
+import { UploadVideoComponent } from './upload-video/upload-video.component';
+import { ArticleComponent } from './article/article.component';
 
 
 @NgModule({
@@ -38,7 +41,7 @@ import {UploadImgComponent} from './upload-img/upload-img.component';
     BusyModule,
     ImageCropperModule,
     MatMenuModule,
-
+    DndModule.forRoot(),
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
@@ -64,10 +67,13 @@ import {UploadImgComponent} from './upload-img/upload-img.component';
     PageLoadingComponent,
     MoodEditorComponent,
     FaceComponent,
-    UploadImgComponent
+    UploadImgComponent,
+    UploadVideoComponent,
+    ArticleComponent
   ],
   entryComponents:[
-    CropperImgComponent
+    CropperImgComponent,
+    MoodEditorComponent
   ],
   exports:[
     /**
@@ -82,6 +88,7 @@ import {UploadImgComponent} from './upload-img/upload-img.component';
     MatDialogModule,
     MatTooltipModule,
     BusyModule,
+    DndModule,
     /**
      * 导出组件
      */
@@ -93,6 +100,7 @@ import {UploadImgComponent} from './upload-img/upload-img.component';
     PageLoadingComponent,
     MoodEditorComponent,
     FaceComponent,
+    ArticleComponent,
     /**
      * 导出管道
      */

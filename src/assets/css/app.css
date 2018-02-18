@@ -3,6 +3,13 @@
   padding: 0;
 }
 
+.app-box-title{
+  padding: 10px 10px 5px;
+  font-size: 14px;
+  color: rgba(110, 115, 124, 1);
+  border-bottom: solid 1px #F0F0F0;
+
+}
 
 .app-dialog-content{
   padding: 20px;

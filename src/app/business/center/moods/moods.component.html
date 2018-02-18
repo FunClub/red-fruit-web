@@ -1,1 +1,18 @@
-<app-mood-editor></app-mood-editor>
+<div class="moods">
+
+  <!--心情-->
+  <div class="all-mood">
+    <app-mood-editor></app-mood-editor>
+
+  </div>
+
+  <!--微信文章-->
+  <div class="we-chats app-box">
+    <p class="app-box-title"><i class="material-icons">insert_drive_file</i>文章精选</p>
+    <div *ngFor=" let article of articles">
+      <app-article [article]="article"></app-article>
+    </div>
+  </div>
+
+</div>
+

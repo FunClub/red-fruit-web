@@ -19,41 +19,41 @@
         <i class="material-icons operation-img-ico" >wallpaper</i>
       </button>
       <span class="operation-text" >图片</span>
-       <div id="all-insert-img-wrapper" *ngIf="uploadImgOpened">
-         <app-upload-img></app-upload-img>
+       <div class="img-wrapper" *ngIf="uploadImgOpened">
+         <app-upload-img [uploadImgs]="uploadImgs" (closeUploadImg)="toggleUploadImg()" (imgChanged)="imgChanged($event)"></app-upload-img>
        </div>
     </div>
 
     <!--插入视频-->
     <div class="each-operation">
-      <button mat-icon-button>
+      <button mat-icon-button (click)="toggleUploadVideo()">
         <i  class="material-icons operation-video-ico" >videocam</i>
       </button>
       <span class="operation-text" id="insert-img-text">视频</span>
-      <!-- <div id="all-insert-img-wrapper" *ngIf="uploadImgOpened" [@flyXInOutFromTop]>
-         <app-upload-mood-img [preUploadImgs]="moodService.sharePreUploadImgs" (closeUploadImg)="closeUploadImg()"></app-upload-mood-img>
-       </div>-->
+      <div class="img-wrapper" *ngIf="uploadVideoOpened">
+        <app-upload-video (videoChange)="videoChange($event)" (closeUploadVideo)="toggleUploadVideo()" [videoSrc]="videoSrc"></app-upload-video>
+      </div>
     </div>
 
     <!--设置权限-->
     <div class="each-operation"  >
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <i class="material-icons" id="operation-jurisdiction-ico">remove_red_eye</i>
-        <span class="operation-text" id="jurisdiction-text">123</span>
+        <span class="operation-text" id="jurisdiction-text">谁可以浏览</span>
       </button>
       <mat-menu #menu="matMenu" class="custom-md-menu">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="changePrivate(false)" [ngClass]="{'active-limit':!mood.isPrivate}">
           <i class="material-icons" id="public-view-ico">public</i>
-          <span >公开到分享圈</span>
+          <span >所有人可见</span>
         </button>
-        <button mat-menu-item  >
+        <button mat-menu-item  (click)="changePrivate(true)" [ngClass]="{'active-limit':mood.isPrivate}">
           <i class="material-icons" id="lock-view-ico">lock_outline</i>
           <span>仅情侣可见</span>
         </button>
       </mat-menu>
     </div>
     <div class="each-operation" id="send-mood-div">
-      <button mat-raised-button class="app-sm-btn" color="primary">发表</button>
+      <button mat-raised-button class="app-sm-btn" (click)="send()" color="primary">发表</button>
     </div>
   </div>
 </div>

@@ -1,0 +1,19 @@
+.moods{
+  position: relative;
+  min-height: 300px;
+}
+.moods >div{
+  display: inline-block;
+  vertical-align: top;
+}
+.all-mood{
+  width: 590px;
+}
+.we-chats{
+  width: 250px;
+  margin-left: 4px;
+}
+app-article{
+
+}
+

@@ -6,6 +6,10 @@ width: 350px;
   height: 30px;
   line-height: 40px;
 }
+#upload-title span{
+  font-size: 13px;
+  font-weight: bold;
+}
 #close{
   float: right;
 }

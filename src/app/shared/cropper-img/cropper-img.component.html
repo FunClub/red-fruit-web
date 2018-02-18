@@ -18,7 +18,7 @@
       <i class="material-icons">file_upload</i>重新上传
     </button>
 
-    <input class="app-hidden" #fileInput   type="file" (change)="fileChangeListener($event)">
+    <input class="app-hidden" #fileInput accept="image/gif,image/jpeg,image/jpg,image/png"   type="file" (change)="fileChangeListener($event)">
   </div>
   <div class="app-dialog-bottom">
     <button mat-raised-button class="app-sm-btn app-btn-color" color="primary" (click)="doUpdate()"><i class="material-icons"></i>保存</button>
