@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.homeService.getTitleUserInfo().subscribe(res=>{
-      this.centerLink = 'center/'+this.homeService.titleUser.id;
+      this.centerLink = 'center/'+this.homeService.titleUser.userId;
     })
   }
   openMood(){

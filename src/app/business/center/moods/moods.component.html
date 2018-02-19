@@ -2,7 +2,12 @@
 
   <!--心情-->
   <div class="all-mood">
-    <app-mood-editor></app-mood-editor>
+    <div class="mood-editor-wrapper">
+      <app-mood-editor></app-mood-editor>
+    </div>
+    <div class="mood-wrapper" *ngFor="let mood of moods">
+      <app-sigle-mood [mood]="mood"></app-sigle-mood>
+    </div>
 
   </div>
 

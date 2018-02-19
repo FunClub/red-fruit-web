@@ -31,6 +31,9 @@ import {UploadImgComponent} from './upload-img/upload-img.component';
 import {DndModule} from 'ng2-dnd';
 import { UploadVideoComponent } from './upload-video/upload-video.component';
 import { ArticleComponent } from './article/article.component';
+import {SigleMoodComponent} from './sigle-mood/sigle-mood.component';
+import {TrendOperationComponent} from './trend-operation/trend-operation.component';
+import { MoodDetailComponent } from './mood-detail/mood-detail.component';
 
 
 @NgModule({
@@ -69,11 +72,15 @@ import { ArticleComponent } from './article/article.component';
     FaceComponent,
     UploadImgComponent,
     UploadVideoComponent,
-    ArticleComponent
+    ArticleComponent,
+    SigleMoodComponent,
+    TrendOperationComponent,
+    MoodDetailComponent
   ],
   entryComponents:[
     CropperImgComponent,
-    MoodEditorComponent
+    MoodEditorComponent,
+    MoodDetailComponent
   ],
   exports:[
     /**
@@ -101,6 +108,8 @@ import { ArticleComponent } from './article/article.component';
     MoodEditorComponent,
     FaceComponent,
     ArticleComponent,
+    SigleMoodComponent,
+    TrendOperationComponent,
     /**
      * 导出管道
      */
@@ -115,7 +124,9 @@ import { ArticleComponent } from './article/article.component';
     AgePipe,
     HeightPipe,
     WeightPipe,
-    RecommendedPercentPipe
+    RecommendedPercentPipe,
+
+
   ]
 })
 export class SharedModule { }

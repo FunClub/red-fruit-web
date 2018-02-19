@@ -1,0 +1,55 @@
+main{
+  width: 350px;
+  position: relative;
+
+}
+#upload-title{
+  height: 30px;
+  line-height: 40px;
+}
+#upload-title span{
+  font-size: 13px;
+  font-weight: bold;
+}
+#close{
+  float: right;
+}
+#close i{
+  font-size: 20px;
+}
+#upload-tip{
+  font-size: 12px;
+  margin-top: 10px;
+  height: 30px;
+}
+.content{
+  padding-top: 10px;
+  height: 200px;
+  text-align: center;
+  line-height: 200px;
+  position: relative;
+}
+.upload{
+  font-size: 80px;
+
+  color:rgb(180,180,180) ;
+  cursor: pointer;
+}
+.upload:hover{
+  color: rgb(255,129,64);
+}
+.delete-wrapper{
+  text-align: center;
+}
+.delete-btn{
+  margin: auto;
+  color:rgb(100,100,100) ;
+}
+.delete-btn i{
+  font-size: 25px;
+  color:rgb(180,180,180) ;
+}
+video{
+  height: 200px;
+  width: 300px;
+}

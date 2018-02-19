@@ -1,19 +1,30 @@
+/*心情整体 div*/
 .moods{
-  position: relative;
   min-height: 300px;
 }
 .moods >div{
   display: inline-block;
   vertical-align: top;
 }
+/*所有心情*/
 .all-mood{
   width: 590px;
 }
+
+/*编辑器包裹 div*/
+.mood-editor-wrapper{
+  position: relative;
+  min-height: 153px;
+
+}
+/*包裹心情的 div*/
+.mood-wrapper{
+  margin-top: 10px;
+}
+/*微信文章 div*/
 .we-chats{
   width: 250px;
   margin-left: 4px;
 }
-app-article{
 
-}
 

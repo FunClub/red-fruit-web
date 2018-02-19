@@ -1,5 +1,36 @@
-
 import {ToastOptions} from 'ng2-toastr';
+/**
+ * 显示心情图片的模型
+ */
+export class ShowMoodImg {
+  /**
+   * 普通光标
+   * @type {number}
+   */
+  SIMPLE_CURSOR:number=0;
+
+  /**
+   * 上一张图片的光标
+   * @type {number}
+   */
+  PREV_CURSOR:number=1;
+
+  /**
+   * 缩小图片的光标
+   * @type {number}
+   */
+  ZOOM_OUT_CURSOR:number=2;
+
+  /**
+   * 下一张图片的光标
+   * @type {number}
+   */
+  NEXT_CURSOR:number=3;
+
+
+}
+
+
 export class RfEditorOptions {
   language="zh_cn";
   toolbarButtons= ['emoticons','insertImage','bold','color','insertLink','fullscreen', 'html','undo', 'redo'];

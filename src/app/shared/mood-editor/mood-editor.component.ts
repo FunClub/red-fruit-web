@@ -45,9 +45,14 @@ export class MoodEditorComponent implements OnInit {
    */
   content:string="";
 
+  /**
+   *
+   */
   mood:Mood;
+
   constructor(private moodService:MoodService,private toasts:ToastsManager) {
     this.rfOptions = new RfEditorOptions();
+    this.rfOptions.height=80;
     this.mood = new Mood();
   }
   ngOnInit() {

@@ -102,12 +102,12 @@
   <div class="user-list">
     <div [ngBusy]="{busy:busy,message:'数据处理中，请稍后...'}"></div>
     <div class="user-wrapper app-box" *ngFor="let user of users;">
-      <div class="profile-wrapper" routerLink="{{'/home/center/'+user.id}}">
+      <div class="profile-wrapper" routerLink="{{'/home/center/'+user.u}}">
         <img [src]="user.profile|imgPath" class="profile"/>
       </div>
       <div class="all-info-wrapper">
         <div class="info-wrapper">
-          <p><span class="nickname" routerLink="{{'/home/center/'+user.id}}">{{user.nickname}}</span>
+          <p><span class="nickname" routerLink="{{'/home/center/'+user.userId}}">{{user.nickname}}</span>
             <span class="percent">
             <label class="percent-label">推荐度:</label>
             <span class="percent-value-first">{{user.recommendedPercent|recommendedPercent:0}}</span>

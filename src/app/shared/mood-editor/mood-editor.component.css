@@ -86,6 +86,7 @@
   top: 45px;
   left: 5px;
   margin-bottom: 20px;
+  z-index: 999;
 }
 .img-wrapper{
   background: white;
@@ -95,6 +96,7 @@
   left: 5px;
   padding: 0 10px 10px 10px;
   margin-bottom: 20px;
+  z-index: 999;
 }
 /*发送心情DIV*/
 #send-mood-div{

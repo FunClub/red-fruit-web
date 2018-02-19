@@ -1,0 +1,19 @@
+<div class="article" >
+  <p class="title">{{article?.title}}</p>
+
+  <div class="img-wrapper">
+    <a target="_blank" [href]="article?.url"> <img class="img" [src]="article?.pic"></a>
+  </div>
+  <p class="summary">
+    {{article?.weixinsummary}}
+  </p>
+
+  <div class="details">
+    <span class="account">《{{article?.weixinname}}》</span>
+    <div class="trend">
+      <span><i class="material-icons">favorite_border</i>{{article?.likenum}}</span>
+      <span><i class="material-icons">remove_red_eye</i>{{article?.readnum}}</span>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,50 @@
+<div class="mood-all app-box">
+  <div class="mood-operation" [matMenuTriggerFor]="menu">
+    <button mat-icon-button>
+      <i class="material-icons">keyboard_arrow_down</i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item >
+        <i class="material-icons">delete</i>
+        <span>删除</span>
+      </button>
+    </mat-menu>
+  </div>
+    <div class="mood-title">
+      <div class="mood-profile-wrapper" >
+        <img class="mood-profile" [src]="mood?.shortInfo.profile|imgPath">
+      </div>
+      <p class="mood-nickname">{{mood?.shortInfo.nickname}}</p>
+      <p class="mood-howlong"><span class="mood-short-date">发表于{{mood?.shortDate}}</span>{{mood?.howLongAgo}}前 来自网页</p>
+    </div>
+
+    <div class="mood-content">
+      <!--心情文本内容-->
+      <div class="mood-text-content"  (click)="openMoodDetailDialog()" [froalaView]="mood?.content"></div>
+
+      <!--心情图片内容-->
+      <div class="mood-img-content" >
+        <div class="mood-img-detail-content" *ngIf="showImgDetail">
+          <img #detailImg (mousemove)="changeImgCursor($event,detailImg)"
+               class="detail-img"  [@flyXInOutFromTop]
+               [src]="currentShowImgPath|imgPath:'mood-detail'"
+               [ngClass]="{'prevCursor':currentImgCursorType==moodOption.PREV_CURSOR,'zoomOutCursor':currentImgCursorType==moodOption.ZOOM_OUT_CURSOR,'nextCursor':currentImgCursorType==moodOption.NEXT_CURSOR}"
+               (click)="changeDetailImg($event)"
+          >
+          <div class="small-detail-img-wrapper">
+            <img *ngFor="let obj of smallDetailImgs;let i=index;" (click)="changeSmallDetailImg(i)" [ngClass]="{'small-detail-img-active':obj.active}"
+                 class="small-detail-img" [src]="obj.path|imgPath:'mood-detail-small'">
+          </div>
+
+        </div>
+        <div *ngIf="!showImgDetail" class="mood-small-img-content">
+          <img  class="small-img"  *ngFor="let path of smallMoodImgs;let i1=index;" (click)="showDetailImg(i1)" [src]="path|imgPath:'mood-small'" >
+        </div>
+
+      </div>
+    </div>
+
+    <!--动态操作-->
+  <app-trend-operation></app-trend-operation>
+</div>
+

@@ -1,0 +1,22 @@
+<i class="top-border-triangle"></i>
+<main>
+  <div id="upload-title">
+    <span>本地上传</span>
+    <button mat-icon-button id="close" (click)="close()">
+      <i class="material-icons" matTooltip="关闭">close</i>
+    </button>
+  </div>
+  <div [ngBusy]="{busy:[uploadSubscribe],message:'处理中,请稍候...'}"></div>
+  <div *ngIf="videoSrc"  class="delete-wrapper">
+    <button  class="delete-btn" mat-icon-button (click)="delete()">
+      <i  class="material-icons">delete</i>删除
+    </button>
+  </div>
+  <div class="content"  (click)="file.click()">
+    <i *ngIf="!videoSrc" class="material-icons upload">video_call</i>
+
+    <video controls *ngIf="videoSrc" [src]="videoSrc|imgPath"></video>
+  </div>
+
+  <input class="app-hidden" type="file" #file (change)="upload($event)">
+</main>

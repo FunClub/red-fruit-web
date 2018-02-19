@@ -16,7 +16,7 @@ class Page{
 
   constructor() {
     this.current = 1;
-    this.size = 4;
+    this.size = 10;
   }
 }
 

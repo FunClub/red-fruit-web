@@ -1,0 +1,59 @@
+.article{
+  width: 210px;
+  margin: auto;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(240,240,240);
+  margin-top:15px;
+}
+.title{
+  font-size: 13px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  overflow:hidden;
+
+}
+
+
+.img-wrapper{
+  position: relative;
+  width: 180px;
+  margin: 10px auto auto;
+  height: 130px;
+}
+.img{
+  width: 180px;
+  position: absolute;
+  clip:rect(0px,180px,130px,0px);
+
+}
+.summary{
+  font-size: 12px;
+  color: gray;
+  margin-top: 10px;
+}
+.details{
+  font-size: 11px;
+  color: rgb(100,100,100);
+  margin-top: 10px;
+}
+.account{
+
+ }
+.date{
+  font-size: 11px;
+  color: gray;
+  text-align: right;
+  margin-top: 5px;
+}
+.trend{
+  display: inline-block;
+  float: right;
+  padding-right: 10px;
+}
+.trend i{
+  font-size: 15px;
+  margin-left: 5px;
+  margin-right: 3px;
+}

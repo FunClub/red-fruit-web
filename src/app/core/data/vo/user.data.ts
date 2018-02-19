@@ -1,8 +1,27 @@
 /**
+ * 用户简短信息
+ */
+export class ShortUserInfo{
+  /**
+   * 用户id
+   */
+  userId:string;
+
+  /**
+   * 昵称
+   */
+  nickname:string;
+
+  /**
+   * 头像
+   */
+  profile:string;
+}
+/**
  * 搜索出来的用户信息
  */
 export  class SearchedUserInfo{
-  id:string;
+  userId:string;
   /**
    * 昵称
    */
@@ -106,7 +125,7 @@ export class UserCriterionInfo{
  * 用户信息
  */
 export class User extends UserCriterionInfo{
-  id: string;
+  userId: string;
   mobile: string;
   password: string;
   nickname: string;
@@ -146,7 +165,7 @@ export class UserInfo extends User{
  * 用户简单信息
  */
 export  class SimplenessUserInfo{
-  id:string;
+  userId:string;
   nickname:string;
   profile:string;
   age:number;
@@ -162,6 +181,10 @@ export  class SimplenessUserInfo{
  */
 export class CenterInfo {
 
+  /**
+   * 个人空间用户 id,
+   */
+  userId:string;
   /**
    * 访问的个人空间是否是自己的
    */
@@ -212,7 +235,7 @@ export class CenterInfo {
  * 主页标题用户信息
  */
 export class TitleUserInfo{
-  id:string;
+  userId:string;
   nickname:string;
   profile:string;
   constructor(){

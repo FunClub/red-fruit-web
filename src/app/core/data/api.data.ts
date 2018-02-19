@@ -5,6 +5,11 @@ const moodPrefix = "/trend/mood/";
 export class MoodApi{
 
   /**
+   * 通过个人中心查询心情
+   * @type {string}
+   */
+  getByCenterPath:string = moodPrefix+"center";
+  /**
    * 创建心情 api地址
    * @type {string}
    */
