@@ -1,5 +1,83 @@
 import {ToastOptions} from 'ng2-toastr';
 /**
+ * 动态操作参数模型
+ */
+export class TrendArgs {
+  /**
+   * 动态id
+   */
+  trendId:string;
+
+  /**
+   * 动态所属userId;
+   */
+  trendUserId:string;
+  /**
+   * 点赞数量
+   */
+  thumbsUpCount:number;
+  /**
+   * 能否点赞
+   */
+  thumbsUpAble:boolean;
+
+  /**
+   * 评论数量
+   */
+
+  discussionCount:number;
+
+  /**
+   * 动态类型
+   */
+
+  trendType:string;
+
+  /**
+   * 第一张动态图片
+   */
+  firstTrendImg:string;
+
+  /**
+   * 动态内容
+   */
+  trendContent:string;
+
+ /* /!**
+   * 查询评论条件
+   *!/
+  selectDiscussionCondition:SelectDiscussionCondition;*/
+
+
+  constructor() {
+
+  }
+}
+/**
+ * 动态类型
+ */
+export class TrendType {
+  static POST:string="帖子";
+  /**
+   * 心情动态
+   * @type {string}
+   */
+  static MOOD:string="心情";
+
+  static PHOTO:string="相片";
+
+  static DISCUSSION:string="评论"
+}
+/**
+ * 动态通知类型
+ */
+export class TrendNoticeType {
+  static THUMB:string="赞";
+  static DISCUSSION:string="评论";
+  static REPLY:string="回复";
+}
+
+/**
  * 显示心情图片的模型
  */
 export class ShowMoodImg {
@@ -37,14 +115,13 @@ export class RfEditorOptions {
   toolbarButtonsSM=['emoticons','insertImage','bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
   toolbarButtonsXS=['emoticons','insertImage','bold','color','insertLink','fullscreen', 'html','undo', 'redo'];
   heightMax=300;
-  heightMin=80;
+  heightMin;
   height;
   tabSpaces=4;
   toolbarBottom=false;
   placeholderText= "书写青春....";
   imageResize=true;
   imageManagerLoadURL="album/editor-photo";
-  editorClass='editor-class';
   htmlDoNotWrapTags=['script', 'img'];
   imageEditButtons=[];
   enter="$.FroalaEditor.ENTER_BR";

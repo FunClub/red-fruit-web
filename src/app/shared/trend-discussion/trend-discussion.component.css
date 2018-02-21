@@ -1,0 +1,135 @@
+
+/*m每一个评论*/
+.discussion{
+  margin-top: 10px;
+  border-top: solid 1px rgb(233,233,233);
+  padding-top: 15px;
+
+}
+/*父级评论*/
+.parent-discussion{
+
+}
+/*包裹头像的div*/
+.discussion-profile-wrapper{
+  width: 30px;
+  height:30px;
+  float: left;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+  background: red;
+  position: relative;
+  z-index: 9;
+  top: 5px;
+}
+.business-card-wrapper{
+  top: -205px;
+  left: -40px;
+  height: 200px;
+  width: 330px;
+  position:absolute;
+  box-shadow: 0 5px 5px rgb(200,200,200);
+  z-index: 99999999;
+}
+/*评论人头像*/
+.discussion-profile{
+  width: 30px;
+  height: 30px;
+
+
+}
+/*评论体,评论右边部分*/
+.discussion-content{
+padding-left: 40px;
+
+}
+/*父级评论人姓名*/
+.parent-discussion-nickname{
+  font-size: 13px;
+  color:rgb(255,129,64);
+  font-weight: bold;
+}
+/*楼层*/
+.lou{
+  font-size: 12px;
+  color: rgb(150,150,150);
+  margin-left: 5px;
+}
+/*评论内容*/
+.discussion-text{
+  color: rgb(50,50,50);
+  font-size: 12px;
+}
+.disableThumbsUp{
+  color:rgb(255,129,64)!important;
+}
+/*评论相关，时间和操作*/
+.discussion-info{
+  font-size: 12px;
+  margin-top: 5px;
+}
+/*评论时间*/
+.discussion-time{
+  color: rgb(100,100,100);
+
+}
+/*评论操作*/
+.discussion-operation{
+  float: right;
+
+}
+
+/*操作按钮*/
+.each-operation-btn{
+  height: 20px;
+  width: 50px;
+  line-height: 0;
+  position: relative;
+  bottom: 3px;
+}
+.each-operation-btn span{
+  font-size: 11px;
+  color: rgb(100,100,100);
+  margin-left: 3px;
+}
+.each-operation-btn span:hover{
+  color:rgb(255,129,64);
+}
+.each-operation-btn i{
+  font-size: 15px;
+  color: rgb(170,170,170);
+}
+/*回复Div包裹*/
+.reply-discussion-wrapper{
+  margin-top: 20px;
+  background: white;
+  padding: 10px;
+  position: relative;
+}
+
+.reply-textarea:focus{
+  border-color: orange;
+  box-shadow: none;
+}
+/*所有的子级评论*/
+.all-sub-discussion{
+  padding: 10px;
+  padding-top: 0;
+  background: rgb(234,234,236);
+}
+/*每个子级评论*/
+.sub-discussion{
+  margin-top: 5px;
+}
+/*子级评论人*/
+.sub-discussion-nickname{
+  font-size: 12px;
+  color:rgb(255,129,64);
+
+}
+/*评论目标昵称*/
+.discussion-to-nickname{
+  font-size: 12px;
+  color:rgb(255,129,64);
+}

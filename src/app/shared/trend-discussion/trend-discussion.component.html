@@ -1,0 +1,54 @@
+<!--一个评论开始-->
+<div class="discussion">
+  <div class="discussion-profile-wrapper">
+    <img class="discussion-profile" [src]="parentDiscussion.userShortInfo.profile|imgPath"/>
+  </div>
+  <div class="discussion-content">
+    <!--父级评论-->
+    <div class="parent-discussion">
+      <span class="parent-discussion-nickname">{{parentDiscussion.userShortInfo.nickname}}</span> <span class="lou">#1楼</span>
+      <div class="discussion-text" [froalaView]="parentDiscussion.content"></div>
+      <div class="discussion-info">
+        <span class="discussion-time">{{parentDiscussion.sortDate}} {{parentDiscussion.shortDate}}</span>
+        <div class="discussion-operation">
+          <button class="each-operation-btn" mat-icon-button>
+            <i class="material-icons">delete</i>
+            <span>删除</span>
+          </button>
+          <button class="each-operation-btn" mat-icon-button (click)="toggleShowReply()">
+            <i class="material-icons">reply</i>
+            <span>回复</span>
+          </button>
+          <button class="each-operation-btn" mat-icon-button matTooltip="zan">
+            <i class="material-icons">thumb_up</i>
+            <span> 赞</span>
+          </button>
+        </div>
+        <div class="reply-discussion-wrapper" *ngIf="parentDiscussion.replyDiscussionArgs.showReply">
+          <app-reply-discussion [subDiscussions]="parentDiscussion.subDiscussionInfos"  [trendArgs]="trendArgs" [replyDiscussionArgs]="parentDiscussion.replyDiscussionArgs"></app-reply-discussion>
+        </div>
+      </div>
+    </div>
+    <!--子级评论-->
+    <div class="all-sub-discussion" *ngIf="parentDiscussion.subDiscussionInfos.length>0">
+      <div class="sub-discussion" *ngFor="let subDiscussion of parentDiscussion.subDiscussionInfos">
+        <span class="sub-discussion-nickname">{{subDiscussion.nickname}}</span>
+        <span class="discussion-to-nickname" *ngIf="subDiscussion.discussedNickname">@{{subDiscussion.discussedNickname}}</span>
+        <span class="discussion-text" [froalaView]="subDiscussion.content"></span>
+        <div class="discussion-info">
+          <span class="discussion-time">{{subDiscussion.sortDate}} {{subDiscussion.shortDate}}</span>
+          <div class="discussion-operation" (click)="toggleSubReply(subDiscussion.replyDiscussionArgs)">
+            <button class="each-operation-btn" mat-icon-button>
+              <i class="material-icons">reply</i>
+              <span>回复</span>
+            </button>
+          </div>
+          <div class="reply-discussion-wrapper" *ngIf="subDiscussion.replyDiscussionArgs.showReply">
+            <app-reply-discussion [subDiscussions]="parentDiscussion.subDiscussionInfos" [trendArgs]="trendArgs" [replyDiscussionArgs]="subDiscussion.replyDiscussionArgs"></app-reply-discussion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--一个评论结束-->

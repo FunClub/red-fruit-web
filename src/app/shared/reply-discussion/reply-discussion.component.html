@@ -1,0 +1,17 @@
+<main >
+  <div [ngBusy]="{busy:[sendSubDiscussionSubscribe],message:'处理中,请稍候'}"></div>
+  <div class="all-face-wrapper">
+    <button class="toggle-face-btn" mat-icon-button (click)="toggleFace()">
+      <i  class="material-icons face-ico">sentiment_very_satisfied</i>
+    </button>
+    <div class="face-wrapper"  *ngIf="faceOpened " [@flyXInOutFromTop]>
+      <app-face (faceSelected)="appendFace(discussionEditor,$event)" (faceOpened)="closeFace($event)"></app-face>
+    </div>
+  </div>
+  <div #discussionEditor id="sub-discussion-editor" class="small-padding sub-discussion-editor app-box no-editor-shadow no-toolbar"
+       [froalaEditor]="rfOptions" [(froalaModel)]="subDiscussion.subDiscussion.content"></div>
+  <button class="send-discussion-btn app-sm-btn" mat-raised-button color="primary" (click)="insertSubDiscussion()">回复</button>
+  <!--清除浮动-->
+  <div style="clear: both"></div>
+</main>
+

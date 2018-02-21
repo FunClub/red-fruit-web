@@ -34,6 +34,9 @@ import { ArticleComponent } from './article/article.component';
 import {SigleMoodComponent} from './sigle-mood/sigle-mood.component';
 import {TrendOperationComponent} from './trend-operation/trend-operation.component';
 import { MoodDetailComponent } from './mood-detail/mood-detail.component';
+import {TrendDiscussionComponent} from './trend-discussion/trend-discussion.component';
+import { DiscussionViewerComponent } from './discussion-viewer/discussion-viewer.component';
+import {ReplyDiscussionComponent} from './reply-discussion/reply-discussion.component';
 
 
 @NgModule({
@@ -75,7 +78,10 @@ import { MoodDetailComponent } from './mood-detail/mood-detail.component';
     ArticleComponent,
     SigleMoodComponent,
     TrendOperationComponent,
-    MoodDetailComponent
+    MoodDetailComponent,
+    TrendDiscussionComponent,
+    DiscussionViewerComponent,
+    ReplyDiscussionComponent
   ],
   entryComponents:[
     CropperImgComponent,
@@ -96,6 +102,7 @@ import { MoodDetailComponent } from './mood-detail/mood-detail.component';
     MatTooltipModule,
     BusyModule,
     DndModule,
+    TrendDiscussionComponent,
     /**
      * 导出组件
      */

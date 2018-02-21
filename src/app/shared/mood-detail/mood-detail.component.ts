@@ -1,9 +1,12 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {MoodInfo} from '../../core/data/dto/mood.data';
-import {ShowMoodImg} from '../../core/data/app.data';
+import {RfEditorOptions, ShowMoodImg, TrendArgs, TrendNoticeType, TrendType} from '../../core/data/app.data';
 import {animate, keyframes, style, transition, trigger} from '@angular/animations';
-
+import {HomeService} from '../../core/service/home.service';
+import {InsertParentDiscussion} from '../../core/data/discussion/discussion';
+import {SharedService} from '../../core/service/shared.service';
+declare var $:any;
 @Component({
   selector: 'app-mood-detail',
   templateUrl: './mood-detail.component.html',
@@ -27,7 +30,8 @@ import {animate, keyframes, style, transition, trigger} from '@angular/animation
     ]),
   ]
 })
-export class MoodDetailComponent implements OnInit {
+export class MoodDetailComponent implements OnInit{
+
   /**
    * 是否显示详细大图
    * @type {boolean}
@@ -37,17 +41,17 @@ export class MoodDetailComponent implements OnInit {
   /**
    * 图片收缩时显示的小图路径数组
    */
-  smallMoodImgs:string[];
+  smallMoodImgs:string[]=[];
 
   /**
    * 图片展开时显示的小图路径数组
    */
-  smallDetailImgs:any[];
+  smallDetailImgs:any[]=[];
 
   /**
    * 图片原始格式路径数组
    */
-  orPath:string[];
+  orPath:string[]=[];
 
   /**
    * 当前显示的大图路径
@@ -70,14 +74,11 @@ export class MoodDetailComponent implements OnInit {
    * 当前图片的光标类型
    */
   currentImgCursorType:number;
-  /**
-   * 显示用户名片
-   */
-  showCard:boolean;
-  constructor(@Inject(MAT_DIALOG_DATA) public mood:MoodInfo,public moodOption:ShowMoodImg,private dialog:MatDialog) {
-    this.smallMoodImgs=[];
-    this.smallDetailImgs=[];
-    this.showCard=false;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public mood:MoodInfo,public moodOption:ShowMoodImg,private dialog:MatDialog,
+              public homeService:HomeService
+              ) {
+
   }
 
   ngOnInit() {

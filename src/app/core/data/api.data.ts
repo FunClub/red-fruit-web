@@ -139,7 +139,19 @@ export class RegisterApi{
 const sharedPrefix = "/shared/";
 const weChatPrefix= "/api/wechat/";
 export class SharedApi {
-
+  /**
+   * 添加子评论
+   */
+  createSubDiscussionPath = sharedPrefix+"subDiscussion";
+   /**
+   * 查询父级评论 api 地址
+   * @type {string}
+   */
+  selectParentDiscussionPath = sharedPrefix+"parentDiscussion";
+  /**
+   * 添加父评论
+   */
+  createParentDiscussionPath = sharedPrefix+"parentDiscussion";
   /**
    * 获取文章列表Api 地址
    * @param channelId 频道ID

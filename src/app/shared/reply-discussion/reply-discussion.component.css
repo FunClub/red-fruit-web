@@ -1,0 +1,53 @@
+main{
+  position: relative;
+  max-height: 100px;
+}
+/*编辑器div*/
+.sub-discussion-editor{
+  display: inline-block;
+  width: 70%;
+  font-size: 14px;
+  float: left;
+}
+/*编辑器盒子样式*/
+.editor-box{
+  border-top: 2px solid rgb(128, 98, 135);
+}
+/*发表评论按钮*/
+.send-discussion-btn{
+  display: block!important;
+  width: 50px;
+  height: 40px;
+  min-width: 50px;
+  background: rgb(128, 98, 135);
+  float: left;
+  margin-left: 10px;
+}
+.mat-raised-button{
+  padding: 0;
+}
+/*切换表情按钮*/
+.toggle-face-btn{
+  position: relative;
+  top: -5px;
+}
+/*包裹表情和按钮的div*/
+.all-face-wrapper{
+  position: relative;
+  height: 20px;
+  clear: both;
+  float: left;
+  top: 3px;
+}
+/*包裹表情的div*/
+.face-wrapper{
+  background: white;
+  position: absolute;
+  border: solid 1px rgb(223,223,223);
+  box-shadow: 0 3px 5px rgb(203,203,203);
+  padding-left: 10px;
+  left: 5px;
+  top: 43px;
+  z-index: 12;
+  width: 300px;
+}

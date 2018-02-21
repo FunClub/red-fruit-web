@@ -1,12 +1,12 @@
 <div class="mood-detail">
-  <div class="mood-title">
+  <div class="mood-title"><button class="attent-btn app-sm-btn app-btn-color" mat-raised-button color="primary">关注</button>
     <div class="mood-profile-wrapper" >
       <img class="mood-profile" [src]="mood?.shortInfo.profile|imgPath">
     </div>
     <p class="mood-nickname">{{mood?.shortInfo.nickname}}</p>
     <p class="mood-howlong"><span class="mood-short-date">发表于{{mood?.shortDate}}</span>{{mood?.howLongAgo}}前 来自网页</p>
-  </div>
 
+  </div>
   <div class="mood-content">
     <!--心情文本内容-->
     <div class="mood-text-content" [froalaView]="mood?.content"></div>
@@ -32,4 +32,12 @@
 
     </div>
   </div>
+  <p class="hr"></p>
+
+  <!--显示评论-->
+  <div class="discussion-wrapper">
+    <app-discussion-viewer [trendArgs]="mood.trendArgs"></app-discussion-viewer>
+  </div>
+
+
 </div>

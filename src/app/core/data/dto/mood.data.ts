@@ -1,4 +1,5 @@
 import {ShortUserInfo} from '../vo/user.data';
+import {TrendArgs} from '../app.data';
 
 export class Trend{
 
@@ -37,6 +38,11 @@ export class Trend{
  * 心情
  */
 export class Mood extends Trend{
+
+  /**
+   * 心情 id
+   */
+  moodId:string;
   /**
    * 内容
    */
@@ -58,6 +64,10 @@ export class Mood extends Trend{
  */
 export class MoodInfo extends Mood{
 
+  /**
+   *动态操作参数
+   */
+  trendArgs:TrendArgs;
   /**
    * 用户简短信息
    */

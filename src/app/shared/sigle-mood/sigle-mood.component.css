@@ -65,6 +65,7 @@
   margin-right: 20px;
   padding-bottom: 10px;
   cursor: pointer;
+  margin-top: 10px;
 }
 .mood-text-content{
   padding-bottom: 5px;
@@ -127,4 +128,5 @@
   margin-left: 5px;
   cursor: zoom-in;
 }
+
 

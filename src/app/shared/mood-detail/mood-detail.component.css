@@ -12,6 +12,12 @@
   line-height: 20px;
 
 }
+/*关注按钮*/
+.attent-btn{
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+}
 /*包裹头像的div*/
 .mood-profile-wrapper{
   float: left;
@@ -134,3 +140,17 @@
   cursor: zoom-in;
 }
 
+.hr{
+  width: 90%;
+  height: 1px;
+  border-top: solid 1px rgb(233,233,233);
+  margin: auto;
+  margin-top: 10px;
+}
+
+
+
+/*包裹评论的 div*/
+.discussion-wrapper{
+  padding: 20px 30px 20px 30px;
+}

@@ -16,6 +16,23 @@ export class ShortUserInfo{
    * 头像
    */
   profile:string;
+
+  /**
+   * 生日
+   */
+  birthday:string;
+
+  /**
+   * 年龄
+   */
+  age:number;
+
+  /**
+   * 父级区域
+   */
+  parentArea:string;
+
+  height:string;
 }
 /**
  * 搜索出来的用户信息
