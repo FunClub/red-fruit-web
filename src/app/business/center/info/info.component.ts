@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {HabitArg} from '../../../core/data/app.data';
 import {ActivatedRoute} from '@angular/router';
 import {InfoService} from '../../../core/service/info.service';
-import {AllUserInfo, SimplenessUserInfo, User, UserInfo} from '../../../core/data/vo/user.data';
+import {AllUserInfo, SimplenessUserInfo, User, UserInfo} from '../../../core/data/dto/user.data';
 import {MatDialog} from '@angular/material';
 import {UpdateIntroductionComponent} from './update-introduction/update-introduction.component';
 import {BlockScrollStrategy} from '@angular/cdk/overlay/typings/scroll/block-scroll-strategy';

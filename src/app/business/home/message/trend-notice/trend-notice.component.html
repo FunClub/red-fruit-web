@@ -1,0 +1,40 @@
+<main>
+  <div class="art-user-info-wrapper">
+    <div class="art-profile-wrapper"  (mouseleave)="showCard=false" (mouseover)="showCard=true">
+
+      <img class="art-user-profile" [src]="trendNotice.makeNoticeShortInfo.profile|imgPath"/>
+    </div>
+
+    <div class="notice-art-operation" [matMenuTriggerFor]="menu">
+      <button mat-icon-button>
+        <i class="material-icons">keyboard_arrow_down</i>
+      </button>
+      <mat-menu #menu="matMenu" class="custom-md-menu">
+        <button mat-menu-item (click)="deleteNotice()">
+         <i class="material-icons">delete</i>
+          <span>删除</span>
+        </button>
+      </mat-menu>
+    </div>
+    <p>
+      <span>{{trendNotice.makeNoticeShortInfo.nickname}}</span>
+      <span class="art-generate-target">{{trendNotice.trendNoticeType}}了你的{{trendNotice.trendType}}</span>
+
+    </p>
+    <p class="art-date-wrapper">
+      <span class="art-sort-date">{{trendNotice.sortDate}}</span>
+      <span class="art-short-date">{{trendNotice.shortDate}}</span>
+    </p>
+  </div>
+  <p class="currentContent">{{trendNotice.trendNoticeContent}}</p>
+  <div class="art-single-content" [ngClass]="{'no-art-img': false}">
+    <img class="art-img"  src="../../../../../assets/img/profile-female.jpeg"/>
+    <div class="art-text-content-wrapper">
+        <span class="art-user-content-name"> 刘姑姑:</span>
+        <span class="art-text-content">{{trendNotice.trendNoticeContent}}</span>
+    </div>
+  </div>
+  <div class="art-discussion-wrapper">
+
+  </div>
+</main>

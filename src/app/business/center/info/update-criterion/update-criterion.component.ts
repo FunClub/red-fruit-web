@@ -1,10 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {AreaData} from '../../../../core/data/vo/area.data';
+import {AreaData} from '../../../../core/data/dto/area.data';
 import {AgeRange, EducationRange, HeightRange, IncomeRange, Professions, WeightRange} from '../../../../core/data/app.data';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {UpdateBaseInfoComponent} from '../update-base-info/update-base-info.component';
-import {UserInfo} from '../../../../core/data/vo/user.data';
+import {UserInfo} from '../../../../core/data/dto/user.data';
 import {SharedService} from '../../../../core/service/shared.service';
 import {InfoService} from '../../../../core/service/info.service';
 import {ToastsManager} from 'ng2-toastr';

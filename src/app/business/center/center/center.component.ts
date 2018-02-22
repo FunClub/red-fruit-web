@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CenterService} from '../../../core/service/center.service';
-import {CenterInfo} from '../../../core/data/vo/user.data';
+import {CenterInfo} from '../../../core/data/dto/user.data';
 import {MatDialog} from '@angular/material';
 import {CropperImgComponent} from '../../../shared/cropper-img/cropper-img.component';
 import {HomeService} from '../../../core/service/home.service';

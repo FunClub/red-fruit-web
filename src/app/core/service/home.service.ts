@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {TitleUserInfo, User} from '../data/vo/user.data';
+import {TitleUserInfo, User} from '../data/dto/user.data';
 import {HttpClient} from '@angular/common/http';
-import {ResponseData} from '../data/vo/response.data';
+import {ResponseData} from '../data/dto/response.data';
 import {SharedApi} from '../data/api.data';
 import {Observable} from 'rxjs/Observable';
 

@@ -3,12 +3,12 @@
   <!--心情-->
   <div class="all-mood">
     <div class="mood-editor-wrapper">
-      <app-mood-editor></app-mood-editor>
+      <app-mood-editor (moodSend)="insertMood($event)"></app-mood-editor>
     </div>
     <div class="mood-wrapper" *ngFor="let mood of moods">
       <app-sigle-mood [mood]="mood"></app-sigle-mood>
     </div>
-
+    <app-page-loading *ngIf="pageInfo?.totals>10" [hasNext]="pageInfo?.hasNext" (pageAble)="appendMood()"></app-page-loading>
   </div>
 
   <!--微信文章-->

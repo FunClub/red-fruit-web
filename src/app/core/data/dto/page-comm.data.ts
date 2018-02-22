@@ -1,4 +1,4 @@
-import {User} from '../vo/user.data';
+import {User} from './user.data';
 /**
  * 分页参数
  */

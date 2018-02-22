@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchService} from '../../../core/service/search.service';
-import {SearchedUserInfo, User, UserCriterionInfo} from '../../../core/data/vo/user.data';
-import {AreaData} from '../../../core/data/vo/area.data';
+import {SearchedUserInfo, User, UserCriterionInfo} from '../../../core/data/dto/user.data';
+import {AreaData} from '../../../core/data/dto/area.data';
 import {SharedService} from '../../../core/service/shared.service';
 import {AgeRange, EducationRange, HeightRange, IncomeRange, Professions, WeightRange} from '../../../core/data/app.data';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {PageComm} from '../../../core/data/dto/page-comm.data';
-import {PagedInfo} from '../../../core/data/vo/paged-info.data';
+import {PagedInfo} from '../../../core/data/dto/paged-info.data';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({

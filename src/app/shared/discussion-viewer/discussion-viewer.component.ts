@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {InsertParentDiscussion, ParentDiscussionInfo, QueryDiscussionComm} from '../../core/data/discussion/discussion';
+import {InsertParentDiscussion, ParentDiscussionInfo, QueryDiscussionComm} from '../../core/data/dto/discussion';
 import {RfEditorOptions, TrendArgs, TrendNoticeType} from '../../core/data/app.data';
 import {SharedService} from '../../core/service/shared.service';
 import {PageComm} from '../../core/data/dto/page-comm.data';
-import {PagedInfo} from '../../core/data/vo/paged-info.data';
+import {PagedInfo} from '../../core/data/dto/paged-info.data';
+declare var $:any;
 @Component({
   selector: 'app-discussion-viewer',
   templateUrl: './discussion-viewer.component.html',
@@ -44,7 +45,9 @@ export class DiscussionViewerComponent implements OnInit {
   /**
    * 评论数组
    */
-  parentDiscussions:ParentDiscussionInfo[];
+  parentDiscussions:ParentDiscussionInfo[]=[];
+
+
 
   constructor(private sharedService:SharedService) {
     this.rfOption = new RfEditorOptions();
@@ -57,6 +60,7 @@ export class DiscussionViewerComponent implements OnInit {
     this.initQueryDiscussion();
     this.queryDiscussion();
   }
+
 
   /**
    * 评论排序后重新查询
@@ -71,6 +75,7 @@ export class DiscussionViewerComponent implements OnInit {
    */
   initQueryDiscussion(){
     this.pageComm = new PageComm();
+    this.pageComm.page.size=100;
     let query = new QueryDiscussionComm();
     query.trendId = this.trendArgs.trendId;
     this.pageComm.condition = query;

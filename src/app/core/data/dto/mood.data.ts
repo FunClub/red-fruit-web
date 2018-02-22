@@ -1,4 +1,4 @@
-import {ShortUserInfo} from '../vo/user.data';
+import {ShortUserInfo} from './user.data';
 import {TrendArgs} from '../app.data';
 
 export class Trend{
@@ -14,10 +14,6 @@ export class Trend{
    */
   date:string;
 
-  /**
-   * 点赞数
-   */
-  thumbCount:number;
 
   /**
    * 评论数
@@ -33,6 +29,11 @@ export class Trend{
    * 点赞用户 id
    */
   thumbUserIds:string[];
+
+  /**
+   * 点赞数
+   */
+  thumbsUpCount:number;
 }
 /**
  * 心情
@@ -46,7 +47,7 @@ export class Mood extends Trend{
   /**
    * 内容
    */
-  content:string;
+  content:string="";
 
   /**
    * 图片
@@ -86,6 +87,7 @@ export class MoodInfo extends Mood{
    * 能否点赞
    */
   thumbAble:boolean;
+
 }
 
 

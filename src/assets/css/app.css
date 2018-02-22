@@ -3,6 +3,19 @@
   padding: 0;
 }
 
+/*计数*/
+.app-count{
+  color: white;
+  border-radius: 5px;
+  background-color: rgba(236, 64, 60, 1);
+  font-size: 10px;
+  text-align: center;
+  width: 25px;
+  height: 16px;
+  line-height: 16px;
+}
+
+/*模态框标题*/
 .app-box-title{
   padding: 10px 10px 5px;
   font-size: 14px;
@@ -11,9 +24,11 @@
 
 }
 
+/*模态框内容*/
 .app-dialog-content{
   padding: 20px;
 }
+
 /*隐藏*/
 .app-hidden{
   display: none!important;

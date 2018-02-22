@@ -1,0 +1,48 @@
+.message,.right{
+  display: inline-block;
+  vertical-align: top;
+}
+
+/*全部消息div*/
+.message{
+ width: 590px;
+}
+/*消息类型包裹*/
+.message-type-wrapper{
+  height: 45px;
+  padding-left: 30px;
+}
+.message-type{
+  display: inline-block;
+  width: 55px;
+  color: rgba(110, 115, 124, 1);
+  font-size: 13px;
+  text-align: center;
+  height: 43px;
+  line-height: 43px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.message-type-wrapper .message-type:last-child{
+  margin-left: 30px;
+}
+/*激活的消息类型*/
+.message-type-activated{
+  border-bottom: #EC403C solid;
+  color: black;
+}
+/*消息包裹*/
+.message-wrapper{
+  margin-top: 10px;
+}
+/*动态消息 div*/
+.trend-notice{
+  padding: 20px;
+  border-top: solid 1px rgb(243,243,243);
+}
+
+/*右边*/
+.right{
+  width: 250px;
+  margin-left: 4px;
+}

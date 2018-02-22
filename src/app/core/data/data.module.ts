@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {SharedApi, RegisterApi, LoginApi, CenterApi, InfoApi, SearchApi, MoodApi} from './api.data';
+import {SharedApi, RegisterApi, LoginApi, CenterApi, InfoApi, SearchApi, MoodApi, MessageApi} from './api.data';
 import {FormState, RegisterStatus, ShowMoodImg} from './app.data';
 
 
@@ -19,7 +19,8 @@ import {FormState, RegisterStatus, ShowMoodImg} from './app.data';
     InfoApi,
     SearchApi,
     MoodApi,
-    ShowMoodImg
+    ShowMoodImg,
+    MessageApi
   ]
 })
 export class DataModule { }

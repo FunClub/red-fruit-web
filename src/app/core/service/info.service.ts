@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {InfoApi} from '../data/api.data';
-import {ResponseData} from '../data/vo/response.data';
-import {AllUserInfo, User} from '../data/vo/user.data';
+import {ResponseData} from '../data/dto/response.data';
+import {AllUserInfo, User} from '../data/dto/user.data';
 import {Observable} from 'rxjs/Observable';
 
 /**

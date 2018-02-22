@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {User, UserInfo} from '../../../../core/data/vo/user.data';
+import {User, UserInfo} from '../../../../core/data/dto/user.data';
 import {HomeService} from '../../../../core/service/home.service';
 import {InfoService} from '../../../../core/service/info.service';
 import {CenterService} from '../../../../core/service/center.service';

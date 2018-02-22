@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {RfEditorOptions} from '../../core/data/app.data';
-import {Mood} from '../../core/data/dto/mood.data';
+import {Mood, MoodInfo} from '../../core/data/dto/mood.data';
 import {MoodService} from '../../core/service/mood.service';
 import {ToastsManager} from 'ng2-toastr';
 
@@ -41,19 +41,20 @@ export class MoodEditorComponent implements OnInit {
   videoSrc:string;
 
   /**
-   * 心情内容
-   */
-  content:string="";
-
-  /**
    *
    */
   mood:Mood;
 
+  /**
+   * 心情发布事件，通知父组件更新心情列表
+   */
+  @Output()
+  moodSend:EventEmitter<MoodInfo>;
   constructor(private moodService:MoodService,private toasts:ToastsManager) {
     this.rfOptions = new RfEditorOptions();
     this.rfOptions.height=80;
     this.mood = new Mood();
+    this.moodSend = new EventEmitter<MoodInfo>();
   }
   ngOnInit() {
 
@@ -64,7 +65,6 @@ export class MoodEditorComponent implements OnInit {
    */
   send(){
     //装配数据
-    this.mood.content = this.content;
     this.mood.imgs = this.uploadImgs;
     this.mood.video = this.videoSrc;
     this.moodService.create(this.mood).subscribe(res=>{
@@ -73,6 +73,7 @@ export class MoodEditorComponent implements OnInit {
         this.mood.content = "";
         this.mood.imgs = [];
         this.mood.video = "";
+        this.moodSend.emit(res.data);
         this.toasts.success("心情发布成功");
       }else{
         this.toasts.error("心情发布失败！请重试...");
@@ -126,6 +127,6 @@ export class MoodEditorComponent implements OnInit {
    * @param {string} face
    */
   appendFace(face:string){
-    this.content += face;
+    this.mood.content += face;
   }
 }

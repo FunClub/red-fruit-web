@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {SearchApi} from '../data/api.data';
 import {Observable} from 'rxjs/Observable';
-import {SearchedUserInfo, UserCriterionInfo} from '../data/vo/user.data';
-import {ResponseData} from '../data/vo/response.data';
+import {SearchedUserInfo, UserCriterionInfo} from '../data/dto/user.data';
+import {ResponseData} from '../data/dto/response.data';
 import {PageComm} from '../data/dto/page-comm.data';
-import {PagedInfo} from '../data/vo/paged-info.data';
+import {PagedInfo} from '../data/dto/paged-info.data';
 
 /**
  * 搜索服务

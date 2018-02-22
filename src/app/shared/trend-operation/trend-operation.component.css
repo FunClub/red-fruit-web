@@ -33,6 +33,9 @@
 }
 /*已点赞*/
 .thumbsUpDisable{
+
+}
+.thumbsUpDisable i,.thumbsUpDisable span{
   color: orange !important;
 }
 /*评论打开打样式*/

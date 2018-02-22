@@ -1,4 +1,15 @@
 /**
+ * 消息 api
+ */
+const messagePrefix = "/message/trend-notice/";
+export class  MessageApi{
+  /**
+   * 查询动态通知
+   */
+  selectTrendNoticePath = messagePrefix;
+}
+
+/**
  * 心情 api
  */
 const moodPrefix = "/trend/mood/";
@@ -139,6 +150,20 @@ export class RegisterApi{
 const sharedPrefix = "/shared/";
 const weChatPrefix= "/api/wechat/";
 export class SharedApi {
+  /**
+   * 获取点赞 api 地址
+   *
+  */
+  thumbPath = sharedPrefix+"thumb";
+  /**
+   * 获取取消点赞 api 地址
+   * @param {string} targetId 目标id
+   * @returns {string}
+   */
+  getThumbPath(targetId:string){
+    return  sharedPrefix +`thumb/${targetId}`;
+  }
+
   /**
    * 添加子评论
    */

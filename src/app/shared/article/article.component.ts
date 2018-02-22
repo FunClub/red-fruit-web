@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Article} from '../../core/data/vo/articles.data';
+import {Article} from '../../core/data/dto/articles.data';
 
 @Component({
   selector: 'app-article',

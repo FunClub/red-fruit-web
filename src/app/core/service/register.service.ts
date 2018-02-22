@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {SharedApi, RegisterApi} from '../data/api.data';
 import {Observable} from 'rxjs/Observable';
-import {ResponseData} from '../data/vo/response.data';
+import {ResponseData} from '../data/dto/response.data';
 import {ValidationErrors} from '@angular/forms/src/directives/validators';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {FormGroup} from '@angular/forms';
-import {User} from '../data/vo/user.data';
+import {User} from '../data/dto/user.data';
 import {HttpParams} from '@angular/common/http';
 
 /**

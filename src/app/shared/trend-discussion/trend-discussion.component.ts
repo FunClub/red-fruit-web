@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
 import {animate, keyframes,style, transition, trigger} from "@angular/animations";
-import {ParentDiscussionInfo, ReplyDiscussionArgs} from '../../core/data/discussion/discussion';
+import {ParentDiscussionInfo, ReplyDiscussionArgs} from '../../core/data/dto/discussion';
 import {TrendArgs} from '../../core/data/app.data';
+import {HomeService} from '../../core/service/home.service';
 
 declare let $:any;
 @Component({
@@ -42,6 +43,9 @@ export class TrendDiscussionComponent{
   @Input()
   trendArgs:TrendArgs;
 
+  constructor(public homeService:HomeService){
+
+  }
   /**
    * 回复切换显示
    */

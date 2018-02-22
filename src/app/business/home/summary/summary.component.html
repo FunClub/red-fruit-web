@@ -1,3 +1,46 @@
-<p>
-  summary works!
-</p>
+<div class="summary">
+
+  <!--左侧个人信息和导航-->
+  <div class="left">
+    <!--个人信息-->
+    <div class="info app-box">
+      <div class="profile-wrapper app-box">
+        <img [src]="homeService.titleUser.profile|imgPath">
+        <div class="profile-bg">资料完整度60%</div>
+      </div>
+      <p class="nickname">{{homeService.titleUser.nickname}} <i class="material-icons">border_color</i></p>
+      <p class="pre-view-info">预览我的信息</p>
+      <div class="message-count-wrapper">
+        <div class="message-count">
+          <span class="app-count">99</span>
+          消息
+        </div>
+        <div class="message-count">
+          <span class="app-count">99</span>
+          收件箱
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-wrapper app-box">
+      <div>
+        <p class="nav-title">个人中心</p>
+        <p class="nav">我的关注 <i class="material-icons">keyboard_arrow_right</i></p>
+        <p class="nav">我的关注 <i class="material-icons">keyboard_arrow_right</i></p>
+        <p class="nav">我的关注 <i class="material-icons">keyboard_arrow_right</i></p>
+        <p class="nav">我的关注 <i class="material-icons">keyboard_arrow_right</i></p>
+      </div>
+      <div style="margin-top: 20px">
+        <p class="nav-title">交友中心</p>
+        <p class="nav">我的关注 <i class="material-icons">keyboard_arrow_right</i></p>
+        <p class="nav">我的关注 <i class="material-icons">keyboard_arrow_right</i></p>
+        <p class="nav">我的关注 <i class="material-icons">keyboard_arrow_right</i></p>
+        <p class="nav">我的关注 <i class="material-icons">keyboard_arrow_right</i></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

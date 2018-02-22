@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef, MatSelectChange} from '@angular/material';
-import {UserInfo} from '../../../../core/data/vo/user.data';
+import {UserInfo} from '../../../../core/data/dto/user.data';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from '../../../../core/service/register.service';
-import {AreaData} from '../../../../core/data/vo/area.data';
+import {AreaData} from '../../../../core/data/dto/area.data';
 import {EducationRange, HeightRange, IncomeRange, Professions} from '../../../../core/data/app.data';
 import {SharedService} from '../../../../core/service/shared.service';
 import {InfoService} from '../../../../core/service/info.service';

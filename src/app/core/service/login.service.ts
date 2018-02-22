@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {ResponseData} from '../data/vo/response.data';
+import {ResponseData} from '../data/dto/response.data';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {LoginApi} from '../data/api.data';
-import {User} from '../data/vo/user.data';
+import {User} from '../data/dto/user.data';
 import {HomeService} from './home.service';
 
 /**

@@ -4,7 +4,7 @@ import {MoodInfo} from '../../core/data/dto/mood.data';
 import {RfEditorOptions, ShowMoodImg, TrendArgs, TrendNoticeType, TrendType} from '../../core/data/app.data';
 import {animate, keyframes, style, transition, trigger} from '@angular/animations';
 import {HomeService} from '../../core/service/home.service';
-import {InsertParentDiscussion} from '../../core/data/discussion/discussion';
+import {InsertParentDiscussion} from '../../core/data/dto/discussion';
 import {SharedService} from '../../core/service/shared.service';
 declare var $:any;
 @Component({

@@ -7,6 +7,9 @@ import {CenterModule} from '../center/center.module';
 import {ChatModule} from '../chat/chat.module';
 import {LuckModule} from '../luck/luck.module';
 import { SummaryComponent } from './summary/summary.component';
+import { TrendRecommendComponent } from './trend-recommend/trend-recommend.component';
+import { MessageComponent } from './message/message.component';
+import {TrendNoticeComponent} from './message/trend-notice/trend-notice.component';
 
 @NgModule({
   imports: [
@@ -17,6 +20,12 @@ import { SummaryComponent } from './summary/summary.component';
     LuckModule
   ],
 
-  declarations: [HomeComponent, SummaryComponent]
+  declarations: [
+    HomeComponent,
+    SummaryComponent,
+    TrendRecommendComponent,
+    MessageComponent,
+    TrendNoticeComponent
+  ]
 })
 export class HomeModule { }

@@ -3,7 +3,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {animate, keyframes, style, transition, trigger} from "@angular/animations";
 import {RfEditorOptions, TrendArgs, TrendNoticeType, TrendType} from '../../core/data/app.data';
 import {Subscription} from 'rxjs/Subscription';
-import {InsertSubDiscussion, ReplyDiscussionArgs, SubDiscussion, SubDiscussionInfo} from '../../core/data/discussion/discussion';
+import {InsertSubDiscussion, ReplyDiscussionArgs, SubDiscussion, SubDiscussionInfo} from '../../core/data/dto/discussion';
 import {SharedService} from '../../core/service/shared.service';
 
 declare var $:any;

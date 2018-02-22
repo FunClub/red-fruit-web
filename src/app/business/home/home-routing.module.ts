@@ -11,6 +11,8 @@ import {InfoComponent} from '../center/info/info.component';
 import {SearchComponent} from '../luck/search/search.component';
 import {SummaryComponent} from './summary/summary.component';
 import {MoodsComponent} from '../center/moods/moods.component';
+import {TrendRecommendComponent} from './trend-recommend/trend-recommend.component';
+import {MessageComponent} from './message/message.component';
 /**
  * 主页路由模块
  */
@@ -20,7 +22,21 @@ const routes:Route[]=[
     component:HomeComponent,
     children:[
       {
-        path:'summary',component:SummaryComponent
+        path:'summary',component:SummaryComponent,
+        children:[
+          {
+            path:'trend-recommend',component:TrendRecommendComponent
+          },
+          {
+            path:'message',component:MessageComponent
+          },
+          {
+            path:'',
+            redirectTo:'message',
+            pathMatch:'full'
+          }
+
+        ]
       },
       {
         path:'center/:id', component:CenterComponent,

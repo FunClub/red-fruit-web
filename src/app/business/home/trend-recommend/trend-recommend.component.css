@@ -1,0 +1,18 @@
+.trend,.recommended{
+  display: inline-block;
+  vertical-align: top;
+}
+.trend{
+
+}
+/*心情编辑器包裹*/
+.mood-editor-wrapper{
+  position: relative;
+  width: 590px;
+}
+
+/*用户推荐*/
+.recommended{
+  margin-left: 4px;
+  width: 250px;
+}

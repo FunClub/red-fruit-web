@@ -1,6 +1,6 @@
 
 import {TrendNotice} from './trend-notice.data';
-import {ShortUserInfo} from '../vo/user.data';
+import {ShortUserInfo} from './user.data';
 /**
  * 添加父级评论的模型
  */
@@ -27,7 +27,7 @@ export class QueryDiscussionComm{
    */
   sortBy:string;
   constructor(){
-    this.sortBy = "date";
+    this.sortBy = "sub_discussion_count";
   }
 }
 
@@ -68,8 +68,6 @@ export class ParentDiscussionInfo {
    * 能否点赞
    */
   thumbsUpAble:string;
-
-
 
   /**
    * 用户简短信息

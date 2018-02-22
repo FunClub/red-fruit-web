@@ -15,13 +15,12 @@
   </div>
   <button (click)="sendDiscussion()" class="send-discussion-btn app-sm-btn" mat-raised-button>发表</button>
 </div>
-<div class="show-discussion-by">
-  <span (click)="sortDiscussionBy('subDiscussionsLength')" [ngClass]="{'active-discussion-by':pageComm.condition.sortBy=='subDiscussionsLength'}">按热度</span>
+<div class="show-discussion-by" *ngIf="parentDiscussions.length>0">
+  <span (click)="sortDiscussionBy('sub_discussion_count')" [ngClass]="{'active-discussion-by':pageComm.condition.sortBy=='sub_discussion_count'}">按热度</span>
   <hr class="sortByHr">
   <span (click)="sortDiscussionBy('date')" [ngClass]="{'active-discussion-by':pageComm.condition.sortBy=='date'}" >按时间</span>
 </div>
 <div class="discussion-wrapper" *ngFor="let parentDiscussion of parentDiscussions">
   <app-trend-discussion [trendArgs]="trendArgs" [parentDiscussion]="parentDiscussion"></app-trend-discussion>
 </div>
-
 

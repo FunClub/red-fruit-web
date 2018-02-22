@@ -5,7 +5,7 @@ import {HomeService} from '../../core/service/home.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Img} from '../../core/data/app.data';
 import {CenterService} from '../../core/service/center.service';
-import {ResponseData} from '../../core/data/vo/response.data';
+import {ResponseData} from '../../core/data/dto/response.data';
 
 
 @Component({

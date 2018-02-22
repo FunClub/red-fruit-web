@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from '../../../core/service/register.service';
 import {SharedService} from '../../../core/service/shared.service';
-import {AreaData} from '../../../core/data/vo/area.data';
+import {AreaData} from '../../../core/data/dto/area.data';
 import {MatSelectChange} from '@angular/material';
 import {EducationRange, FormState, IncomeRange, Reg, RegisterStatus} from '../../../core/data/app.data';
 

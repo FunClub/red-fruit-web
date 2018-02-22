@@ -10,6 +10,7 @@ export class ScrollPageDirective {
     window.onscroll=(ev)=>{
       if(window.innerHeight -ele.nativeElement.getBoundingClientRect().top>-10){
         this.pageAble.emit();
+
       }
 
     }

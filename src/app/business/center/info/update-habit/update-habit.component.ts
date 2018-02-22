@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {UpdateBaseInfoComponent} from '../update-base-info/update-base-info.component';
-import {User, UserInfo} from '../../../../core/data/vo/user.data';
+import {User, UserInfo} from '../../../../core/data/dto/user.data';
 import {ToastsManager} from 'ng2-toastr';
 import {InfoService} from '../../../../core/service/info.service';
 

@@ -10,11 +10,13 @@
   </div>
   <div class="operation">
     <i class="material-icons" >sms</i>
-    <span class="count">评论</span>
+    <span class="count">评论 {{trendArgs.discussionCount>0?trendArgs.discussionCount:''}}</span>
   </div>
-  <div class="operation">
+  <div class="operation" (click)="thumb()" [ngClass]="{'thumbsUpDisable':!trendArgs.thumbsUpAble}">
     <i class="material-icons">thumb_up</i>
-    <span class="count">赞</span>
+    <span class="count">
+      {{trendArgs.thumbsUpCount>0?trendArgs.thumbsUpCount:'赞'}}
+    </span>
   </div>
 </div>
 <!--动态操作结束-->

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../../../core/service/shared.service';
-import {Article} from '../../../core/data/vo/articles.data';
+import {Article} from '../../../core/data/dto/articles.data';
 import {PageComm} from '../../../core/data/dto/page-comm.data';
 import {CenterService} from '../../../core/service/center.service';
 import {QueryOtherComm} from '../../../core/data/dto/query-other-comm.data';
 import {MoodService} from '../../../core/service/mood.service';
-import {PagedInfo} from '../../../core/data/vo/paged-info.data';
+import {PagedInfo} from '../../../core/data/dto/paged-info.data';
 import {MoodInfo} from '../../../core/data/dto/mood.data';
 import {HomeService} from '../../../core/service/home.service';
 import {ActivatedRoute} from '@angular/router';
@@ -35,8 +35,12 @@ export class MoodsComponent implements OnInit {
   /**
    * 心情数组
    */
-  moods: MoodInfo[];
+  moods: MoodInfo[]=[];
 
+  /**
+   * 查询心情是否被锁定
+   */
+  searchLocked:boolean;
   constructor(private sharedService: SharedService, private homeService: HomeService,
               private moodService: MoodService,private centerService:CenterService,
               private router:ActivatedRoute
@@ -61,12 +65,32 @@ export class MoodsComponent implements OnInit {
   }
 
   /**
+   * 追加显示用户
+   */
+  appendMood() {
+    if (this.pageInfo.hasNext && !this.searchLocked) {
+      this.pageComm.page.current++;
+      this. searchMood();
+    }
+
+  }
+
+  /**
+   * 在开始处 插入心情
+   * @param moodInfo
+   */
+  insertMood(moodInfo){
+    this.moods = [moodInfo].concat(this.moods);
+  }
+  /**
    * 查询心情
    */
   searchMood() {
+    this.searchLocked = true;
     this.moodService.getMoodByCenter(this.pageComm).subscribe(res => {
       this.pageInfo = res.data;
-      this.moods = this.pageInfo.data;
+      this.moods = this.moods.concat(this.pageInfo.data);
+      this.searchLocked = false;
     });
   }
 }

@@ -143,5 +143,5 @@
     </div>
 
   </div>
-  <app-page-loading [hasNext]="pagedInfo?.hasNext" (pageAble)="appendUser()"></app-page-loading>
+  <app-page-loading *ngIf="pageInfo?.totals>10" [hasNext]="pagedInfo?.hasNext" (pageAble)="appendUser()"></app-page-loading>
 </div>

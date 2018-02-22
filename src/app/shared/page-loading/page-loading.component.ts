@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {PageComm} from '../../core/data/dto/page-comm.data';
 
 @Component({
   selector: 'app-page-loading',

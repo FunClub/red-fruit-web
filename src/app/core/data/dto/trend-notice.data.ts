@@ -1,6 +1,10 @@
 /**
  *  动态通知模型
  */
+import {ShortUserInfo} from './user.data';
+import {ParentDiscussionInfo} from './discussion';
+import {TrendArgs} from '../app.data';
+
 export class TrendNotice{
 
   /**
@@ -48,4 +52,33 @@ export class TrendNotice{
    */
   discussionId:string;
 
+}
+/**
+ *  动态通知信息模型
+ */
+export class TrendNoticeInfo extends TrendNotice{
+  /**
+   * 简短时间
+   */
+  shortDate:string;
+
+  /**
+   * 分门别类时间
+   */
+  sortDate:string;
+
+  /**
+   * 生成此动态通知的用户简短信息
+   */
+  makeNoticeShortInfo:ShortUserInfo;
+
+  /**
+   * 父级评论信息
+   */
+  parentDiscussionInfo:ParentDiscussionInfo;
+
+  /**
+   * 动态操作参数
+   */
+  trendArgs:TrendArgs;
 }

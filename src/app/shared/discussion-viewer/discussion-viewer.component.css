@@ -48,7 +48,7 @@
 }
 /*每一个条件*/
 .show-discussion-by span{
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   padding-bottom:3px;
 }
@@ -64,7 +64,7 @@
   top: 7px;
   margin-left: 5px;
   margin-right: 5px;
-  border-color: rgb(232,232,232);
+  background: rgb(232,232,232);
 }
 /*激活的条件*/
 .active-discussion-by{

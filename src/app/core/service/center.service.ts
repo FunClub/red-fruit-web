@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {CenterApi} from '../data/api.data';
 import {HttpClient} from '@angular/common/http';
-import {ResponseData} from '../data/vo/response.data';
-import {CenterInfo} from '../data/vo/user.data';
+import {ResponseData} from '../data/dto/response.data';
+import {CenterInfo} from '../data/dto/user.data';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()

@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {SharedApi} from '../data/api.data';
 import {Observable} from 'rxjs/Observable';
-import {ResponseData} from '../data/vo/response.data';
+import {ResponseData} from '../data/dto/response.data';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import {AreaData} from '../data/vo/area.data';
-import {Article} from '../data/vo/articles.data';
-import {PagedInfo} from '../data/vo/paged-info.data';
-import {ParentDiscussionInfo, ReplyDiscussionArgs, SubDiscussionInfo} from '../data/discussion/discussion';
+import {AreaData} from '../data/dto/area.data';
+import {Article} from '../data/dto/articles.data';
+import {PagedInfo} from '../data/dto/paged-info.data';
+import {ParentDiscussionInfo, ReplyDiscussionArgs, SubDiscussionInfo} from '../data/dto/discussion';
+import {TrendNotice} from '../data/dto/trend-notice.data';
 
 /**
  * 共享服务
@@ -26,6 +27,22 @@ export class SharedService{
 
   }
 
+  /**
+   *  删除点赞
+   * @returns {Observable<ResponseData<boolean>>}
+   */
+  deleteThumb(targetId:string):Observable<ResponseData<boolean>>{
+    return this.http.delete<ResponseData<boolean>>(this.api.getThumbPath(targetId));
+  }
+
+  /**
+   * 插入点赞
+   * @param {TrendNotice} trendNotice 点赞通知
+   * @returns {Observable<ResponseData<boolean>>}
+   */
+  insertThumb(trendNotice:TrendNotice):Observable<ResponseData<boolean>>{
+    return this.http.post<ResponseData<boolean>>(this.api.thumbPath,trendNotice);
+  }
   /**
    * 插入子级评论
    * @param discussion
@@ -46,22 +63,23 @@ export class SharedService{
     return this.http.patch<ResponseData<PagedInfo<ParentDiscussionInfo[]>>>(this.api.selectParentDiscussionPath,comm).map((res:ResponseData<PagedInfo<ParentDiscussionInfo[]>>)=>{
       //组装评论操作参数
       let parentDiscussions = res.data.data;
-      let replyDiscussionArgs;
-      let subDiscussions;
       for (let pDiscussion of parentDiscussions){
-        this.initReplyDiscussionArgs(pDiscussion);
-        subDiscussions = pDiscussion.subDiscussionInfos;
-        if(subDiscussions!=null&&subDiscussions.length>0){
-          for (let sDiscussion of subDiscussions){
-            this.initReplyDiscussionArgs(sDiscussion);
-          }
-        }
+         this.initParentDiscussion(pDiscussion);
       }
-
       return res;
     });
   }
 
+  //初始化评论参数
+  initParentDiscussion(pDiscussion:ParentDiscussionInfo){
+    this.initReplyDiscussionArgs(pDiscussion);
+    let subDiscussions = pDiscussion.subDiscussionInfos;
+    if(subDiscussions!=null&&subDiscussions.length>0){
+      for (let sDiscussion of subDiscussions){
+        this.initReplyDiscussionArgs(sDiscussion);
+      }
+    }
+  }
   /**
    * 初始化回复参数
    * @param discussion

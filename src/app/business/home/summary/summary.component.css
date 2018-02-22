@@ -1,0 +1,113 @@
+/*摘要整体 div*/
+.summary{
+  width: 1030px;
+  margin: auto;
+}
+.left,.content{
+  display: inline-block;
+  vertical-align: top;
+
+}
+.content{
+  margin-left: 180px;
+}
+/*左侧导航部分*/
+.left{
+  width: 170px;
+  margin-right: 5px;
+  position: fixed;
+}
+/*个人信息*/
+.info{
+  text-align: center;
+  padding-top: 1px;
+}
+/*头像包裹 div*/
+.profile-wrapper{
+  height: 130px;
+  width: 130px;
+  position: relative;
+  margin: 19px auto auto;
+
+}
+.profile-wrapper img{
+  height: 130px;
+  width: 130px;
+  display: block;
+
+
+}
+/*头像黑色背景*/
+.profile-bg{
+  width: 130px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  background: -webkit-linear-gradient(top,transparent,rgba(26,26,26,.4));
+  text-align: center;
+  font-size: 12px;
+  color: rgb(200,200,200);
+}
+/*昵称*/
+.nickname{
+  color: rgba(77, 77, 77, 1);
+  margin-top: 7px;
+}
+.nickname i{
+  color: rgba(150, 147, 150, 1);
+  font-size: 15px;
+}
+/*预览我的信息*/
+.pre-view-info{
+  font-size: 12px;
+  color: rgba(47, 177, 209, 1);
+  margin-top: 5px;
+}
+/*消息计数包裹*/
+.message-count-wrapper{
+  margin-top: 17px;
+}
+.message-count{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 82px;
+  height: 29px;
+  line-height: 29px;
+  background-color: rgba(23, 152, 192, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 12px;
+  text-align: center;
+  box-shadow: 0 0 1px 0 rgba(170, 170, 170, 1);
+}
+.app-count{
+  position: absolute;
+  top: -12px;
+  left: 28px;
+}
+/* 包裹导航 div*/
+.nav-wrapper{
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+/*导航标题*/
+.nav-title{
+  border-left: solid #EC403C;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  color: rgba(77, 77, 77, 1);
+  font-size: 14px;
+}
+.nav{
+  color: rgba(102, 102, 102, 1);
+  font-size: 13px;
+  padding-left: 20px;
+  margin-top: 10px;
+  padding-right: 15px;
+}
+.nav i{
+  color: rgba(102, 102, 102, 1);
+  font-size: 15px;
+  float: right;
+}
