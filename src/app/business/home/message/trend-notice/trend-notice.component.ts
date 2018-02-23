@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 import {animate, keyframes,style, transition, trigger} from "@angular/animations";
 import {TrendNotice, TrendNoticeInfo} from '../../../../core/data/dto/trend-notice.data';
+import {ParentDiscussionInfo} from '../../../../core/data/dto/discussion';
 @Component({
   selector: 'app-trend-notice',
   templateUrl: './trend-notice.component.html',
@@ -40,22 +41,35 @@ export class TrendNoticeComponent implements OnInit {
   @Input()
   noticeArtIndex:number;
 
+  /**
+   * 动态通知
+   */
   @Input()
   trendNotice:TrendNoticeInfo;
+
+  /**
+   * 父级评论
+   */
+  parentDiscussion:ParentDiscussionInfo;
+
+
   /**
    * 是否显示用户card
    */
   showCard:boolean;
+
+
   constructor() {
     this.showCard=false;
   }
 
   ngOnInit() {
-
+    this.parentDiscussion = this.trendNotice.parentDiscussionInfo;
   }
   initArtArgs(){
 
   }
+
 
   /**
    * 删除动态通知

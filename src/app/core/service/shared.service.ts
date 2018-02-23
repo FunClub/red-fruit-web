@@ -50,7 +50,7 @@ export class SharedService{
   insertSubDiscussion(discussion):Observable<ResponseData<SubDiscussionInfo>>{
     return this.http.post<ResponseData<SubDiscussionInfo>>(this.api.createSubDiscussionPath,discussion).map((res:ResponseData<SubDiscussionInfo>)=>{
       let subDiscussion = res.data;
-      this.initReplyDiscussionArgs(subDiscussion);
+      this.initReplyDiscussionArgs(subDiscussion,false);
       return res;
     });
   }
@@ -72,11 +72,11 @@ export class SharedService{
 
   //初始化评论参数
   initParentDiscussion(pDiscussion:ParentDiscussionInfo){
-    this.initReplyDiscussionArgs(pDiscussion);
+    this.initReplyDiscussionArgs(pDiscussion,true);
     let subDiscussions = pDiscussion.subDiscussionInfos;
     if(subDiscussions!=null&&subDiscussions.length>0){
       for (let sDiscussion of subDiscussions){
-        this.initReplyDiscussionArgs(sDiscussion);
+        this.initReplyDiscussionArgs(sDiscussion,false);
       }
     }
   }
@@ -84,15 +84,16 @@ export class SharedService{
    * 初始化回复参数
    * @param discussion
    */
-  initReplyDiscussionArgs(discussion){
+  initReplyDiscussionArgs(discussion,replyToParent){
     let replyDiscussionArgs= new ReplyDiscussionArgs();
-    if(discussion.userShortInfo){//回复父评论
+    if(replyToParent){//回复父评论
       replyDiscussionArgs.discussedNickname = discussion.userShortInfo.nickname;
     }else {//回复子评论
       replyDiscussionArgs.discussedNickname = discussion.nickname;
-      replyDiscussionArgs.discussedUserId = discussion.userId;
     }
+    replyDiscussionArgs.discussedUserId = discussion.userId;
     replyDiscussionArgs.parentDiscussionId = discussion.parentDiscussionId;
+    replyDiscussionArgs.replyToParent=replyToParent;
     discussion.replyDiscussionArgs = replyDiscussionArgs
   }
   /**
@@ -104,7 +105,7 @@ export class SharedService{
     return this.http.post<ResponseData<ParentDiscussionInfo>>(this.api.createParentDiscussionPath,discussion).map(res=>{
       let discussion = res.data;
       discussion.subDiscussionInfos=[];
-      this.initReplyDiscussionArgs(discussion);
+      this.initReplyDiscussionArgs(discussion,true);
       return res;
     });
   }

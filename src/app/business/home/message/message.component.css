@@ -37,7 +37,7 @@
 }
 /*动态消息 div*/
 .trend-notice{
-  padding: 20px;
+  padding: 20px 20px 10px;
   border-top: solid 1px rgb(243,243,243);
 }
 

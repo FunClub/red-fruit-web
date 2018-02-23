@@ -1,7 +1,6 @@
 <main>
   <div class="art-user-info-wrapper">
     <div class="art-profile-wrapper"  (mouseleave)="showCard=false" (mouseover)="showCard=true">
-
       <img class="art-user-profile" [src]="trendNotice.makeNoticeShortInfo.profile|imgPath"/>
     </div>
 
@@ -17,24 +16,54 @@
       </mat-menu>
     </div>
     <p>
-      <span>{{trendNotice.makeNoticeShortInfo.nickname}}</span>
+      <span class="make-notice-nickname">{{trendNotice.makeNoticeShortInfo.nickname}}</span>
       <span class="art-generate-target">{{trendNotice.trendNoticeType}}了你的{{trendNotice.trendType}}</span>
-
     </p>
     <p class="art-date-wrapper">
       <span class="art-sort-date">{{trendNotice.sortDate}}</span>
       <span class="art-short-date">{{trendNotice.shortDate}}</span>
     </p>
   </div>
-  <p class="currentContent">{{trendNotice.trendNoticeContent}}</p>
+  <p class="currentContent" [froalaView]="trendNotice.trendNoticeContent"></p>
   <div class="art-single-content" [ngClass]="{'no-art-img': false}">
-    <img class="art-img"  src="../../../../../assets/img/profile-female.jpeg"/>
+    <img class="art-img"  [src]="trendNotice.trendImg|imgPath"/>
     <div class="art-text-content-wrapper">
-        <span class="art-user-content-name"> 刘姑姑:</span>
-        <span class="art-text-content">{{trendNotice.trendNoticeContent}}</span>
+        <span class="art-user-content-name">{{trendNotice.trendUserInfo.nickname}}</span>
+        <span class="art-text-content" [froalaView]="trendNotice.trendContent"></span>
     </div>
   </div>
-  <div class="art-discussion-wrapper">
-
+  <div class="art-discussion-wrapper" *ngIf="trendNotice.parentDiscussionInfo">
+    <img class="discussion-profile" [src]="parentDiscussion.userShortInfo.profile|imgPath"/>
+    <div class="art-discussion-content">
+      <!--父级评论-->
+      <div class="parent-discussion">
+        <span class="parent-discussion-nickname">{{parentDiscussion.userShortInfo.nickname}}</span>
+        <span class="discussion-text" [froalaView]="parentDiscussion.content"></span>
+        <div class="discussion-info">
+          <span class="discussion-time">{{parentDiscussion.sortDate}} {{parentDiscussion.shortDate}}</span>
+          <i  class="material-icons discussion-reply" (click)="toggleReply(parentDiscussion.replyDiscussionArgs)">textsms</i>
+          <div class="reply-discussion-wrapper" *ngIf="parentDiscussion.replyDiscussionArgs.showReply">
+            <app-reply-discussion [trendArgs]="trendNotice.trendArgs" [subDiscussions]="parentDiscussion.subDiscussionInfos"
+                                  [replyDiscussionArgs]="parentDiscussion.replyDiscussionArgs" ></app-reply-discussion>
+          </div>
+        </div>
+      </div>
+      <div class="all-sub-discussion" *ngIf="parentDiscussion.subDiscussionInfos">
+        <div class="sub-discussion" *ngFor="let sub of parentDiscussion.subDiscussionInfos">
+          <img class="discussion-profile" [src]="sub.profile|imgPath"/>
+          <span class="sub-discussion-nickname">{{sub.nickname}}:</span>
+          <span class="discussion-to-nickname" *ngIf="sub.discussedNickname" >@{{sub.discussedNickname}}</span>
+          <span class="discussion-text" [froalaView]="sub.content"></span>
+          <div class="discussion-info">
+            <span class="discussion-time">{{sub.sortDate}} {{sub.shortDate}}</span>
+            <i  class="material-icons discussion-reply" (click)="toggleReply(sub.replyDiscussionArgs)">textsms</i>
+            <div class="reply-discussion-wrapper" *ngIf="sub.replyDiscussionArgs.showReply">
+              <app-reply-discussion [trendArgs]="trendNotice.trendArgs" [subDiscussions]="parentDiscussion.subDiscussionInfos"
+                                    [replyDiscussionArgs]="sub.replyDiscussionArgs" ></app-reply-discussion>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>

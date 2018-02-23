@@ -99,6 +99,7 @@ export class DiscussionViewerComponent implements OnInit {
 
     //初始化动态通知
     notice.trendContent = this.trendArgs.trendContent;
+    notice.trendUserId = this.trendArgs.trendUserId;
     notice.trendImg = this.trendArgs.firstTrendImg;
     notice.noticeUserId = this.trendArgs.trendUserId;
     notice.trendNoticeType = TrendNoticeType.DISCUSSION;
@@ -112,6 +113,7 @@ export class DiscussionViewerComponent implements OnInit {
    * 发表评论
    */
   sendDiscussion(){
+    this.parentDiscussion.trendNotice.trendNoticeContent = this.parentDiscussion.parentDiscussion.content;
     this.sharedService.createParentDiscussion(this.parentDiscussion).subscribe(res=>{
       this.parentDiscussions = [res.data].concat(this.parentDiscussions);
       this.parentDiscussion.parentDiscussion.content="";

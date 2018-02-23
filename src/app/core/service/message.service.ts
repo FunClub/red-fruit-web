@@ -47,7 +47,9 @@ export class MessageService {
    */
   initTrendArgs(notice: TrendNoticeInfo) {
     let args = new TrendArgs();
-    args.trendId = notice.trendImg;
+    args.trendId = notice.trendId;
+    args.trendContent = notice.trendContent;
+    args.firstTrendImg = notice.trendImg;
     args.trendType = notice.trendType;
     args.trendUserId = notice.noticeUserId;
     notice.trendArgs = args;

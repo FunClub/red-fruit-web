@@ -40,6 +40,10 @@ main{
   box-shadow: 0 5px 5px rgb(200,200,200);
   z-index: 9999999;
 }
+.make-notice-nickname{
+  font-size: 14px;
+  font-weight: bold;
+}
 /*头像*/
 .art-user-profile{
   width: 50px;
@@ -88,6 +92,7 @@ main{
 /*发表动态的用户名*/
 .art-user-content-name{
   color: rgb(36, 177, 211);
+  font-size: 14px;
 }
 /*动态文本内容*/
 .art-text-content{
@@ -95,4 +100,98 @@ main{
   font-size: 14px;
   height: 22px;
   max-width: 480px;
+}
+/*动态评论DIV*/
+.art-discussion-wrapper{
+  margin-top: 10px;
+}
+
+/*评论人头像*/
+.discussion-profile{
+  width: 32px;
+  height: 32px;
+  float: left;
+  margin-right: 5px;
+  border-radius: 16px;
+}
+/*评论体,评论右边部分*/
+.art-discussion-content{
+  padding-left: 40px;
+}
+/*父级评论人姓名*/
+.parent-discussion-nickname{
+  font-size: 12px;
+  color:rgb(255,129,64);
+  font-weight: bold;
+}
+
+/*评论内容*/
+.discussion-text{
+  color: rgb(50,50,50);
+  font-size: 12px;
+}
+.disableThumbsUp{
+  color:rgb(255,129,64)!important;
+}
+/*评论相关，时间和操作*/
+.discussion-info{
+  font-size: 13px;
+}
+/*回复按钮*/
+.discussion-reply{
+  font-size: 16px;
+  color: rgb(120,120,120);
+  vertical-align: middle;
+  cursor: pointer;
+  margin-left: 5px;
+  display: none;
+}
+
+/*评论时间*/
+.discussion-time{
+  color: rgb(100,100,100);
+  font-size: 12px;
+  height: 20px;
+  display: inline-block;
+}
+/*评论操作*/
+.discussion-operation{
+  float: right;
+}
+
+
+/*回复Div包裹*/
+.reply-discussion-wrapper{
+  margin-top: 5px;
+
+  padding: 10px;
+  position: relative;
+  background: rgb(238,238,238);
+}
+
+/*所有的子级评论*/
+.all-sub-discussion{
+
+}
+/*每个子级评论*/
+.sub-discussion{
+  margin-top: 5px;
+}
+/*显示回复按钮*/
+.parent-discussion:hover  .discussion-reply{
+  display: inline-block;
+}
+.sub-discussion:hover  .discussion-reply{
+  display: inline-block;
+}
+/*子级评论人*/
+.sub-discussion-nickname{
+  font-size: 12px;
+  color:rgb(255,129,64);
+
+}
+/*评论目标昵称*/
+.discussion-to-nickname{
+  font-size: 12px;
+  color:rgb(255,129,64);
 }

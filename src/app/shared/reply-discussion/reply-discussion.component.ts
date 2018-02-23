@@ -84,7 +84,7 @@ export class ReplyDiscussionComponent implements OnInit {
    */
   insertSubDiscussion(){
     this.replyDiscussionArgs.showReply=false;
-
+    this.subDiscussion.trendNotice.trendNoticeContent =this.subDiscussion.subDiscussion.content;
      this.shareService.insertSubDiscussion(this.subDiscussion).subscribe(res=>{
        this.subDiscussions.push(res.data);
 
@@ -104,12 +104,14 @@ export class ReplyDiscussionComponent implements OnInit {
   initSubDiscussion(){
     //初始化子评论
     this.subDiscussion.subDiscussion.parentDiscussionId = this.replyDiscussionArgs.parentDiscussionId;
-    this.subDiscussion.subDiscussion.discussedUserId = this.replyDiscussionArgs.discussedUserId;
+    if(!this.replyDiscussionArgs.replyToParent)
+      this.subDiscussion.subDiscussion.discussedUserId = this.replyDiscussionArgs.discussedUserId;
 
     //初始化通知参数
     this.subDiscussion.trendNotice.trendId = this.trendArgs.trendId;
     this.subDiscussion.trendNotice.trendType = TrendType.DISCUSSION;
     this.subDiscussion.trendNotice.trendNoticeType = TrendNoticeType.REPLY;
+    this.subDiscussion.trendNotice.trendUserId = this.trendArgs.trendUserId;
     this.subDiscussion.trendNotice.noticeUserId = this.replyDiscussionArgs.discussedUserId;
     this.subDiscussion.trendNotice.trendImg = this.trendArgs.firstTrendImg;
     this.subDiscussion.trendNotice.trendContent = this.trendArgs.trendContent;

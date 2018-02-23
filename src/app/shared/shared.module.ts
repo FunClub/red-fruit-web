@@ -103,6 +103,8 @@ import {ReplyDiscussionComponent} from './reply-discussion/reply-discussion.comp
     BusyModule,
     DndModule,
     MatMenuModule,
+    FroalaEditorModule,
+    FroalaViewModule,
     /**
      * 导出组件
      */
@@ -118,6 +120,7 @@ import {ReplyDiscussionComponent} from './reply-discussion/reply-discussion.comp
     SigleMoodComponent,
     TrendOperationComponent,
     TrendDiscussionComponent,
+    ReplyDiscussionComponent,
     /**
      * 导出管道
      */

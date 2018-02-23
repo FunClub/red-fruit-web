@@ -31,7 +31,10 @@ export class TrendNotice{
    * 动态 Id
    */
   trendId:string;
-
+  /**
+   * 动态用户 Id
+   */
+  trendUserId:string;
   /**
    * 动态的内容
    */
@@ -71,7 +74,10 @@ export class TrendNoticeInfo extends TrendNotice{
    * 生成此动态通知的用户简短信息
    */
   makeNoticeShortInfo:ShortUserInfo;
-
+  /**
+   * 动态用户信息
+   */
+  trendUserInfo:ShortUserInfo;
   /**
    * 父级评论信息
    */

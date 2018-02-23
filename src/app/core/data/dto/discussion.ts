@@ -156,6 +156,10 @@ export class SubDiscussionInfo {
    * 昵称
    */
   nickname:string;
+  /**
+   * 头像
+   */
+  profile:string;
 
   /**
    * 被回复的用户 id,为空则评论的父级评论，而不是某个子级评论
@@ -206,4 +210,9 @@ export class ReplyDiscussionArgs{
    * 显示评论回复
    */
   showReply:boolean;
+
+  /**
+   * 是否回复父评论
+   */
+  replyToParent:boolean;
 }
